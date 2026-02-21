@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 MCP Dashboard initialized');
+    console.log('🚀 Poke MCP Dashboard initialized');
     initializeInteractions();
     animateOnScroll();
     updateStats();
@@ -20,7 +20,7 @@ function initializeInteractions() {
 
         card.addEventListener('mouseenter', (e) => {
             const cardName = e.currentTarget.querySelector('h3').textContent;
-            console.log(`Viewing: ${cardName}`);
+            console.log(`Viewing: ${cardName} for Poke`);
         });
     });
 }
@@ -109,173 +109,307 @@ function scrollToIntegrations() {
     }
 }
 
-// Help Modal Functions
+// Help Modal Functions - Poke Specific
 function openHelp(integration) {
     const modal = document.getElementById('helpModal');
     const helpContent = document.getElementById('helpContent');
     
     const helpData = {
         bart: {
-            title: '🚇 BART Integration Setup',
-            description: 'Access real-time Bay Area Rapid Transit data including schedules, advisories, and station information.',
+            title: '🚇 BART Integration for Poke',
+            description: 'Connect Bay Area Rapid Transit data to Poke for real-time transit information, schedules, and service advisories.',
             setup: [
                 'Install the BART MCP server: <code>npm install @modelcontextprotocol/server-bart</code>',
+                'Add to your Poke MCP configuration file (usually <code>~/.poke/mcp.json</code> or Poke settings)',
                 'No API key required - BART provides open data',
-                'Configure in your AI assistant\'s MCP settings'
+                'Restart Poke to load the new MCP server'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "bart": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-bart"]
+    }
+  }
+}`,
             examples: [
-                '"What\'s the next train from Powell Street to Embarcadero?"',
-                '"Are there any BART delays right now?"',
-                '"Show me the BART schedule for tomorrow morning"'
+                '\"Hey Poke, what\\'s the next train from Powell Street to Embarcadero?\"',
+                '\"Are there any BART delays right now?\"',
+                '\"Show me the BART schedule for tomorrow morning from SF to Oakland\"',
+                '\"What BART stations are near me?\"'
             ],
             links: [
+                { text: 'BART MCP Server', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/bart' },
                 { text: 'BART API Documentation', url: 'https://api.bart.gov/docs/overview/index.aspx' }
             ]
         },
         earnings: {
-            title: '📊 Earnings Feed Integration',
-            description: 'Get real-time financial data, earnings reports, and market insights.',
+            title: '📊 Earnings Feed for Poke',
+            description: 'Access real-time financial data, earnings reports, and market insights directly through Poke.',
             setup: [
-                'Obtain API key from your financial data provider',
-                'Set environment variable: <code>EARNINGS_API_KEY=your_key</code>',
-                'Configure the MCP server endpoint'
+                'Obtain API key from your financial data provider (e.g., Alpha Vantage, Financial Modeling Prep)',
+                'Install the earnings MCP server',
+                'Add to your Poke MCP configuration with your API key in environment variables',
+                'Restart Poke to activate'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "earnings": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-earnings"],
+      "env": {
+        "EARNINGS_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}`,
             examples: [
-                '"What are the latest earnings reports for tech companies?"',
-                '"Show me Apple\'s earnings history"',
-                '"When is Tesla\'s next earnings call?"'
+                '\"Poke, what are the latest earnings reports for tech companies?\"',
+                '\"Show me Apple\\'s earnings history for the past year\"',
+                '\"When is Tesla\\'s next earnings call?\"',
+                '\"What were Microsoft\\'s Q4 earnings?\"'
             ],
             links: []
         },
         ffmpeg: {
-            title: '🎬 FFmpeg Integration',
-            description: 'Process video and audio files with comprehensive format conversion capabilities.',
+            title: '🎬 FFmpeg for Poke',
+            description: 'Process video and audio files through Poke with comprehensive format conversion capabilities.',
             setup: [
-                'Install FFmpeg on your system',
+                'Install FFmpeg on your system: <code>brew install ffmpeg</code> (macOS) or appropriate package manager',
                 'Install MCP server: <code>npm install @modelcontextprotocol/server-ffmpeg</code>',
-                'Ensure FFmpeg is in your system PATH'
+                'Add to your Poke MCP configuration',
+                'Ensure FFmpeg is in your system PATH',
+                'Restart Poke'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "ffmpeg": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-ffmpeg"]
+    }
+  }
+}`,
             examples: [
-                '"Convert this video to MP4 format"',
-                '"Extract audio from this video file"',
-                '"Resize this video to 720p"'
+                '\"Poke, convert this video to MP4 format\"',
+                '\"Extract the audio from my video file as MP3\"',
+                '\"Resize this video to 720p resolution\"',
+                '\"Compress this video to under 50MB\"'
             ],
             links: [
                 { text: 'FFmpeg Documentation', url: 'https://ffmpeg.org/documentation.html' }
             ]
         },
         todoist: {
-            title: '✅ Todoist Integration',
-            description: 'Manage tasks and projects with seamless productivity workflows.',
+            title: '✅ Todoist for Poke',
+            description: 'Manage your tasks and projects seamlessly through Poke conversations.',
             setup: [
-                'Create a Todoist account at todoist.com',
-                'Generate API token in Todoist settings',
-                'Set environment variable: <code>TODOIST_API_TOKEN=your_token</code>'
+                'Create a Todoist account at <a href="https://todoist.com" target="_blank">todoist.com</a>',
+                'Get your API token from Todoist Settings → Integrations → Developer',
+                'Install: <code>npm install @modelcontextprotocol/server-todoist</code>',
+                'Add to Poke MCP config with your API token',
+                'Restart Poke'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "todoist": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-todoist"],
+      "env": {
+        "TODOIST_API_TOKEN": "your_todoist_token_here"
+      }
+    }
+  }
+}`,
             examples: [
-                '"Add a task to buy groceries tomorrow"',
-                '"Show me my tasks for this week"',
-                '"Mark my meeting task as complete"'
+                '\"Poke, add a task to buy groceries tomorrow at 5pm\"',
+                '\"Show me all my tasks for this week\"',
+                '\"Mark my \\'finish report\\' task as complete\"',
+                '\"Create a new project called \\'Home Renovation\\'\"',
+                '\"What are my high priority tasks?\"'
             ],
             links: [
                 { text: 'Todoist API', url: 'https://developer.todoist.com/' }
             ]
         },
         lastfm: {
-            title: '🎵 Last.fm Integration',
-            description: 'Track your music listening history and discover new music.',
+            title: '🎵 Last.fm for Poke',
+            description: 'Track your music listening history and get personalized music insights through Poke.',
             setup: [
-                'Create a Last.fm account',
-                'Get API key from last.fm/api',
-                'Set environment variables: <code>LASTFM_API_KEY</code> and <code>LASTFM_SECRET</code>'
+                'Create a Last.fm account at <a href="https://last.fm" target="_blank">last.fm</a>',
+                'Get API credentials from <a href="https://last.fm/api/account/create" target="_blank">last.fm/api</a>',
+                'Install the MCP server',
+                'Add API key and secret to your Poke MCP configuration',
+                'Restart Poke'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "lastfm": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-lastfm"],
+      "env": {
+        "LASTFM_API_KEY": "your_api_key",
+        "LASTFM_SECRET": "your_secret"
+      }
+    }
+  }
+}`,
             examples: [
-                '"What have I been listening to lately?"',
-                '"Show me my top artists this month"',
-                '"Scrobble this track I\'m listening to"'
+                '\"Poke, what have I been listening to lately?\"',
+                '\"Show me my top artists this month\"',
+                '\"What song have I played the most this year?\"',
+                '\"Get recommendations based on my listening history\"'
             ],
             links: [
                 { text: 'Last.fm API', url: 'https://www.last.fm/api' }
             ]
         },
         netlify: {
-            title: '🌐 Netlify Integration',
-            description: 'Deploy and manage websites with continuous deployment.',
+            title: '🌐 Netlify for Poke',
+            description: 'Deploy and manage your Netlify sites directly through Poke commands.',
             setup: [
-                'Create a Netlify account',
-                'Generate Personal Access Token in Netlify dashboard',
-                'Set environment variable: <code>NETLIFY_TOKEN=your_token</code>'
+                'Create a Netlify account at <a href="https://netlify.com" target="_blank">netlify.com</a>',
+                'Generate Personal Access Token: Netlify Dashboard → User Settings → Applications → Personal Access Tokens',
+                'Install: <code>npm install @modelcontextprotocol/server-netlify</code>',
+                'Add token to Poke MCP configuration',
+                'Restart Poke'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "netlify": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-netlify"],
+      "env": {
+        "NETLIFY_TOKEN": "your_netlify_token"
+      }
+    }
+  }
+}`,
             examples: [
-                '"Deploy my site to Netlify"',
-                '"Show me my Netlify deployment status"',
-                '"List all my Netlify sites"'
+                '\"Poke, deploy my site from the main branch\"',
+                '\"Show me the status of my Netlify deployments\"',
+                '\"List all my Netlify sites\"',
+                '\"Check the build logs for my last deployment\"'
             ],
             links: [
                 { text: 'Netlify API', url: 'https://docs.netlify.com/api/get-started/' }
             ]
         },
         vercel: {
-            title: '▲ Vercel Integration',
-            description: 'Deploy frontend applications with serverless functions.',
+            title: '▲ Vercel for Poke',
+            description: 'Control your Vercel deployments and projects through Poke.',
             setup: [
-                'Create a Vercel account',
-                'Generate Access Token in Vercel dashboard',
-                'Set environment variable: <code>VERCEL_TOKEN=your_token</code>'
+                'Create a Vercel account at <a href="https://vercel.com" target="_blank">vercel.com</a>',
+                'Generate Access Token: Account Settings → Tokens → Create Token',
+                'Install: <code>npm install @modelcontextprotocol/server-vercel</code>',
+                'Add token to Poke MCP configuration',
+                'Restart Poke'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "vercel": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-vercel"],
+      "env": {
+        "VERCEL_TOKEN": "your_vercel_token"
+      }
+    }
+  }
+}`,
             examples: [
-                '"Deploy my Next.js app to Vercel"',
-                '"Show me my Vercel deployments"',
-                '"Check the status of my Vercel project"'
+                '\"Poke, deploy my Next.js app to production\"',
+                '\"Show me my Vercel deployments for this project\"',
+                '\"Check the status of my latest Vercel build\"',
+                '\"List all my Vercel projects\"'
             ],
             links: [
                 { text: 'Vercel API', url: 'https://vercel.com/docs/rest-api' }
             ]
         },
         deepwiki: {
-            title: '📚 DeepWiki Integration',
-            description: 'Search documentation and manage knowledge bases.',
+            title: '📚 DeepWiki for Poke',
+            description: 'Search documentation and knowledge bases through Poke conversations.',
             setup: [
                 'Install DeepWiki MCP server',
-                'Configure documentation sources',
-                'Set up indexing for your docs'
+                'Configure your documentation sources',
+                'Add to Poke MCP configuration',
+                'Set up indexing for your docs',
+                'Restart Poke'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "deepwiki": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-deepwiki"]
+    }
+  }
+}`,
             examples: [
-                '"Search the docs for authentication methods"',
-                '"Find information about API rate limits"',
-                '"Show me the latest documentation updates"'
+                '\"Poke, search the docs for authentication methods\"',
+                '\"Find information about API rate limits\"',
+                '\"Show me the latest documentation updates\"',
+                '\"What does the documentation say about webhooks?\"'
             ],
             links: []
         },
         supabase: {
-            title: '🗄️ Supabase Integration',
-            description: 'Access PostgreSQL database with real-time capabilities.',
+            title: '🗄️ Supabase for Poke',
+            description: 'Query and manage your Supabase database directly through Poke.',
             setup: [
-                'Create a Supabase project',
-                'Get your project URL and API keys',
-                'Set environment variables: <code>SUPABASE_URL</code> and <code>SUPABASE_KEY</code>'
+                'Create a Supabase project at <a href="https://supabase.com" target="_blank">supabase.com</a>',
+                'Get your project URL and anon/service key from Project Settings → API',
+                'Install: <code>npm install @modelcontextprotocol/server-supabase</code>',
+                'Add credentials to Poke MCP configuration',
+                'Restart Poke'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "supabase": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-supabase"],
+      "env": {
+        "SUPABASE_URL": "https://your-project.supabase.co",
+        "SUPABASE_KEY": "your_supabase_key"
+      }
+    }
+  }
+}`,
             examples: [
-                '"Query my users table"',
-                '"Create a new record in the posts table"',
-                '"Show me the schema of my database"'
+                '\"Poke, query my users table and show me all active users\"',
+                '\"Create a new record in the posts table\"',
+                '\"Show me the schema of my database\"',
+                '\"Count how many records are in the orders table\"'
             ],
             links: [
                 { text: 'Supabase Documentation', url: 'https://supabase.com/docs' }
             ]
         },
         github: {
-            title: '🐙 GitHub Integration',
-            description: 'Manage code repositories and collaborate on projects.',
+            title: '🐙 GitHub for Poke',
+            description: 'Manage your GitHub repositories, issues, and pull requests through Poke.',
             setup: [
-                'Generate Personal Access Token in GitHub settings',
-                'Set environment variable: <code>GITHUB_TOKEN=your_token</code>',
-                'Configure appropriate scopes for your needs'
+                'Generate Personal Access Token: GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)',
+                'Select scopes: <code>repo</code>, <code>read:user</code>, <code>read:org</code>',
+                'Install: <code>npm install @modelcontextprotocol/server-github</code>',
+                'Add token to Poke MCP configuration',
+                'Restart Poke'
             ],
+            pokeConfig: `{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "your_github_token"
+      }
+    }
+  }
+}`,
             examples: [
-                '"List my GitHub repositories"',
-                '"Create a new issue in my project"',
-                '"Show me recent pull requests"'
+                '\"Poke, list my GitHub repositories\"',
+                '\"Create a new issue titled \\'Add dark mode\\' in my project\"',
+                '\"Show me recent pull requests on my main repo\"',
+                '\"What are the open issues in my project?\"',
+                '\"Create a new branch called \\'feature/new-ui\\' in my repo\"'
             ],
             links: [
                 { text: 'GitHub API', url: 'https://docs.github.com/en/rest' }
@@ -290,12 +424,20 @@ function openHelp(integration) {
         <h3>${data.title}</h3>
         <p>${data.description}</p>
         
-        <h4>⚙️ Setup Instructions</h4>
+        <h4>⚙️ Poke Setup Instructions</h4>
         <ol>
             ${data.setup.map(step => `<li>${step}</li>`).join('')}
         </ol>
         
-        <h4>💡 Example Prompts</h4>
+        ${data.pokeConfig ? `
+            <h4>📝 Poke MCP Configuration</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                Add this to your Poke MCP configuration file:
+            </p>
+            <pre><code>${data.pokeConfig}</code></pre>
+        ` : ''}
+        
+        <h4>💡 Example Poke Prompts</h4>
         <ul>
             ${data.examples.map(example => `<li><em>${example}</em></li>`).join('')}
         </ul>
@@ -308,7 +450,7 @@ function openHelp(integration) {
         ` : ''}
         
         <p style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9rem;">
-            <strong>Note:</strong> These integrations work with Claude Desktop, Poke (with MCP support), and other MCP-compatible AI assistants. Always keep your API keys secure and never share them publicly.
+            <strong>💡 Tip:</strong> After adding the MCP server to your configuration, restart Poke for the changes to take effect. You can then start using these integrations naturally in your Poke conversations!
         </p>
     `;
     
@@ -323,32 +465,35 @@ function closeHelp() {
 
 function showDemo(integration) {
     const demoData = {
-        bart: 'Example: "Hey, can you check if there are any BART delays between Powell St and Embarcadero?"',
-        earnings: 'Example: "What were Apple\'s earnings for Q4 2023?"',
-        ffmpeg: 'Example: "Convert my video.mov file to MP4 format with 1080p resolution"',
-        todoist: 'Example: "Add a task to review the project proposal by Friday"',
-        lastfm: 'Example: "What are my top 10 most played songs this month?"',
-        netlify: 'Example: "Deploy my website from the main branch to production"',
-        vercel: 'Example: "Show me the deployment status of my Next.js app"',
-        deepwiki: 'Example: "Search the documentation for information about webhooks"',
-        supabase: 'Example: "Query the users table and show me all active users"',
-        github: 'Example: "Create a new issue titled \'Add dark mode\' in my project"'
+        bart: 'Try asking Poke:\n\n"Hey Poke, are there any BART delays between Powell St and Embarcadero right now?"\n\nPoke will use the BART MCP to check real-time transit data and give you current service information.',
+        earnings: 'Try asking Poke:\n\n"What were Apple\'s latest quarterly earnings?"\n\nPoke will fetch the most recent earnings data and provide you with a detailed summary.',
+        ffmpeg: 'Try asking Poke:\n\n"Convert my video.mov file to MP4 format with 1080p resolution"\n\nPoke will use FFmpeg to process your video file with the specified settings.',
+        todoist: 'Try asking Poke:\n\n"Add a task to review the project proposal by Friday at 3pm"\n\nPoke will create a new task in your Todoist with the specified due date and time.',
+        lastfm: 'Try asking Poke:\n\n"What are my top 10 most played songs this month?"\n\nPoke will query your Last.fm history and show your listening statistics.',
+        netlify: 'Try asking Poke:\n\n"Deploy my website from the main branch to production"\n\nPoke will trigger a new deployment on Netlify and provide you with the deployment status.',
+        vercel: 'Try asking Poke:\n\n"Show me the deployment status of my Next.js app"\n\nPoke will check your Vercel deployments and give you current build information.',
+        deepwiki: 'Try asking Poke:\n\n"Search the documentation for information about webhooks"\n\nPoke will search your configured knowledge bases and return relevant documentation.',
+        supabase: 'Try asking Poke:\n\n"Query the users table and show me all users who signed up this week"\n\nPoke will execute the query on your Supabase database and return the results.',
+        github: 'Try asking Poke:\n\n"Create a new issue titled \'Add dark mode\' in my mcp-dashboard repo"\n\nPoke will create the issue on GitHub and provide you with the issue URL.'
     };
     
-    alert(`📝 Usage Example:\n\n${demoData[integration] || 'Example coming soon!'}\n\nTry asking your AI assistant something similar!`);
+    alert(`📝 Poke Usage Example:\n\n${demoData[integration] || 'Example coming soon!'}
+    \n✨ Just talk to Poke naturally - it understands context!`);
 }
 
 function showSecurityTips() {
-    alert('🔒 Security Best Practices:\n\n' +
-        '1. Never commit API keys to version control\n' +
-        '2. Use environment variables for sensitive data\n' +
-        '3. Rotate API keys regularly\n' +
-        '4. Use minimum required permissions\n' +
-        '5. Monitor API usage for anomalies\n' +
-        '6. Enable 2FA on all accounts\n' +
-        '7. Review third-party access regularly\n' +
-        '8. Keep dependencies updated\n\n' +
-        'Stay safe! 🛡️');
+    alert('🔒 Security Best Practices for Poke MCP:\n\n' +
+        '1. Never commit your Poke MCP config file with API keys to GitHub\n' +
+        '2. Store your MCP configuration securely on your local machine\n' +
+        '3. Use environment variables for sensitive data when possible\n' +
+        '4. Rotate API keys regularly for all services\n' +
+        '5. Only grant minimum required permissions for each API\n' +
+        '6. Enable 2FA on all connected accounts (GitHub, Todoist, etc.)\n' +
+        '7. Review which MCPs have access to what data periodically\n' +
+        '8. Keep your Poke app and MCP servers updated\n' +
+        '9. Monitor API usage for unusual activity\n' +
+        '10. Back up your configuration but keep it secure\n\n' +
+        'Stay safe while using Poke! 🛡️');
 }
 
 // Close modal when clicking outside
@@ -434,9 +579,13 @@ if (typeof module !== 'undefined' && module.exports) {
     };
 }
 
+console.log('%c🚀 Poke MCP Dashboard', 'color: #00ff00; font-size: 18px; font-weight: bold;');
+console.log('Community resource for connecting MCP servers to Poke');
+console.log('');
 console.log('%c🔒 Security Reminder', 'color: #00ff00; font-size: 16px; font-weight: bold;');
-console.log('All API keys are managed server-side using environment variables.');
-console.log('Rate limiting is implemented to prevent abuse.');
-console.log('No sensitive credentials are exposed in client-side code.');
-console.log('\n%c⚠️ Disclaimer', 'color: #ffcc00; font-size: 14px; font-weight: bold;');
-console.log('This dashboard is independently created and not affiliated with poke.com or any official AI platform.');
+console.log('All API keys should be stored in your Poke MCP configuration file.');
+console.log('Never share or commit your API keys to version control.');
+console.log('');
+console.log('%c⚠️ Disclaimer', 'color: #ffcc00; font-size: 14px; font-weight: bold;');
+console.log('This dashboard is a community project by Pierre Guirguis.');
+console.log('Not affiliated with or endorsed by poke.com.');
