@@ -44,7 +44,7 @@
             <p class="section-description">Each integration includes Poke-specific setup instructions and configuration examples</p>
             
             <div class="integrations-grid">
-                <div class="integration-card" data-category="transit">
+                <div class="integration-card" data-category="transit" onclick="window.location.href='bart.html'">
                     <div class="card-header">
                         <span class="icon">🚇</span>
                         <h3>BART</h3>
@@ -56,12 +56,12 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('bart')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('bart')">▶️ Poke Examples</button>
+                        <a href="bart.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('bart')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="financial">
+                <div class="integration-card" data-category="financial" onclick="window.location.href='earnings-feed.html'">
                     <div class="card-header">
                         <span class="icon">📊</span>
                         <h3>Earnings Feed</h3>
@@ -73,12 +73,12 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('earnings')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('earnings')">▶️ Poke Examples</button>
+                        <a href="earnings-feed.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('earnings')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="media">
+                <div class="integration-card" data-category="media" onclick="window.location.href='ffmpeg.html'">
                     <div class="card-header">
                         <span class="icon">🎬</span>
                         <h3>FFmpeg</h3>
@@ -90,12 +90,12 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('ffmpeg')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('ffmpeg')">▶️ Poke Examples</button>
+                        <a href="ffmpeg.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('ffmpeg')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="productivity">
+                <div class="integration-card" data-category="productivity" onclick="window.location.href='todoist.html'">
                     <div class="card-header">
                         <span class="icon">✅</span>
                         <h3>Todoist</h3>
@@ -107,12 +107,12 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('todoist')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('todoist')">▶️ Poke Examples</button>
+                        <a href="todoist.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('todoist')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="entertainment">
+                <div class="integration-card" data-category="entertainment" onclick="window.location.href='last-fm.html'">
                     <div class="card-header">
                         <span class="icon">🎵</span>
                         <h3>Last.fm</h3>
@@ -124,12 +124,12 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('lastfm')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('lastfm')">▶️ Poke Examples</button>
+                        <a href="last-fm.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('lastfm')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="deployment">
+                <div class="integration-card" data-category="deployment" onclick="window.location.href='netlify.html'">
                     <div class="card-header">
                         <span class="icon">🌐</span>
                         <h3>Netlify</h3>
@@ -141,12 +141,12 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('netlify')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('netlify')">▶️ Poke Examples</button>
+                        <a href="netlify.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('netlify')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="deployment">
+                <div class="integration-card" data-category="deployment" onclick="window.location.href='vercel.html'">
                     <div class="card-header">
                         <span class="icon">▲</span>
                         <h3>Vercel</h3>
@@ -158,12 +158,12 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('vercel')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('vercel')">▶️ Poke Examples</button>
+                        <a href="vercel.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('vercel')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="developer">
+                <div class="integration-card" data-category="developer" onclick="window.location.href='deepwiki.html'">
                     <div class="card-header">
                         <span class="icon">📚</span>
                         <h3>DeepWiki</h3>
@@ -175,12 +175,12 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('deepwiki')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('deepwiki')">▶️ Poke Examples</button>
+                        <a href="deepwiki.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('deepwiki')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="developer">
+                <div class="integration-card" data-category="developer" onclick="window.location.href='supabase.html'">
                     <div class="card-header">
                         <span class="icon">🗄️</span>
                         <h3>Supabase</h3>
@@ -192,12 +192,12 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('supabase')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('supabase')">▶️ Poke Examples</button>
+                        <a href="supabase.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('supabase')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="developer">
+                <div class="integration-card" data-category="developer" onclick="window.location.href='github.html'">
                     <div class="card-header">
                         <span class="icon">🐙</span>
                         <h3>GitHub</h3>
@@ -209,8 +209,8 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <button class="help-btn" onclick="openHelp('github')">📚 Poke Setup</button>
-                        <button class="demo-btn" onclick="showDemo('github')">▶️ Poke Examples</button>
+                        <a href="github.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('github')">▶️ Quick Example</button>
                     </div>
                 </div>
             </div>
@@ -229,7 +229,7 @@
 
                 <div class="guide-card">
                     <h3>⚙️ Connecting to Poke</h3>
-                    <p>To use these MCP servers with Poke, you'll need to add them to your Poke MCP configuration. Each integration requires specific API keys and settings. Click "Poke Setup" on any card above for detailed instructions.</p>
+                    <p>To use these MCP servers with Poke, you'll need to add them to your Poke MCP configuration. Each integration requires specific API keys and settings. Click "View Details" on any card above for detailed instructions.</p>
                     <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank" class="external-link">View configuration examples →</a>
                 </div>
 
@@ -241,7 +241,7 @@
 
                 <div class="guide-card">
                     <h3>💬 Using MCPs in Poke</h3>
-                    <p>Once connected, simply ask Poke naturally! For example: "Check BART delays" or "Add a task to Todoist". Click "Poke Examples" on any integration card to see sample prompts.</p>
+                    <p>Once connected, simply ask Poke naturally! For example: "Check BART delays" or "Add a task to Todoist". Click "View Details" on any integration card to see complete setup guides and examples.</p>
                     <button class="secondary-btn" onclick="scrollToIntegrations()">Browse integrations →</button>
                 </div>
             </div>
