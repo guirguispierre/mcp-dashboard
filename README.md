@@ -1,6 +1,6 @@
 # 🚀 Poke MCP Dashboard
 
-A modern, community-driven dashboard showcasing Model Context Protocol (MCP) integrations specifically designed for Poke users. Created by Pierre Guirguis.
+A modern, community-driven dashboard showcasing Model Context Protocol (MCP) integrations specifically designed for Poke users. Created by [@guirguispierre](https://github.com/guirguispierre).
 
 ![Dashboard Preview](https://img.shields.io/badge/Status-Active-success)
 ![Integrations](https://img.shields.io/badge/Poke_MCPs-10-blue)
@@ -11,7 +11,7 @@ A modern, community-driven dashboard showcasing Model Context Protocol (MCP) int
 
 ## ⚠️ Important Disclaimer
 
-**This project is independently created and maintained by Pierre Guirguis as a community resource for Poke users. It is NOT affiliated with, endorsed by, sponsored by, or officially connected to poke.com or its parent company. This is a community-driven showcase of MCP integrations that work with Poke.**
+**This project is independently created and maintained by [@guirguispierre](https://github.com/guirguispierre) as a community resource for Poke users. It is NOT affiliated with, endorsed by, sponsored by, or officially connected to poke.com or its parent company. This is a community-driven showcase of MCP integrations that work with Poke.**
 
 ---
 
@@ -102,7 +102,7 @@ Model Context Protocol allows Poke to securely connect to external data sources 
 - **Click-to-Navigate Cards** - Click any integration card to view detailed setup guide
 - **Poke Conversation Examples** - Real conversation examples for each integration
 - **Copy-Paste Configurations** - Ready-to-use MCP configuration snippets for Poke
-- **Quick Connection Links** - One-click setup placeholders (to be added by Pierre)
+- **Quick Connection Links** - One-click setup placeholders (to be added)
 - **Security Best Practices** - Poke-specific security guidelines for API keys
 
 ### Technical Features
@@ -193,7 +193,7 @@ mcp-dashboard/
 
 Each integration detail page includes:
 - **Hero Section** - Large icon, title, and description
-- **Quick Connect Placeholder** - For Pierre to add MCP connection links
+- **Quick Connect Placeholder** - For adding MCP connection links
 - **Setup Instructions** - Step-by-step Poke configuration guide
 - **MCP Configuration Code** - Copy-paste ready JSON configs
 - **Poke Conversation Examples** - 3-5 realistic usage examples
@@ -389,8 +389,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Pierre Guirguis**
-- GitHub: [@guirguispierre](https://github.com/guirguispierre)
+**[@guirguispierre](https://github.com/guirguispierre)**
 - Project: Independent community resource for Poke users
 
 ---
@@ -454,6 +453,6 @@ If you find this dashboard helpful for your Poke setup, please consider giving i
 
 ---
 
-**Built with ❤️ for the Poke community by Pierre Guirguis | Powered by Model Context Protocol**
+**Built with ❤️ for the Poke community by [@guirguispierre](https://github.com/guirguispierre) | Powered by Model Context Protocol**
 
 *Not affiliated with poke.com - Independent community project*
