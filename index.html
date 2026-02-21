@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pierre Guirguis's MCP (Model Context Protocol) Integration Dashboard">
+    <meta name="description" content="Pierre Guirguis's MCP (Model Context Protocol) Integration Dashboard - Independent showcase of MCP server implementations">
     <title>MCP Dashboard - Pierre Guirguis</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
+            <div class="disclaimer-banner">
+                <span class="disclaimer-icon">⚠️</span>
+                <p><strong>Independent Project:</strong> This dashboard is not affiliated with, endorsed by, or connected to poke.com or any official AI platform. This is a personal showcase of MCP integrations by Pierre Guirguis.</p>
+            </div>
+            
             <h1>🚀 MCP Integration Dashboard</h1>
             <p class="subtitle">Model Context Protocol Integrations by <strong>Pierre Guirguis</strong></p>
-            <p class="tagline">Building the future of AI-powered integrations</p>
+            <p class="tagline">Independent showcase of MCP server implementations for AI assistants</p>
+            
+            <div class="help-banner">
+                <p>📖 Need help getting started? Check out the <a href="#guide-section" class="guide-link">MCP Setup Guide</a> below</p>
+            </div>
         </header>
 
         <div class="stats-overview">
@@ -30,134 +39,210 @@
             </div>
         </div>
 
-        <section class="integrations-grid">
-            <div class="integration-card" data-category="transit">
-                <div class="card-header">
-                    <span class="icon">🚇</span>
-                    <h3>BART</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
+        <section class="integrations-section">
+            <h2>🔌 Available Integrations</h2>
+            <p class="section-description">Each integration includes setup instructions and usage examples for AI assistants</p>
+            
+            <div class="integrations-grid">
+                <div class="integration-card" data-category="transit">
+                    <div class="card-header">
+                        <span class="icon">🚇</span>
+                        <h3>BART</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">Bay Area Rapid Transit integration for real-time transit data and schedules</p>
+                    <div class="card-footer">
+                        <span class="category-tag transit">Transit</span>
+                        <span class="tech-tag">REST API</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('bart')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('bart')">▶️ Examples</button>
+                    </div>
                 </div>
-                <p class="description">Bay Area Rapid Transit integration for real-time transit data and schedules</p>
-                <div class="card-footer">
-                    <span class="category-tag transit">Transit</span>
-                    <span class="tech-tag">REST API</span>
+
+                <div class="integration-card" data-category="financial">
+                    <div class="card-header">
+                        <span class="icon">📊</span>
+                        <h3>Earnings Feed</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">Financial data aggregation for earnings reports and market insights</p>
+                    <div class="card-footer">
+                        <span class="category-tag financial">Financial</span>
+                        <span class="tech-tag">Real-time</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('earnings')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('earnings')">▶️ Examples</button>
+                    </div>
+                </div>
+
+                <div class="integration-card" data-category="media">
+                    <div class="card-header">
+                        <span class="icon">🎬</span>
+                        <h3>FFmpeg</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">Video and audio processing with comprehensive format conversion capabilities</p>
+                    <div class="card-footer">
+                        <span class="category-tag media">Media</span>
+                        <span class="tech-tag">Processing</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('ffmpeg')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('ffmpeg')">▶️ Examples</button>
+                    </div>
+                </div>
+
+                <div class="integration-card" data-category="productivity">
+                    <div class="card-header">
+                        <span class="icon">✅</span>
+                        <h3>Todoist</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">Task management integration for seamless productivity workflows</p>
+                    <div class="card-footer">
+                        <span class="category-tag productivity">Productivity</span>
+                        <span class="tech-tag">OAuth</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('todoist')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('todoist')">▶️ Examples</button>
+                    </div>
+                </div>
+
+                <div class="integration-card" data-category="entertainment">
+                    <div class="card-header">
+                        <span class="icon">🎵</span>
+                        <h3>Last.fm</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">Music tracking and scrobbling for comprehensive listening history</p>
+                    <div class="card-footer">
+                        <span class="category-tag entertainment">Entertainment</span>
+                        <span class="tech-tag">Scrobbling</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('lastfm')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('lastfm')">▶️ Examples</button>
+                    </div>
+                </div>
+
+                <div class="integration-card" data-category="deployment">
+                    <div class="card-header">
+                        <span class="icon">🌐</span>
+                        <h3>Netlify</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">Continuous deployment platform with edge network capabilities</p>
+                    <div class="card-footer">
+                        <span class="category-tag deployment">Deployment</span>
+                        <span class="tech-tag">CI/CD</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('netlify')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('netlify')">▶️ Examples</button>
+                    </div>
+                </div>
+
+                <div class="integration-card" data-category="deployment">
+                    <div class="card-header">
+                        <span class="icon">▲</span>
+                        <h3>Vercel</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">Frontend deployment platform with serverless functions</p>
+                    <div class="card-footer">
+                        <span class="category-tag deployment">Deployment</span>
+                        <span class="tech-tag">Serverless</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('vercel')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('vercel')">▶️ Examples</button>
+                    </div>
+                </div>
+
+                <div class="integration-card" data-category="developer">
+                    <div class="card-header">
+                        <span class="icon">📚</span>
+                        <h3>DeepWiki</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">Deep documentation search and knowledge management system</p>
+                    <div class="card-footer">
+                        <span class="category-tag developer">Developer</span>
+                        <span class="tech-tag">Search</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('deepwiki')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('deepwiki')">▶️ Examples</button>
+                    </div>
+                </div>
+
+                <div class="integration-card" data-category="developer">
+                    <div class="card-header">
+                        <span class="icon">🗄️</span>
+                        <h3>Supabase</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">PostgreSQL database platform with real-time subscriptions</p>
+                    <div class="card-footer">
+                        <span class="category-tag developer">Developer</span>
+                        <span class="tech-tag">Database</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('supabase')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('supabase')">▶️ Examples</button>
+                    </div>
+                </div>
+
+                <div class="integration-card" data-category="developer">
+                    <div class="card-header">
+                        <span class="icon">🐙</span>
+                        <h3>GitHub</h3>
+                        <span class="status-indicator status-active" title="Active"></span>
+                    </div>
+                    <p class="description">Code repository platform with comprehensive API integration</p>
+                    <div class="card-footer">
+                        <span class="category-tag developer">Developer</span>
+                        <span class="tech-tag">Version Control</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="help-btn" onclick="openHelp('github')">📚 Setup Guide</button>
+                        <button class="demo-btn" onclick="showDemo('github')">▶️ Examples</button>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="integration-card" data-category="financial">
-                <div class="card-header">
-                    <span class="icon">📊</span>
-                    <h3>Earnings Feed</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
+        <section class="guide-section" id="guide-section">
+            <h2>📖 MCP Setup Guide</h2>
+            <p class="section-description">Learn how to use these MCP servers with AI assistants like Claude, ChatGPT, and others</p>
+            
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <h3>🤖 What is MCP?</h3>
+                    <p>Model Context Protocol (MCP) is an open standard that enables AI assistants to securely connect to external data sources and tools. It allows AI models to access real-time information and perform actions on your behalf.</p>
+                    <a href="https://modelcontextprotocol.io" target="_blank" class="external-link">Learn more about MCP →</a>
                 </div>
-                <p class="description">Financial data aggregation for earnings reports and market insights</p>
-                <div class="card-footer">
-                    <span class="category-tag financial">Financial</span>
-                    <span class="tech-tag">Real-time</span>
-                </div>
-            </div>
 
-            <div class="integration-card" data-category="media">
-                <div class="card-header">
-                    <span class="icon">🎬</span>
-                    <h3>FFmpeg</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
+                <div class="guide-card">
+                    <h3>⚙️ Installation</h3>
+                    <p>To use these MCP servers, you'll need to configure your AI assistant's settings to connect to the appropriate servers. Each integration requires specific API keys and configuration.</p>
+                    <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank" class="external-link">View setup instructions →</a>
                 </div>
-                <p class="description">Video and audio processing with comprehensive format conversion capabilities</p>
-                <div class="card-footer">
-                    <span class="category-tag media">Media</span>
-                    <span class="tech-tag">Processing</span>
-                </div>
-            </div>
 
-            <div class="integration-card" data-category="productivity">
-                <div class="card-header">
-                    <span class="icon">✅</span>
-                    <h3>Todoist</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
+                <div class="guide-card">
+                    <h3>🔑 API Keys</h3>
+                    <p>Most integrations require API keys from the respective services. Never share your API keys publicly. Store them securely in environment variables or your AI assistant's configuration.</p>
+                    <button class="secondary-btn" onclick="showSecurityTips()">Security Best Practices →</button>
                 </div>
-                <p class="description">Task management integration for seamless productivity workflows</p>
-                <div class="card-footer">
-                    <span class="category-tag productivity">Productivity</span>
-                    <span class="tech-tag">OAuth</span>
-                </div>
-            </div>
 
-            <div class="integration-card" data-category="entertainment">
-                <div class="card-header">
-                    <span class="icon">🎵</span>
-                    <h3>Last.fm</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
-                </div>
-                <p class="description">Music tracking and scrobbling for comprehensive listening history</p>
-                <div class="card-footer">
-                    <span class="category-tag entertainment">Entertainment</span>
-                    <span class="tech-tag">Scrobbling</span>
-                </div>
-            </div>
-
-            <div class="integration-card" data-category="deployment">
-                <div class="card-header">
-                    <span class="icon">🌐</span>
-                    <h3>Netlify</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
-                </div>
-                <p class="description">Continuous deployment platform with edge network capabilities</p>
-                <div class="card-footer">
-                    <span class="category-tag deployment">Deployment</span>
-                    <span class="tech-tag">CI/CD</span>
-                </div>
-            </div>
-
-            <div class="integration-card" data-category="deployment">
-                <div class="card-header">
-                    <span class="icon">▲</span>
-                    <h3>Vercel</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
-                </div>
-                <p class="description">Frontend deployment platform with serverless functions</p>
-                <div class="card-footer">
-                    <span class="category-tag deployment">Deployment</span>
-                    <span class="tech-tag">Serverless</span>
-                </div>
-            </div>
-
-            <div class="integration-card" data-category="developer">
-                <div class="card-header">
-                    <span class="icon">📚</span>
-                    <h3>DeepWiki</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
-                </div>
-                <p class="description">Deep documentation search and knowledge management system</p>
-                <div class="card-footer">
-                    <span class="category-tag developer">Developer</span>
-                    <span class="tech-tag">Search</span>
-                </div>
-            </div>
-
-            <div class="integration-card" data-category="developer">
-                <div class="card-header">
-                    <span class="icon">🗄️</span>
-                    <h3>Supabase</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
-                </div>
-                <p class="description">PostgreSQL database platform with real-time subscriptions</p>
-                <div class="card-footer">
-                    <span class="category-tag developer">Developer</span>
-                    <span class="tech-tag">Database</span>
-                </div>
-            </div>
-
-            <div class="integration-card" data-category="developer">
-                <div class="card-header">
-                    <span class="icon">🐙</span>
-                    <h3>GitHub</h3>
-                    <span class="status-indicator status-active" title="Active"></span>
-                </div>
-                <p class="description">Code repository platform with comprehensive API integration</p>
-                <div class="card-footer">
-                    <span class="category-tag developer">Developer</span>
-                    <span class="tech-tag">Version Control</span>
+                <div class="guide-card">
+                    <h3>💬 Usage Examples</h3>
+                    <p>Click the "Examples" button on any integration card above to see sample prompts and use cases. These examples work with Claude Desktop, Poke, and other MCP-compatible AI assistants.</p>
+                    <button class="secondary-btn" onclick="scrollToIntegrations()">Browse integrations →</button>
                 </div>
             </div>
         </section>
@@ -185,11 +270,26 @@
         </section>
 
         <footer>
+            <div class="footer-disclaimer">
+                <p><strong>⚠️ Important Disclaimer:</strong> This project is independently created and maintained by Pierre Guirguis. It is not affiliated with, endorsed by, sponsored by, or connected to poke.com, Anthropic, OpenAI, or any other AI platform or service provider. All trademarks and service marks are the property of their respective owners.</p>
+            </div>
+            
             <p>Built with ❤️ by Pierre Guirguis | Powered by Model Context Protocol</p>
             <p class="footer-links">
-                <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank">View on GitHub</a>
+                <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank">View on GitHub</a> •
+                <a href="https://modelcontextprotocol.io" target="_blank">MCP Documentation</a> •
+                <a href="#guide-section">Setup Guide</a>
             </p>
+            <p class="footer-note">Open source • MIT License • Contributions welcome</p>
         </footer>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeHelp()">&times;</span>
+            <div id="helpContent"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
