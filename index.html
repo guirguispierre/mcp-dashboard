@@ -6,6 +6,14 @@
     <meta name="description" content="MCP Integration Dashboard for Poke Users - Connect powerful MCP servers to your Poke AI assistant">
     <title>Poke MCP Dashboard - Pierre Guirguis</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .integration-card {
+            cursor: pointer;
+        }
+        .integration-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -41,10 +49,11 @@
 
         <section class="integrations-section">
             <h2>🔌 Poke MCP Integrations</h2>
-            <p class="section-description">Each integration includes Poke-specific setup instructions and configuration examples</p>
+            <p class="section-description">Click any card for detailed setup instructions and Poke conversation examples</p>
             
             <div class="integrations-grid">
-                <div class="integration-card" data-category="transit" onclick="window.location.href='bart.html'">
+                <!-- BART Integration -->
+                <div class="integration-card" data-category="transit" onclick="navigateToPage('bart.html')">
                     <div class="card-header">
                         <span class="icon">🚇</span>
                         <h3>BART</h3>
@@ -56,12 +65,13 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="bart.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="bart.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('bart')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="financial" onclick="window.location.href='earnings-feed.html'">
+                <!-- Earnings Feed Integration -->
+                <div class="integration-card" data-category="financial" onclick="navigateToPage('earnings-feed.html')">
                     <div class="card-header">
                         <span class="icon">📊</span>
                         <h3>Earnings Feed</h3>
@@ -73,12 +83,13 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="earnings-feed.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="earnings-feed.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('earnings')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="media" onclick="window.location.href='ffmpeg.html'">
+                <!-- FFmpeg Integration -->
+                <div class="integration-card" data-category="media" onclick="navigateToPage('ffmpeg.html')">
                     <div class="card-header">
                         <span class="icon">🎬</span>
                         <h3>FFmpeg</h3>
@@ -90,12 +101,13 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="ffmpeg.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="ffmpeg.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('ffmpeg')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="productivity" onclick="window.location.href='todoist.html'">
+                <!-- Todoist Integration -->
+                <div class="integration-card" data-category="productivity" onclick="navigateToPage('todoist.html')">
                     <div class="card-header">
                         <span class="icon">✅</span>
                         <h3>Todoist</h3>
@@ -107,12 +119,13 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="todoist.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="todoist.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('todoist')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="entertainment" onclick="window.location.href='last-fm.html'">
+                <!-- Last.fm Integration -->
+                <div class="integration-card" data-category="entertainment" onclick="navigateToPage('last-fm.html')">
                     <div class="card-header">
                         <span class="icon">🎵</span>
                         <h3>Last.fm</h3>
@@ -124,12 +137,13 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="last-fm.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="last-fm.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('lastfm')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="deployment" onclick="window.location.href='netlify.html'">
+                <!-- Netlify Integration -->
+                <div class="integration-card" data-category="deployment" onclick="navigateToPage('netlify.html')">
                     <div class="card-header">
                         <span class="icon">🌐</span>
                         <h3>Netlify</h3>
@@ -141,12 +155,13 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="netlify.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="netlify.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('netlify')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="deployment" onclick="window.location.href='vercel.html'">
+                <!-- Vercel Integration -->
+                <div class="integration-card" data-category="deployment" onclick="navigateToPage('vercel.html')">
                     <div class="card-header">
                         <span class="icon">▲</span>
                         <h3>Vercel</h3>
@@ -158,12 +173,13 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="vercel.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="vercel.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('vercel')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="developer" onclick="window.location.href='deepwiki.html'">
+                <!-- DeepWiki Integration -->
+                <div class="integration-card" data-category="developer" onclick="navigateToPage('deepwiki.html')">
                     <div class="card-header">
                         <span class="icon">📚</span>
                         <h3>DeepWiki</h3>
@@ -175,12 +191,13 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="deepwiki.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="deepwiki.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('deepwiki')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="developer" onclick="window.location.href='supabase.html'">
+                <!-- Supabase Integration -->
+                <div class="integration-card" data-category="developer" onclick="navigateToPage('supabase.html')">
                     <div class="card-header">
                         <span class="icon">🗄️</span>
                         <h3>Supabase</h3>
@@ -192,12 +209,13 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="supabase.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="supabase.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('supabase')">▶️ Quick Example</button>
                     </div>
                 </div>
 
-                <div class="integration-card" data-category="developer" onclick="window.location.href='github.html'">
+                <!-- GitHub Integration -->
+                <div class="integration-card" data-category="developer" onclick="navigateToPage('github.html')">
                     <div class="card-header">
                         <span class="icon">🐙</span>
                         <h3>GitHub</h3>
@@ -209,7 +227,7 @@
                         <span class="tech-tag">Poke Ready</span>
                     </div>
                     <div class="card-actions">
-                        <a href="github.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Details</a>
+                        <a href="github.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
                         <button class="demo-btn" onclick="event.stopPropagation(); showDemo('github')">▶️ Quick Example</button>
                     </div>
                 </div>
@@ -229,7 +247,7 @@
 
                 <div class="guide-card">
                     <h3>⚙️ Connecting to Poke</h3>
-                    <p>To use these MCP servers with Poke, you'll need to add them to your Poke MCP configuration. Each integration requires specific API keys and settings. Click "View Details" on any card above for detailed instructions.</p>
+                    <p>To use these MCP servers with Poke, you'll need to add them to your Poke MCP configuration. Each integration requires specific API keys and settings. Click any integration card above for detailed instructions.</p>
                     <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank" class="external-link">View configuration examples →</a>
                 </div>
 
@@ -241,7 +259,7 @@
 
                 <div class="guide-card">
                     <h3>💬 Using MCPs in Poke</h3>
-                    <p>Once connected, simply ask Poke naturally! For example: "Check BART delays" or "Add a task to Todoist". Click "View Details" on any integration card to see complete setup guides and examples.</p>
+                    <p>Once connected, simply ask Poke naturally! For example: "Check BART delays" or "Add a task to Todoist". Click any integration card to see complete setup guides and conversation examples.</p>
                     <button class="secondary-btn" onclick="scrollToIntegrations()">Browse integrations →</button>
                 </div>
             </div>
@@ -293,5 +311,11 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Navigation function for integration cards
+        function navigateToPage(url) {
+            window.location.href = url;
+        }
+    </script>
 </body>
 </html>
