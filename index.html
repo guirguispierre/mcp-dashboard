@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pierre Guirguis's MCP (Model Context Protocol) Integration Dashboard">
+    <title>MCP Dashboard - Pierre Guirguis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 MCP Integration Dashboard</h1>
+            <p class="subtitle">Model Context Protocol Integrations by <strong>Pierre Guirguis</strong></p>
+            <p class="tagline">Building the future of AI-powered integrations</p>
+        </header>
+
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-number" id="total-integrations">10</div>
+                <div class="stat-label">Active Integrations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="categories">5</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="uptime">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+        </div>
+
+        <section class="integrations-grid">
+            <div class="integration-card" data-category="transit">
+                <div class="card-header">
+                    <span class="icon">🚇</span>
+                    <h3>BART</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">Bay Area Rapid Transit integration for real-time transit data and schedules</p>
+                <div class="card-footer">
+                    <span class="category-tag transit">Transit</span>
+                    <span class="tech-tag">REST API</span>
+                </div>
+            </div>
+
+            <div class="integration-card" data-category="financial">
+                <div class="card-header">
+                    <span class="icon">📊</span>
+                    <h3>Earnings Feed</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">Financial data aggregation for earnings reports and market insights</p>
+                <div class="card-footer">
+                    <span class="category-tag financial">Financial</span>
+                    <span class="tech-tag">Real-time</span>
+                </div>
+            </div>
+
+            <div class="integration-card" data-category="media">
+                <div class="card-header">
+                    <span class="icon">🎬</span>
+                    <h3>FFmpeg</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">Video and audio processing with comprehensive format conversion capabilities</p>
+                <div class="card-footer">
+                    <span class="category-tag media">Media</span>
+                    <span class="tech-tag">Processing</span>
+                </div>
+            </div>
+
+            <div class="integration-card" data-category="productivity">
+                <div class="card-header">
+                    <span class="icon">✅</span>
+                    <h3>Todoist</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">Task management integration for seamless productivity workflows</p>
+                <div class="card-footer">
+                    <span class="category-tag productivity">Productivity</span>
+                    <span class="tech-tag">OAuth</span>
+                </div>
+            </div>
+
+            <div class="integration-card" data-category="entertainment">
+                <div class="card-header">
+                    <span class="icon">🎵</span>
+                    <h3>Last.fm</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">Music tracking and scrobbling for comprehensive listening history</p>
+                <div class="card-footer">
+                    <span class="category-tag entertainment">Entertainment</span>
+                    <span class="tech-tag">Scrobbling</span>
+                </div>
+            </div>
+
+            <div class="integration-card" data-category="deployment">
+                <div class="card-header">
+                    <span class="icon">🌐</span>
+                    <h3>Netlify</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">Continuous deployment platform with edge network capabilities</p>
+                <div class="card-footer">
+                    <span class="category-tag deployment">Deployment</span>
+                    <span class="tech-tag">CI/CD</span>
+                </div>
+            </div>
+
+            <div class="integration-card" data-category="deployment">
+                <div class="card-header">
+                    <span class="icon">▲</span>
+                    <h3>Vercel</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">Frontend deployment platform with serverless functions</p>
+                <div class="card-footer">
+                    <span class="category-tag deployment">Deployment</span>
+                    <span class="tech-tag">Serverless</span>
+                </div>
+            </div>
+
+            <div class="integration-card" data-category="developer">
+                <div class="card-header">
+                    <span class="icon">📚</span>
+                    <h3>DeepWiki</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">Deep documentation search and knowledge management system</p>
+                <div class="card-footer">
+                    <span class="category-tag developer">Developer</span>
+                    <span class="tech-tag">Search</span>
+                </div>
+            </div>
+
+            <div class="integration-card" data-category="developer">
+                <div class="card-header">
+                    <span class="icon">🗄️</span>
+                    <h3>Supabase</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">PostgreSQL database platform with real-time subscriptions</p>
+                <div class="card-footer">
+                    <span class="category-tag developer">Developer</span>
+                    <span class="tech-tag">Database</span>
+                </div>
+            </div>
+
+            <div class="integration-card" data-category="developer">
+                <div class="card-header">
+                    <span class="icon">🐙</span>
+                    <h3>GitHub</h3>
+                    <span class="status-indicator status-active" title="Active"></span>
+                </div>
+                <p class="description">Code repository platform with comprehensive API integration</p>
+                <div class="card-footer">
+                    <span class="category-tag developer">Developer</span>
+                    <span class="tech-tag">Version Control</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="security-notice">
+            <h2>🔒 Security & Best Practices</h2>
+            <div class="security-grid">
+                <div class="security-item">
+                    <strong>Environment Variables</strong>
+                    <p>All API keys and secrets stored securely using environment variables</p>
+                </div>
+                <div class="security-item">
+                    <strong>Rate Limiting</strong>
+                    <p>Implemented rate limiting to prevent API abuse and ensure fair usage</p>
+                </div>
+                <div class="security-item">
+                    <strong>No Client Secrets</strong>
+                    <p>Zero API keys exposed in client-side code for maximum security</p>
+                </div>
+                <div class="security-item">
+                    <strong>Secure Protocols</strong>
+                    <p>All communications use HTTPS/WSS with proper authentication</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built with ❤️ by Pierre Guirguis | Powered by Model Context Protocol</p>
+            <p class="footer-links">
+                <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank">View on GitHub</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

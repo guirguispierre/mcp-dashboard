@@ -1,0 +1,37 @@
+{
+  "name": "mcp-dashboard",
+  "version": "1.0.0",
+  "description": "A showcase website for Pierre Guirguis's MCP (Model Context Protocol) integrations",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "deploy:vercel": "vercel --prod",
+    "deploy:netlify": "netlify deploy --prod"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "integrations",
+    "dashboard",
+    "bart",
+    "todoist",
+    "github",
+    "supabase",
+    "vercel",
+    "netlify"
+  ],
+  "author": "Pierre Guirguis",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guirguispierre/mcp-dashboard"
+  },
+  "homepage": "https://github.com/guirguispierre/mcp-dashboard#readme",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
