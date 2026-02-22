@@ -5,123 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="BART MCP Integration for Poke - Bay Area Rapid Transit real-time data">
     <title>BART MCP for Poke - MCP Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .back-nav {
-            margin-bottom: 2rem;
-        }
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        .back-btn:hover {
-            background: var(--success-color);
-            color: var(--background);
-            border-color: var(--success-color);
-            transform: translateX(-5px);
-        }
-        .hero-section {
-            text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 3rem;
-            background: var(--surface);
-            border-radius: 12px;
-            border: 2px solid var(--success-color);
-        }
-        .hero-icon {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-        }
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-        }
-        .content-section {
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        .section-title {
-            font-size: 1.75rem;
-            color: var(--success-color);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .connection-placeholder {
-            background: var(--background);
-            border: 2px dashed var(--warning-color);
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-        .placeholder-text {
-            color: var(--warning-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .conversation-example {
-            background: var(--background);
-            border-left: 4px solid var(--success-color);
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-        .user-message {
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-        .poke-response {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            padding-left: 1rem;
-        }
-        .step-list {
-            list-style: none;
-            counter-reset: step-counter;
-        }
-        .step-list li {
-            counter-increment: step-counter;
-            margin-bottom: 1.5rem;
-            padding-left: 3rem;
-            position: relative;
-        }
-        .step-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: var(--success-color);
-            color: var(--background);
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="integration-styles-minimal.css">
 </head>
 <body>
     <div class="container">
@@ -156,14 +43,14 @@
             
             <ol class="step-list">
                 <li>
-                    <strong style="color: var(--text-primary);">Install the BART MCP Server</strong>
+                    <strong>Install the BART MCP Server</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
                         Open your terminal and run:<br>
-                        <code style="background: var(--background); padding: 0.5rem; display: inline-block; margin-top: 0.5rem; border-radius: 4px;">npm install -g @modelcontextprotocol/server-bart</code>
+                        <code>npm install -g @modelcontextprotocol/server-bart</code>
                     </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Locate Your Poke MCP Configuration</strong>
+                    <strong>Locate Your Poke MCP Configuration</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
                         Find your Poke MCP configuration file. This is usually located at:<br>
                         • macOS/Linux: <code>~/.poke/mcp.json</code><br>
@@ -172,9 +59,9 @@
                     </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Add BART Configuration</strong>
+                    <strong>Add BART Configuration</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">Add this to your MCP configuration file:</p>
-                    <pre style="background: var(--background); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 0.5rem;"><code>{
+                    <pre><code>{
   "mcpServers": {
     "bart": {
       "command": "npx",
@@ -187,13 +74,13 @@
                     </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Restart Poke</strong>
+                    <strong>Restart Poke</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
                         Close and restart your Poke application to load the new MCP server.
                     </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Test the Connection</strong>
+                    <strong>Test the Connection</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
                         Try asking Poke: <em>"Are there any BART delays right now?"</em>
                     </p>
@@ -237,28 +124,17 @@
                     All stations provide connections to Muni and other transit systems."
                 </div>
             </div>
-
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "How long does it take to get from SF to Oakland Airport?"</div>
-                <div class="poke-response">
-                    🤖 Poke: "From downtown San Francisco (Embarcadero) to Oakland International Airport (OAK):<br><br>
-                    ⏱️ Estimated travel time: 35-40 minutes<br>
-                    🚇 Transfer required at Coliseum station to OAK connector<br>
-                    💰 Fare: $11.20 (including airport connector)<br><br>
-                    Trains run every 15-20 minutes during peak hours."
-                </div>
-            </div>
         </div>
 
         <div class="content-section">
             <h2 class="section-title">🙏 Credits & Acknowledgments</h2>
-            <div style="background: var(--background); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--success-color);">
+            <div style="background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--gray-border);">
                 <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
-                    <strong style="color: var(--text-primary);">MCP Server Source:</strong> 
+                    <strong>MCP Server Source:</strong> 
                     This integration uses the bartMCP server developed by Pierre Guirguis.
                 </p>
                 <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 0;">
-                    <strong style="color: var(--text-primary);">Repository:</strong> 
+                    <strong>Repository:</strong> 
                     <a href="https://github.com/guirguispierre/bartMCP" target="_blank" rel="noopener noreferrer" class="external-link">
                         github.com/guirguispierre/bartMCP
                     </a>
@@ -270,19 +146,19 @@
             <h2 class="section-title">📚 What You Can Do</h2>
             <div class="guide-grid">
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Real-Time Schedules</h3>
+                    <h3>Real-Time Schedules</h3>
                     <p>Get up-to-the-minute train arrival times for any BART station and direction.</p>
                 </div>
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Service Advisories</h3>
+                    <h3>Service Advisories</h3>
                     <p>Check for delays, elevator outages, and other service disruptions.</p>
                 </div>
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Station Information</h3>
+                    <h3>Station Information</h3>
                     <p>Find station locations, accessibility features, and parking availability.</p>
                 </div>
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Route Planning</h3>
+                    <h3>Route Planning</h3>
                     <p>Plan your trip with estimated travel times and transfer information.</p>
                 </div>
             </div>
@@ -309,7 +185,7 @@
             </ul>
         </div>
 
-        <div class="content-section" style="background: var(--surface-light); border-color: var(--success-color);">
+        <div class="content-section">
             <h2 class="section-title">💡 Pro Tips</h2>
             <ul style="color: var(--text-secondary); line-height: 1.8;">
                 <li>✨ BART MCP works without any API keys - it's completely free!</li>
@@ -324,7 +200,7 @@
             <a href="index.html" class="back-btn" style="font-size: 1.1rem; padding: 1rem 2rem;">← Back to All Integrations</a>
         </div>
 
-        <footer style="margin-top: 4rem;">
+        <footer>
             <div class="footer-disclaimer">
                 <p><strong>⚠️ Important Disclaimer:</strong> This page is independently created by Pierre Guirguis. Not affiliated with, endorsed by, or connected to poke.com, BART, or any official entities. Community resource for educational purposes.</p>
             </div>
