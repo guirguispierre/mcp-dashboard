@@ -29,10 +29,10 @@
         </div>
 
         <div class="content-section">
-            <h2 class="section-title">🔗 Quick Connect to Poke</h2>
-            <div class="connection-placeholder">
-                <p class="placeholder-text">📍 MCP Connection Link Placeholder</p>
-                <p style="color: var(--text-secondary); font-size: 0.9rem;">Pierre will add the direct connection link here</p>
+            <h2 class="section-title">🔗 MCP Server Connection</h2>
+            <div style="background: var(--bg-primary); border: 1px solid var(--gray-border); border-radius: 8px; padding: 2rem; margin: 1.5rem 0; text-align: center;">
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">MCP Server URL:</p>
+                <p style="color: var(--text-primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0; word-break: break-all;">https://lastfm-mcp.com/mcp</p>
             </div>
         </div>
 
@@ -52,18 +52,12 @@
                     </p>
                 </li>
                 <li>
-                    <strong>Install Last.fm MCP Server</strong>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        <code>npm install -g @modelcontextprotocol/server-lastfm</code>
-                    </p>
-                </li>
-                <li>
-                    <strong>Configure Poke</strong>
+                    <strong>Add to Poke MCP Configuration</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">Add this configuration to your Poke MCP settings:</p>
                     <pre><code>{
   "mcpServers": {
     "lastfm": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-lastfm"],
+      "url": "https://lastfm-mcp.com/mcp",
       "env": {
         "LASTFM_API_KEY": "your_api_key",
         "LASTFM_SECRET": "your_secret",
@@ -75,6 +69,15 @@
                 </li>
                 <li>
                     <strong>Restart Poke</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Close and restart Poke to load the new MCP server.
+                    </p>
+                </li>
+                <li>
+                    <strong>Test the Connection</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Try asking Poke: <em>"What are my top artists this week?"</em>
+                    </p>
                 </li>
             </ol>
         </div>
