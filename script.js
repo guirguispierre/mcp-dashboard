@@ -119,7 +119,7 @@ function openHelp(integration) {
             title: '🚇 BART Integration for Poke',
             description: 'Connect Bay Area Rapid Transit data to Poke for real-time transit information, schedules, and service advisories.',
             setup: [
-                'Install the BART MCP server: <code>npm install @modelcontextprotocol/server-bart</code>',
+                'Install the BART MCP server: <code>npm install -g @modelcontextprotocol/server-bart</code>',
                 'Add to your Poke MCP configuration file (usually <code>~/.poke/mcp.json</code> or Poke settings)',
                 'No API key required - BART provides open data',
                 'Restart Poke to load the new MCP server'
@@ -133,14 +133,15 @@ function openHelp(integration) {
   }
 }`,
             examples: [
-                '\"Hey Poke, what\\'s the next train from Powell Street to Embarcadero?\"',
+                '\"Hey Poke, what\'s the next train from Powell Street to Embarcadero?\"',
                 '\"Are there any BART delays right now?\"',
                 '\"Show me the BART schedule for tomorrow morning from SF to Oakland\"',
                 '\"What BART stations are near me?\"'
             ],
             links: [
-                { text: 'BART MCP Server', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/bart' },
-                { text: 'BART API Documentation', url: 'https://api.bart.gov/docs/overview/index.aspx' }
+                { text: 'bartMCP Source Code', url: 'https://github.com/guirguispierre/bartMCP' },
+                { text: 'BART API Documentation', url: 'https://api.bart.gov/docs/overview/index.aspx' },
+                { text: 'MCP Servers Repository', url: 'https://github.com/modelcontextprotocol/servers' }
             ]
         },
         earnings: {
@@ -165,9 +166,9 @@ function openHelp(integration) {
 }`,
             examples: [
                 '\"Poke, what are the latest earnings reports for tech companies?\"',
-                '\"Show me Apple\\'s earnings history for the past year\"',
-                '\"When is Tesla\\'s next earnings call?\"',
-                '\"What were Microsoft\\'s Q4 earnings?\"'
+                '\"Show me Apple\'s earnings history for the past year\"',
+                '\"When is Tesla\'s next earnings call?\"',
+                '\"What were Microsoft\'s Q4 earnings?\"'
             ],
             links: []
         },
@@ -223,8 +224,8 @@ function openHelp(integration) {
             examples: [
                 '\"Poke, add a task to buy groceries tomorrow at 5pm\"',
                 '\"Show me all my tasks for this week\"',
-                '\"Mark my \\'finish report\\' task as complete\"',
-                '\"Create a new project called \\'Home Renovation\\'\"',
+                '\"Mark my \'finish report\' task as complete\"',
+                '\"Create a new project called \'Home Renovation\'\"',
                 '\"What are my high priority tasks?\"'
             ],
             links: [
@@ -406,10 +407,10 @@ function openHelp(integration) {
 }`,
             examples: [
                 '\"Poke, list my GitHub repositories\"',
-                '\"Create a new issue titled \\'Add dark mode\\' in my project\"',
+                '\"Create a new issue titled \'Add dark mode\' in my project\"',
                 '\"Show me recent pull requests on my main repo\"',
                 '\"What are the open issues in my project?\"',
-                '\"Create a new branch called \\'feature/new-ui\\' in my repo\"'
+                '\"Create a new branch called \'feature/new-ui\' in my repo\"'
             ],
             links: [
                 { text: 'GitHub API', url: 'https://docs.github.com/en/rest' }
