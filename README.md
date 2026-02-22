@@ -186,6 +186,7 @@ mcp-dashboard/
 ├── package.json            # Dependencies and scripts
 ├── vercel.json             # Vercel deployment config
 ├── netlify.toml            # Netlify deployment config
+├── CONTRIBUTING.md         # Contribution guidelines
 └── README.md               # This file
 ```
 
@@ -223,7 +224,7 @@ Each integration detail page includes:
 ## 💻 Local Development
 
 ### Prerequisites
-- Node.js 16+ (for MCP servers)
+- Node.js 18+ (for MCP servers and local development)
 - Git
 - A code editor (VS Code recommended)
 
@@ -352,32 +353,98 @@ Modify CSS variables in `style.css`:
 
 ## 🤝 Contributing
 
-Contributions are welcome! This is a community project for Poke users.
+**We welcome contributions from the community!** This project is built for Poke users, by Poke users, and your input makes it better for everyone.
 
-### How to Contribute
+### 📖 Read the Full Contributing Guide
+
+For comprehensive guidelines on contributing to this project, please read **[CONTRIBUTING.md](CONTRIBUTING.md)**. It includes:
+
+- 🚀 Getting started with development setup
+- 🎨 Code style guidelines (HTML, CSS, JavaScript)
+- ➕ Step-by-step guide for adding new integrations
+- 🔄 Pull request process and templates
+- 🐛 Issue reporting guidelines
+- 🔒 Security considerations for API key handling
+- ♿ Accessibility standards
+- ✅ Manual testing checklist
+- 🌿 Git workflow and branch naming conventions
+- 👥 Review process for contributors and reviewers
+
+### Quick Start for Contributors
 
 1. **Fork the repository**
-2. **Create a feature branch**
+2. **Clone your fork:**
    ```bash
-   git checkout -b feature/amazing-feature
+   git clone https://github.com/YOUR-USERNAME/mcp-dashboard.git
+   cd mcp-dashboard
    ```
-3. **Commit your changes**
+3. **Create a feature branch:**
    ```bash
-   git commit -m 'Add amazing feature for Poke users'
+   git checkout -b feature/add-new-integration
    ```
-4. **Push to the branch**
+4. **Make your changes** following the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md)
+5. **Test thoroughly** across browsers and devices
+6. **Commit with clear messages:**
    ```bash
-   git push origin feature/amazing-feature
+   git commit -m "feat: add Slack MCP integration page"
    ```
-5. **Open a Pull Request**
+7. **Push and open a Pull Request:**
+   ```bash
+   git push origin feature/add-new-integration
+   ```
+
+### Ways to Contribute
+
+- 💻 **Code:** Add new integration pages, improve UI/UX, fix bugs
+- 📝 **Documentation:** Enhance setup guides, add examples, improve clarity
+- 🐛 **Bug Reports:** Report issues with detailed reproduction steps
+- 💡 **Feature Requests:** Suggest new integrations or improvements
+- 🎨 **Design:** Improve visual consistency and accessibility
+- 🌍 **Translation:** Help translate content to other languages
 
 ### Contribution Ideas
-- Add new MCP integration pages
-- Improve Poke conversation examples
-- Enhance documentation
-- Add more security best practices
-- Create video tutorials
-- Translate to other languages
+
+- Add new MCP integration pages (Slack, Discord, Notion, etc.)
+- Improve Poke conversation examples with more realistic scenarios
+- Enhance mobile responsiveness
+- Add video tutorials or animated guides
+- Create interactive demos for each integration
+- Improve accessibility (WCAG compliance)
+- Add more comprehensive error handling examples
+- Develop troubleshooting guides for common issues
+
+### Design Philosophy
+
+When contributing, please maintain:
+
+- **Simplicity** - Keep code clean and easy to understand
+- **Consistency** - Follow existing patterns and conventions
+- **User-Focus** - Prioritize Poke user experience
+- **Security** - Never commit API keys or secrets
+- **Accessibility** - Ensure all users can navigate and use the site
+
+### Styling Consistency Note
+
+The project uses two complementary design systems:
+
+1. **Main Dashboard (index.html)**: Modern light/dark theme with toggle for flexibility
+2. **Integration Pages**: Consistent dark theme optimized for code-heavy documentation
+
+This is an **intentional design decision**. When adding new integrations, always use the integration page template to maintain consistency with existing integration pages. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed styling guidelines.
+
+### Getting Help
+
+- **Questions?** Open a [Discussion](https://github.com/guirguispierre/mcp-dashboard/discussions)
+- **Found a bug?** Open an [Issue](https://github.com/guirguispierre/mcp-dashboard/issues)
+- **Want to chat?** Mention [@guirguispierre](https://github.com/guirguispierre) in issues or PRs
+
+### Recognition
+
+All contributors will be:
+- ✨ Listed in our contributors section
+- 🎉 Thanked in release notes
+- 💝 Credited in commit messages
+- 🌟 Invited to join the contributor community
 
 ---
 
@@ -391,6 +458,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **[@guirguispierre](https://github.com/guirguispierre)**
 - Project: Independent community resource for Poke users
+- GitHub: [@guirguispierre](https://github.com/guirguispierre)
 
 ---
 
@@ -400,6 +468,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Poke Users** - For inspiration and feedback
 - **API Providers** - BART, Todoist, Last.fm, GitHub, Netlify, Vercel, Supabase, and others
 - **Open Source Contributors** - For making these integrations possible
+- **Community Contributors** - Everyone who has contributed to this project
 
 ---
 
@@ -412,6 +481,7 @@ Open an issue in the [GitHub repository](https://github.com/guirguispierre/mcp-d
 - Check the detailed integration pages on the dashboard
 - Review [MCP Documentation](https://modelcontextprotocol.io)
 - Search existing GitHub issues
+- Join the community discussions
 
 ### Common Issues
 
@@ -424,35 +494,56 @@ A: Verify your API key is correct and has the required permissions.
 **Q: Integration not working?**
 A: Check that the MCP server is installed: `npm list -g @modelcontextprotocol/server-*`
 
+**Q: How do I contribute a new integration?**
+A: Read [CONTRIBUTING.md](CONTRIBUTING.md) for a step-by-step guide!
+
 ---
 
 ## 🗺️ Roadmap
 
 - [ ] Add video tutorials for each integration
 - [ ] Create automated setup scripts
-- [ ] Add more MCP integrations
+- [ ] Add more MCP integrations (Slack, Discord, Notion, Linear, etc.)
 - [ ] Build a configuration validator tool
 - [ ] Create a Poke-specific MCP testing suite
 - [ ] Add community example library
 - [ ] Develop troubleshooting guides
+- [ ] Create integration template generator
+- [ ] Add multilingual support
+- [ ] Build interactive integration demos
 
 ---
 
 ## 📈 Stats
 
 - **10 Active Integrations** - All Poke-ready
-- **5 Categories** - Transit, Financial, Media, Productivity, Entertainment, Deployment, Developer
+- **7 Categories** - Transit, Financial, Media, Productivity, Entertainment, Deployment, Developer
 - **100% Poke Compatible** - Tested and documented
 - **Community Driven** - Built for Poke users, by a Poke user
+- **Open Source** - MIT License, contributions welcome
 
 ---
 
 ## 🌟 Star History
 
-If you find this dashboard helpful for your Poke setup, please consider giving it a ⭐ on GitHub!
+If you find this dashboard helpful for your Poke setup, please consider giving it a ⭐ on GitHub! It helps others discover this resource and motivates continued development.
+
+[![Star History Chart](https://api.star-history.com/svg?repos=guirguispierre/mcp-dashboard&type=Date)](https://star-history.com/#guirguispierre/mcp-dashboard&Date)
+
+---
+
+## 🔗 Links
+
+- **Live Dashboard:** [https://guirguispierre.github.io/mcp-dashboard/](https://guirguispierre.github.io/mcp-dashboard/)
+- **Repository:** [https://github.com/guirguispierre/mcp-dashboard](https://github.com/guirguispierre/mcp-dashboard)
+- **Issues:** [https://github.com/guirguispierre/mcp-dashboard/issues](https://github.com/guirguispierre/mcp-dashboard/issues)
+- **Contributing Guide:** [CONTRIBUTING.md](CONTRIBUTING.md)
+- **MCP Documentation:** [https://modelcontextprotocol.io](https://modelcontextprotocol.io)
 
 ---
 
 **Built with ❤️ for the Poke community by [@guirguispierre](https://github.com/guirguispierre) | Powered by Model Context Protocol**
 
 *Not affiliated with poke.com - Independent community project*
+
+**Join us in making MCP integrations accessible to all Poke users! 🚀**
