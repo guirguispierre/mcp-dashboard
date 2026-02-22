@@ -3,319 +3,1423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MCP Integration Dashboard for Poke Users - Connect powerful MCP servers to your Poke AI assistant">
-    <title>Poke MCP Dashboard - <a href="https://github.com/guirguispierre">@guirguispierre</a></title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Modern MCP Integration Dashboard for Poke Users - Connect powerful MCP servers to your AI assistant">
+    <title>Poke MCP Dashboard - Modern Integration Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .integration-card {
-            cursor: pointer;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        :root {
+            /* Light Mode Colors */
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f3f5;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6c757d;
+            --text-tertiary: #adb5bd;
+            --accent-primary: #667eea;
+            --accent-secondary: #764ba2;
+            --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Colors */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #64748b;
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            --card-hover-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Animated Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+            background: var(--accent-gradient);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        [data-theme="dark"] .bg-gradient {
+            opacity: 0.3;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.4;
+            animation: float 20s infinite;
+        }
+
+        .blob1 {
+            top: 10%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: #667eea;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            top: 60%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: #764ba2;
+            animation-delay: 5s;
+        }
+
+        .blob3 {
+            bottom: 10%;
+            left: 50%;
+            width: 350px;
+            height: 350px;
+            background: #f093fb;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 30px) scale(0.9); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0 3rem;
+            text-align: center;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .hero {
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .disclaimer-banner {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .disclaimer-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .disclaimer-banner p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-gradient);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Search and Filter */
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        /* Integration Cards */
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .integration-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .integration-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
         .integration-card:hover {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
+            border-color: transparent;
+        }
+
+        .integration-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-category {
+            background: rgba(102, 126, 234, 0.2);
+            color: var(--accent-primary);
+        }
+
+        .tag-status {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Setup Guide */
+        .guide-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .guide-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .guide-step {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .guide-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .step-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .step-content code {
+            background: var(--bg-tertiary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 4rem;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-primary);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .footer-note {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .integrations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .header-top {
+                justify-content: center;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Hide class for filtering */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Link styles */
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+        }
+
+        /* Security Section */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .security-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .security-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .security-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .security-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
+    <div class="bg-gradient">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
     <div class="container">
         <header>
-            <div class="disclaimer-banner">
-                <span class="disclaimer-icon">⚠️</span>
-                <p><strong>Independent Project:</strong> This dashboard is not affiliated with, endorsed by, or connected to poke.com. This is a community-driven showcase of MCP integrations specifically designed for Poke users, created by <a href="https://github.com/guirguispierre">@guirguispierre</a>.</p>
+            <div class="header-top">
+                <div class="logo">
+                    <span>🚀</span>
+                    <span>Poke MCP Dashboard</span>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <span id="themeIcon">🌙</span>
+                    <span id="themeText">Dark Mode</span>
+                </button>
             </div>
-            
-            <h1>🚀 Poke MCP Dashboard</h1>
-            <p class="subtitle">Model Context Protocol Integrations for <strong>Poke Users</strong></p>
-            <p class="tagline">Connect powerful MCP servers to your Poke AI assistant - by <a href="https://github.com/guirguispierre">@guirguispierre</a></p>
-            
-            <div class="help-banner">
-                <p>📖 New to MCP in Poke? Check out the <a href="#guide-section" class="guide-link">Poke MCP Setup Guide</a> below</p>
+
+            <div class="hero fade-in">
+                <h1>Modern MCP Integration Hub</h1>
+                <p class="hero-subtitle">Connect powerful Model Context Protocol servers to your Poke AI assistant</p>
+                
+                <div class="disclaimer-banner">
+                    <span class="disclaimer-icon">⚠️</span>
+                    <p><strong>Independent Project:</strong> This dashboard is not affiliated with, endorsed by, or connected to poke.com. This is a community-driven showcase of MCP integrations created by <a href="https://github.com/guirguispierre" target="_blank">@guirguispierre</a>.</p>
+                </div>
             </div>
         </header>
 
-        <div class="stats-overview">
+        <!-- Statistics Section -->
+        <section class="stats fade-in">
             <div class="stat-card">
-                <div class="stat-number" id="total-integrations">10</div>
-                <div class="stat-label">Poke-Ready MCPs</div>
+                <div class="stat-number" id="totalIntegrations">10</div>
+                <div class="stat-label">Integrations</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="categories">5</div>
-                <div class="stat-label">Integration Categories</div>
+                <div class="stat-number" id="totalCategories">5</div>
+                <div class="stat-label">Categories</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="uptime">100%</div>
+                <div class="stat-number">100%</div>
                 <div class="stat-label">Poke Compatible</div>
             </div>
-        </div>
+            <div class="stat-card">
+                <div class="stat-number">Open Source</div>
+                <div class="stat-label">Community Built</div>
+            </div>
+        </section>
 
+        <!-- Search and Filter Controls -->
+        <section class="controls fade-in">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search integrations..." />
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="developer">Developer</button>
+                <button class="filter-btn" data-category="productivity">Productivity</button>
+                <button class="filter-btn" data-category="deployment">Deployment</button>
+                <button class="filter-btn" data-category="transit">Transit</button>
+                <button class="filter-btn" data-category="entertainment">Entertainment</button>
+                <button class="filter-btn" data-category="financial">Financial</button>
+                <button class="filter-btn" data-category="media">Media</button>
+            </div>
+        </section>
+
+        <!-- Integrations Grid -->
         <section class="integrations-section">
-            <h2>🔌 Poke MCP Integrations</h2>
-            <p class="section-description">Click any card for detailed setup instructions and Poke conversation examples</p>
-            
-            <div class="integrations-grid">
-                <!-- BART Integration -->
-                <div class="integration-card" data-category="transit" onclick="navigateToPage('bart.html')">
+            <h2 class="section-title">🔌 Available Integrations</h2>
+            <p class="section-description">Click any card for detailed setup instructions and examples</p>
+
+            <div class="integrations-grid" id="integrationsGrid">
+                <!-- GitHub -->
+                <div class="integration-card fade-in" data-category="developer" data-name="GitHub">
+                    <div class="card-icon">🐙</div>
                     <div class="card-header">
-                        <span class="icon">🚇</span>
-                        <h3>BART</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">GitHub</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Connect BART real-time transit data to Poke for Bay Area transportation queries</p>
-                    <div class="card-footer">
-                        <span class="category-tag transit">Transit</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Manage repositories, issues, pull requests, and more directly through Poke conversations</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Developer</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="bart.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('bart')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='github.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('github')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Earnings Feed Integration -->
-                <div class="integration-card" data-category="financial" onclick="navigateToPage('earnings-feed.html')">
+                <!-- Todoist -->
+                <div class="integration-card fade-in" data-category="productivity" data-name="Todoist">
+                    <div class="card-icon">✅</div>
                     <div class="card-header">
-                        <span class="icon">📊</span>
-                        <h3>Earnings Feed</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">Todoist</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Access financial earnings data directly through Poke for market insights</p>
-                    <div class="card-footer">
-                        <span class="category-tag financial">Financial</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Create, manage, and organize your tasks seamlessly through natural Poke conversations</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Productivity</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="earnings-feed.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('earnings')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='todoist.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('todoist')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- FFmpeg Integration -->
-                <div class="integration-card" data-category="media" onclick="navigateToPage('ffmpeg.html')">
+                <!-- Supabase -->
+                <div class="integration-card fade-in" data-category="developer" data-name="Supabase">
+                    <div class="card-icon">🗄️</div>
                     <div class="card-header">
-                        <span class="icon">🎬</span>
-                        <h3>FFmpeg</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">Supabase</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Process video and audio files through Poke with comprehensive format conversion</p>
-                    <div class="card-footer">
-                        <span class="category-tag media">Media</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Query and manage your Supabase database with natural language through Poke</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Developer</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="ffmpeg.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('ffmpeg')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='supabase.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('supabase')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Todoist Integration -->
-                <div class="integration-card" data-category="productivity" onclick="navigateToPage('todoist.html')">
+                <!-- Vercel -->
+                <div class="integration-card fade-in" data-category="deployment" data-name="Vercel">
+                    <div class="card-icon">▲</div>
                     <div class="card-header">
-                        <span class="icon">✅</span>
-                        <h3>Todoist</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">Vercel</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Manage your Todoist tasks seamlessly through Poke conversations</p>
-                    <div class="card-footer">
-                        <span class="category-tag productivity">Productivity</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Deploy, manage, and monitor your Vercel projects directly from Poke</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Deployment</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="todoist.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('todoist')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='vercel.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('vercel')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Last.fm Integration -->
-                <div class="integration-card" data-category="entertainment" onclick="navigateToPage('last-fm.html')">
+                <!-- Netlify -->
+                <div class="integration-card fade-in" data-category="deployment" data-name="Netlify">
+                    <div class="card-icon">🌐</div>
                     <div class="card-header">
-                        <span class="icon">🎵</span>
-                        <h3>Last.fm</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">Netlify</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Track and query your music listening history through Poke</p>
-                    <div class="card-footer">
-                        <span class="category-tag entertainment">Entertainment</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Deploy and manage your Netlify sites with simple Poke commands</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Deployment</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="last-fm.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('lastfm')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='netlify.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('netlify')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Netlify Integration -->
-                <div class="integration-card" data-category="deployment" onclick="navigateToPage('netlify.html')">
+                <!-- BART -->
+                <div class="integration-card fade-in" data-category="transit" data-name="BART">
+                    <div class="card-icon">🚇</div>
                     <div class="card-header">
-                        <span class="icon">🌐</span>
-                        <h3>Netlify</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">BART</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Deploy and manage your Netlify sites through Poke commands</p>
-                    <div class="card-footer">
-                        <span class="category-tag deployment">Deployment</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Get real-time Bay Area transit information and schedules through Poke</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Transit</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="netlify.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('netlify')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='bart.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('bart')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Vercel Integration -->
-                <div class="integration-card" data-category="deployment" onclick="navigateToPage('vercel.html')">
+                <!-- Last.fm -->
+                <div class="integration-card fade-in" data-category="entertainment" data-name="Last.fm">
+                    <div class="card-icon">🎵</div>
                     <div class="card-header">
-                        <span class="icon">▲</span>
-                        <h3>Vercel</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">Last.fm</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Control your Vercel deployments directly from Poke</p>
-                    <div class="card-footer">
-                        <span class="category-tag deployment">Deployment</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Track and analyze your music listening history with Poke insights</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Entertainment</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="vercel.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('vercel')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='last-fm.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('lastfm')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- DeepWiki Integration -->
-                <div class="integration-card" data-category="developer" onclick="navigateToPage('deepwiki.html')">
+                <!-- DeepWiki -->
+                <div class="integration-card fade-in" data-category="developer" data-name="DeepWiki">
+                    <div class="card-icon">📚</div>
                     <div class="card-header">
-                        <span class="icon">📚</span>
-                        <h3>DeepWiki</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">DeepWiki</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Search documentation and knowledge bases through Poke</p>
-                    <div class="card-footer">
-                        <span class="category-tag developer">Developer</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Search documentation and knowledge bases instantly through Poke</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Developer</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="deepwiki.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('deepwiki')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='deepwiki.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('deepwiki')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Supabase Integration -->
-                <div class="integration-card" data-category="developer" onclick="navigateToPage('supabase.html')">
+                <!-- Earnings Feed -->
+                <div class="integration-card fade-in" data-category="financial" data-name="Earnings Feed">
+                    <div class="card-icon">📊</div>
                     <div class="card-header">
-                        <span class="icon">🗄️</span>
-                        <h3>Supabase</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">Earnings Feed</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Query and manage your Supabase database through Poke</p>
-                    <div class="card-footer">
-                        <span class="category-tag developer">Developer</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Access real-time financial earnings data and market insights via Poke</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Financial</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="supabase.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('supabase')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='earnings-feed.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('earnings')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- GitHub Integration -->
-                <div class="integration-card" data-category="developer" onclick="navigateToPage('github.html')">
+                <!-- FFmpeg -->
+                <div class="integration-card fade-in" data-category="media" data-name="FFmpeg">
+                    <div class="card-icon">🎬</div>
                     <div class="card-header">
-                        <span class="icon">🐙</span>
-                        <h3>GitHub</h3>
-                        <span class="status-indicator status-active" title="Poke Ready"></span>
+                        <div>
+                            <h3 class="card-title">FFmpeg</h3>
+                            <div class="status-indicator"></div>
+                        </div>
                     </div>
-                    <p class="description">Manage your GitHub repositories and issues through Poke</p>
-                    <div class="card-footer">
-                        <span class="category-tag developer">Developer</span>
-                        <span class="tech-tag">Poke Ready</span>
+                    <p class="card-description">Process video and audio files with comprehensive format conversion through Poke</p>
+                    <div class="card-tags">
+                        <span class="tag tag-category">Media</span>
+                        <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
-                        <a href="github.html" class="help-btn" style="text-decoration: none; text-align: center;" onclick="event.stopPropagation()">📚 View Full Guide</a>
-                        <button class="demo-btn" onclick="event.stopPropagation(); showDemo('github')">▶️ Quick Example</button>
+                        <button class="btn btn-primary" onclick="window.location.href='ffmpeg.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="showDemo('ffmpeg')">
+                            <span>▶️</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="guide-section" id="guide-section">
-            <h2>📖 Poke MCP Setup Guide</h2>
-            <p class="section-description">Learn how to connect these MCP servers to your Poke AI assistant</p>
-            
-            <div class="guide-grid">
-                <div class="guide-card">
-                    <h3>🤖 What is MCP in Poke?</h3>
-                    <p>Model Context Protocol (MCP) allows Poke to connect to external data sources and tools. Once configured, you can ask Poke to access real-time information and perform actions using these integrations directly in your conversations.</p>
-                    <a href="https://modelcontextprotocol.io" target="_blank" class="external-link">Learn more about MCP →</a>
+        <!-- Setup Guide Section -->
+        <section class="guide-section fade-in" id="setup-guide">
+            <h2 class="section-title">📖 Quick Setup Guide</h2>
+            <p class="section-description">Get started with MCP integrations in just a few steps</p>
+
+            <div class="guide-steps">
+                <div class="guide-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Install MCP Client</h3>
+                    <div class="step-content">
+                        <p>Ensure you have Poke installed with MCP support enabled. MCP (Model Context Protocol) allows Poke to connect to external data sources.</p>
+                    </div>
                 </div>
 
-                <div class="guide-card">
-                    <h3>⚙️ Connecting to Poke</h3>
-                    <p>To use these MCP servers with Poke, you'll need to add them to your Poke MCP configuration. Each integration requires specific API keys and settings. Click any integration card above for detailed instructions.</p>
-                    <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank" class="external-link">View configuration examples →</a>
+                <div class="guide-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Get API Keys</h3>
+                    <div class="step-content">
+                        <p>Register for the services you want to integrate and obtain API keys. Visit each integration's guide page for specific instructions.</p>
+                    </div>
                 </div>
 
-                <div class="guide-card">
-                    <h3>🔑 API Keys & Security</h3>
-                    <p>Most integrations require API keys from the respective services. Store these securely in your Poke MCP configuration. Never share your API keys publicly or commit them to version control.</p>
-                    <button class="secondary-btn" onclick="showSecurityTips()">Security Best Practices →</button>
+                <div class="guide-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Configure MCP</h3>
+                    <div class="step-content">
+                        <p>Add the MCP server configuration to your Poke settings. Each integration has detailed setup instructions with code examples.</p>
+                    </div>
                 </div>
 
-                <div class="guide-card">
-                    <h3>💬 Using MCPs in Poke</h3>
-                    <p>Once connected, simply ask Poke naturally! For example: "Check BART delays" or "Add a task to Todoist". Click any integration card to see complete setup guides and conversation examples.</p>
-                    <button class="secondary-btn" onclick="scrollToIntegrations()">Browse integrations →</button>
+                <div class="guide-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Start Using</h3>
+                    <div class="step-content">
+                        <p>Simply ask Poke naturally! For example: "Show my GitHub repos" or "What's my next Todoist task?" The MCP servers handle the rest.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="security-notice">
-            <h2>🔒 Security & Best Practices for Poke Users</h2>
+        <!-- Security Section -->
+        <section class="guide-section fade-in">
+            <h2 class="section-title">🔒 Security Best Practices</h2>
+            <p class="section-description">Keep your integrations secure and your data protected</p>
+
             <div class="security-grid">
-                <div class="security-item">
-                    <strong>Secure Configuration</strong>
-                    <p>Store all API keys in your Poke MCP configuration file, never in plain text</p>
+                <div class="security-card">
+                    <div class="security-icon">🔐</div>
+                    <h3 class="security-title">Secure Storage</h3>
+                    <p class="security-text">Store API keys in environment variables or secure configuration files, never in code</p>
                 </div>
-                <div class="security-item">
-                    <strong>Rate Limiting</strong>
-                    <p>MCP servers implement rate limiting to prevent API abuse and ensure fair usage</p>
+
+                <div class="security-card">
+                    <div class="security-icon">🛡️</div>
+                    <h3 class="security-title">Minimal Permissions</h3>
+                    <p class="security-text">Grant only the necessary permissions required for each integration to function</p>
                 </div>
-                <div class="security-item">
-                    <strong>Minimal Permissions</strong>
-                    <p>Only grant the minimum required API permissions for each integration</p>
+
+                <div class="security-card">
+                    <div class="security-icon">⚡</div>
+                    <h3 class="security-title">Rate Limiting</h3>
+                    <p class="security-text">Respect API rate limits to prevent service disruption and maintain good standing</p>
                 </div>
-                <div class="security-item">
-                    <strong>Regular Updates</strong>
-                    <p>Keep your Poke app and MCP servers updated for the latest security patches</p>
+
+                <div class="security-card">
+                    <div class="security-icon">🔄</div>
+                    <h3 class="security-title">Regular Updates</h3>
+                    <p class="security-text">Keep your MCP servers and dependencies updated for latest security patches</p>
                 </div>
             </div>
         </section>
 
-        <footer>
-            <div class="footer-disclaimer">
-                <p><strong>⚠️ Important Disclaimer:</strong> This project is independently created and maintained by <a href="https://github.com/guirguispierre">@guirguispierre</a> as a community resource for Poke users. It is NOT affiliated with, endorsed by, sponsored by, or officially connected to poke.com or its parent company. This is a community-driven showcase of MCP integrations that work with Poke. All trademarks and service marks are the property of their respective owners.</p>
+        <!-- FAQ Section -->
+        <section class="faq-section fade-in" id="faq">
+            <h2 class="section-title">❓ Frequently Asked Questions</h2>
+            <p class="section-description">Everything you need to know about MCP integrations</p>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What is Model Context Protocol (MCP)?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Model Context Protocol (MCP) is an open standard that enables AI assistants like Poke to connect to external data sources and tools. It provides a universal way to integrate various services, databases, and APIs into your AI conversations, making them more powerful and context-aware.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I install an MCP integration?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Each integration has its own setup guide (click the "View Guide" button on any card). Generally, you'll need to: 1) Get API credentials from the service, 2) Add the MCP server configuration to your Poke settings, 3) Restart Poke to load the integration. Detailed instructions are provided for each service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Are these integrations free to use?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The MCP servers themselves are open source and free. However, some services (like GitHub, Todoist, etc.) may require paid subscriptions for full access to their APIs. Most services offer free tiers that work perfectly with these integrations. Check each service's pricing page for details.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Is my data secure?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! MCP servers run locally on your machine and communicate directly with services using your API keys. Your credentials and data never pass through third-party servers. Always store API keys securely and never share them publicly. Follow our security best practices section for more information.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I contribute my own integration?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! This is a community-driven project. You can contribute new integrations, improvements, or documentation by visiting the GitHub repository. Create an MCP server for your favorite service and submit a pull request. We welcome all contributions!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What if an integration stops working?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>First, check if your API keys are still valid and haven't expired. Then, verify that the service itself is operational. If the issue persists, check the integration's GitHub repository for known issues or updates. You can also report problems through GitHub issues, and the community will help troubleshoot.</p>
+                    </div>
+                </div>
             </div>
-            
-            <p>Built with ❤️ for the Poke community by <a href="https://github.com/guirguispierre">@guirguispierre</a> | Powered by Model Context Protocol</p>
-            <p class="footer-links">
-                <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank">View on GitHub</a> •
-                <a href="https://modelcontextprotocol.io" target="_blank">MCP Documentation</a> •
-                <a href="#guide-section">Poke Setup Guide</a>
-            </p>
-            <p class="footer-note">Community project • Open source • MIT License • Contributions welcome</p>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank">GitHub Repository</a>
+                    <a href="https://modelcontextprotocol.io" target="_blank">MCP Documentation</a>
+                    <a href="#setup-guide">Setup Guide</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <p class="footer-note">
+                    Built with ❤️ for the Poke community by <a href="https://github.com/guirguispierre" target="_blank">@guirguispierre</a>
+                </p>
+                <p class="footer-note" style="margin-top: 1rem;">
+                    ⚠️ Independent project • Not affiliated with poke.com • Open source • MIT License • Contributions welcome
+                </p>
+            </div>
         </footer>
     </div>
 
-    <!-- Help Modal -->
-    <div id="helpModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeHelp()">&times;</span>
-            <div id="helpContent"></div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
     <script>
-        // Navigation function for integration cards
-        function navigateToPage(url) {
-            window.location.href = url;
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        updateThemeButton(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            updateThemeButton(theme);
+        });
+
+        function updateThemeButton(theme) {
+            if (theme === 'dark') {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+            } else {
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark Mode';
+            }
         }
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const integrationsGrid = document.getElementById('integrationsGrid');
+        const integrationCards = Array.from(integrationsGrid.querySelectorAll('.integration-card'));
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            filterIntegrations(searchTerm, currentFilter);
+        });
+
+        // Filter Functionality
+        let currentFilter = 'all';
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                currentFilter = button.getAttribute('data-category');
+                const searchTerm = searchInput.value.toLowerCase();
+                filterIntegrations(searchTerm, currentFilter);
+            });
+        });
+
+        function filterIntegrations(searchTerm, category) {
+            let visibleCount = 0;
+            
+            integrationCards.forEach(card => {
+                const cardName = card.getAttribute('data-name').toLowerCase();
+                const cardCategory = card.getAttribute('data-category');
+                const cardDescription = card.querySelector('.card-description').textContent.toLowerCase();
+                
+                const matchesSearch = cardName.includes(searchTerm) || cardDescription.includes(searchTerm);
+                const matchesCategory = category === 'all' || cardCategory === category;
+                
+                if (matchesSearch && matchesCategory) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Update stats
+            document.getElementById('totalIntegrations').textContent = visibleCount;
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current FAQ
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Demo Function
+        function showDemo(integration) {
+            const demos = {
+                github: "Example: 'Show me my recent GitHub repositories' or 'Create a new issue in my project'",
+                todoist: "Example: 'Add a task to buy groceries' or 'Show my tasks for today'",
+                supabase: "Example: 'Query my users table' or 'Show me the latest entries'",
+                vercel: "Example: 'Deploy my latest changes' or 'Show my deployment status'",
+                netlify: "Example: 'Deploy my site' or 'Check my build status'",
+                bart: "Example: 'When is the next BART train to SF?' or 'Check BART delays'",
+                lastfm: "Example: 'What have I been listening to?' or 'Show my top artists'",
+                deepwiki: "Example: 'Search React documentation' or 'Find API reference'",
+                earnings: "Example: 'Show upcoming earnings reports' or 'Get AAPL earnings data'",
+                ffmpeg: "Example: 'Convert video.mp4 to video.webm' or 'Extract audio from video'"
+            };
+            
+            alert(`🚀 Quick Example for ${integration.charAt(0).toUpperCase() + integration.slice(1)}:\n\n${demos[integration]}`);
+        }
+
+        // Smooth Scroll for Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for Fade-in Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Count Categories
+        const categories = new Set();
+        integrationCards.forEach(card => {
+            categories.add(card.getAttribute('data-category'));
+        });
+        document.getElementById('totalCategories').textContent = categories.size;
+
+        // Add stagger effect to cards
+        integrationCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        console.log('🚀 Poke MCP Dashboard loaded successfully!');
+        console.log('💡 Tip: Press Ctrl/Cmd + K to focus search');
+
+        // Keyboard shortcut for search
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
     </script>
 </body>
 </html>
