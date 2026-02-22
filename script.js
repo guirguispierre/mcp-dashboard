@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Poke MCP Dashboard initialized');
+    initializeInteractions();
     initializeTheme();
     initializeSearch();
     initializeFilters();
@@ -9,40 +10,61 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeSmoothScroll();
 });
 
+// Card interactions (from main branch)
+function initializeInteractions() {
+    const cards = document.querySelectorAll('.integration-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Only add click effect if not clicking a button
+            if (!e.target.closest('button')) {
+                card.classList.add('clicked');
+                setTimeout(() => card.classList.remove('clicked'), 300);
+            }
+        });
+
+        card.addEventListener('mouseenter', (e) => {
+            const cardName = e.currentTarget.querySelector('h3').textContent;
+            console.log(`Viewing: ${cardName} for Poke`);
+        });
+    });
+}
+
 // Theme Management
 function initializeTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const themeText = document.getElementById('themeText');
+    const html = document.documentElement;
     
     if (!themeToggle) return;
     
     // Check for saved theme preference or default to 'light'
     const currentTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    updateThemeUI(currentTheme, themeIcon, themeText);
+    html.setAttribute('data-theme', currentTheme);
+    updateThemeUI(currentTheme);
     
     themeToggle.addEventListener('click', () => {
-        const theme = document.documentElement.getAttribute('data-theme');
+        const theme = html.getAttribute('data-theme');
         const newTheme = theme === 'light' ? 'dark' : 'light';
         
-        document.documentElement.setAttribute('data-theme', newTheme);
+        html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-        updateThemeUI(newTheme, themeIcon, themeText);
+        updateThemeUI(newTheme);
         
         console.log(`Theme switched to: ${newTheme}`);
     });
-}
-
-function updateThemeUI(theme, icon, text) {
-    if (!icon || !text) return;
     
-    if (theme === 'dark') {
-        icon.textContent = '☀️';
-        text.textContent = 'Light Mode';
-    } else {
-        icon.textContent = '🌙';
-        text.textContent = 'Dark Mode';
+    function updateThemeUI(theme) {
+        if (!themeIcon || !themeText) return;
+        
+        if (theme === 'dark') {
+            themeIcon.textContent = '☀️';
+            themeText.textContent = 'Light Mode';
+        } else {
+            themeIcon.textContent = '🌙';
+            themeText.textContent = 'Dark Mode';
+        }
     }
 }
 
@@ -52,8 +74,8 @@ function initializeSearch() {
     
     if (!searchInput) return;
     
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase().trim();
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase().trim();
         const cards = document.querySelectorAll('.integration-card');
         
         cards.forEach(card => {
@@ -181,7 +203,7 @@ function animateOnScroll() {
         threshold: 0.1
     });
 
-    document.querySelectorAll('.integration-card, .guide-step, .security-card').forEach(el => {
+    document.querySelectorAll('.integration-card, .guide-step, .guide-card, .security-card').forEach(el => {
         observer.observe(el);
     });
 }
@@ -329,7 +351,7 @@ console.log('%c🚀 Poke MCP Dashboard', 'color: #0ea5e9; font-size: 18px; font-
 console.log('Community resource for connecting MCP servers to Poke');
 console.log('');
 console.log('%c🔒 Security Reminder', 'color: #10b981; font-size: 16px; font-weight: bold;');
-console.log('All API keys should be stored securely.');
+console.log('All API keys should be stored in your Poke MCP configuration file.');
 console.log('Never share or commit your API keys to version control.');
 console.log('');
 console.log('%c⚠️ Disclaimer', 'color: #f59e0b; font-size: 14px; font-weight: bold;');
@@ -337,6 +359,7 @@ console.log('This dashboard is a community project by Pierre Guirguis.');
 console.log('Not affiliated with or endorsed by poke.com.');
 console.log('');
 console.log('%c✅ UI Enhancements Active:', 'color: #10b981; font-size: 14px; font-weight: bold;');
+console.log('• Card interactions enabled');
 console.log('• Category filtering enabled');
 console.log('• Search functionality enabled');
 console.log('• Theme toggle enabled');
