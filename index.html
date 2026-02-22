@@ -488,6 +488,45 @@
             font-size: 1rem;
         }
 
+        /* GitHub Repo Section */
+        .card-github-repo {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: rgba(139, 92, 246, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 8px;
+        }
+
+        .github-repo-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.375rem;
+        }
+
+        .github-repo-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--accent-purple);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            word-break: break-all;
+        }
+
+        .github-repo-link:hover {
+            color: #7c3aed;
+            text-decoration: underline;
+        }
+
+        .github-repo-icon {
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+
         .card-actions {
             display: flex;
             gap: 0.75rem;
@@ -1292,10 +1331,10 @@
         <!-- Custom MCP Integrations Section -->
         <section class="integrations-section">
             <h2 class="section-title">🛠️ Community Custom MCP Servers</h2>
-            <p class="section-description">Community-built MCP servers (some created by Pierre, others by the community)</p>
+            <p class="section-description">Community-built MCP servers created by Pierre (@guirguispierre)</p>
 
             <div class="integrations-grid">
-                <!-- BART (Custom MCP on Render) -->
+                <!-- BART (Custom MCP - GitHub Only) -->
                 <div class="integration-card fade-in" data-category="transit" data-name="BART" data-type="custom">
                     <div class="card-icon">🚇</div>
                     <div class="card-header">
@@ -1307,25 +1346,21 @@
                     <p class="card-description">Get real-time Bay Area transit information and schedules through Poke</p>
                     
                     <div class="integration-notice custom">
-                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render. Requires BART API key.
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre. This is a local/STDIO MCP - clone and run from GitHub.
                     </div>
                     
-                    <div class="integration-notice warning">
-                        <strong>⚠️ API Key Required:</strong> You need your own BART API key from <a href="https://api.bart.gov/docs/key/" target="_blank">api.bart.gov</a> to use this integration.
-                    </div>
-                    
-                    <!-- MCP Server URL -->
-                    <div class="card-server-url">
-                        <div class="server-url-label">MCP Server URL (Render)</div>
-                        <a href="https://bartmcp.onrender.com" target="_blank" rel="noopener noreferrer" class="server-url-link">
-                            <span class="server-url-icon">🔗</span>
-                            <span>bartmcp.onrender.com</span>
+                    <!-- GitHub Repository Only (No MCP URL) -->
+                    <div class="card-github-repo">
+                        <div class="github-repo-label">GitHub Repository</div>
+                        <a href="https://github.com/guirguispierre/bartMCP" target="_blank" rel="noopener noreferrer" class="github-repo-link">
+                            <span class="github-repo-icon">🐙</span>
+                            <span>github.com/guirguispierre/bartMCP</span>
                         </a>
                     </div>
                     
                     <div class="card-tags">
                         <span class="tag tag-category">Transit</span>
-                        <span class="tag tag-custom">Custom MCP</span>
+                        <span class="tag tag-custom">Community</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     
@@ -1337,7 +1372,7 @@
                     </div>
                 </div>
 
-                <!-- Last.fm (Custom MCP) -->
+                <!-- Last.fm (Custom MCP with Server URL and Pierre's Repo) -->
                 <div class="integration-card fade-in" data-category="entertainment" data-name="Last.fm" data-type="custom">
                     <div class="card-icon">🎵</div>
                     <div class="card-header">
@@ -1346,28 +1381,33 @@
                             <div class="status-indicator"></div>
                         </div>
                     </div>
-                    <p class="card-description">Track your music listening habits and get personalized recommendations through Poke</p>
+                    <p class="card-description">Track your music listening habits and get personalized music stats through Poke</p>
                     
                     <div class="integration-notice custom">
-                        <strong>🔧 Custom MCP Server</strong> — Community integration. Requires Last.fm API credentials.
-                    </div>
-                    
-                    <div class="integration-notice warning">
-                        <strong>⚠️ API Credentials Required:</strong> You need a Last.fm API key and secret from <a href="https://www.last.fm/api/account/create" target="_blank">last.fm</a>.
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed. Connect via MCP URL or clone from GitHub.
                     </div>
                     
                     <!-- MCP Server URL -->
                     <div class="card-server-url">
-                        <div class="server-url-label">GitHub Repository</div>
-                        <a href="https://github.com/pierrebrd/lastfm-mcp-server" target="_blank" rel="noopener noreferrer" class="server-url-link">
+                        <div class="server-url-label">MCP Server URL</div>
+                        <a href="https://lastfm-mcp.com/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
                             <span class="server-url-icon">🔗</span>
-                            <span>github.com/pierrebrd/lastfm-mcp-server</span>
+                            <span>lastfm-mcp.com/mcp</span>
+                        </a>
+                    </div>
+
+                    <!-- GitHub Repository -->
+                    <div class="card-github-repo">
+                        <div class="github-repo-label">GitHub Repository</div>
+                        <a href="https://github.com/guirguispierre/lastfm-mcp" target="_blank" rel="noopener noreferrer" class="github-repo-link">
+                            <span class="github-repo-icon">🐙</span>
+                            <span>github.com/guirguispierre/lastfm-mcp</span>
                         </a>
                     </div>
                     
                     <div class="card-tags">
                         <span class="tag tag-category">Entertainment</span>
-                        <span class="tag tag-custom">Custom MCP</span>
+                        <span class="tag tag-custom">Community</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     
@@ -1379,33 +1419,42 @@
                     </div>
                 </div>
 
-                <!-- FFMPEG (Custom MCP) -->
-                <div class="integration-card fade-in" data-category="media" data-name="FFMPEG" data-type="custom">
+                <!-- FFmpeg (Custom MCP with Server URL and Pierre's Repo) -->
+                <div class="integration-card fade-in" data-category="media" data-name="FFmpeg" data-type="custom">
                     <div class="card-icon">🎬</div>
                     <div class="card-header">
                         <div>
-                            <h3 class="card-title">FFMPEG</h3>
+                            <h3 class="card-title">FFmpeg</h3>
                             <div class="status-indicator"></div>
                         </div>
                     </div>
-                    <p class="card-description">Process videos and audio files with powerful FFMPEG commands through Poke</p>
+                    <p class="card-description">Convert, process, and manipulate video and audio files directly through Poke</p>
                     
                     <div class="integration-notice custom">
-                        <strong>🔧 Custom MCP Server</strong> — Community integration for media processing. Requires FFMPEG installed.
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render. Connect via MCP URL.
                     </div>
                     
                     <!-- MCP Server URL -->
                     <div class="card-server-url">
-                        <div class="server-url-label">GitHub Repository</div>
-                        <a href="https://github.com/punkpeye/mcp-ffmpeg" target="_blank" rel="noopener noreferrer" class="server-url-link">
+                        <div class="server-url-label">MCP Server URL</div>
+                        <a href="https://ffmpeg-mcp.onrender.com/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
                             <span class="server-url-icon">🔗</span>
-                            <span>github.com/punkpeye/mcp-ffmpeg</span>
+                            <span>ffmpeg-mcp.onrender.com/mcp</span>
+                        </a>
+                    </div>
+
+                    <!-- GitHub Repository -->
+                    <div class="card-github-repo">
+                        <div class="github-repo-label">GitHub Repository</div>
+                        <a href="https://github.com/guirguispierre/ffmepgPOKE" target="_blank" rel="noopener noreferrer" class="github-repo-link">
+                            <span class="github-repo-icon">🐙</span>
+                            <span>github.com/guirguispierre/ffmepgPOKE</span>
                         </a>
                     </div>
                     
                     <div class="card-tags">
                         <span class="tag tag-category">Media</span>
-                        <span class="tag tag-custom">Custom MCP</span>
+                        <span class="tag tag-custom">Community</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     
@@ -1417,7 +1466,7 @@
                     </div>
                 </div>
 
-                <!-- PDF Reader (Custom MCP) -->
+                <!-- PDF Reader (Custom MCP with Server URL and Pierre's Repo) -->
                 <div class="integration-card fade-in" data-category="document" data-name="PDF Reader" data-type="custom">
                     <div class="card-icon">📄</div>
                     <div class="card-header">
@@ -1426,24 +1475,33 @@
                             <div class="status-indicator"></div>
                         </div>
                     </div>
-                    <p class="card-description">Extract and analyze content from PDF documents through Poke</p>
+                    <p class="card-description">Extract text and data from PDF documents seamlessly through Poke</p>
                     
                     <div class="integration-notice custom">
-                        <strong>🔧 Custom MCP Server</strong> — Community integration for PDF processing and analysis.
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render. Connect via MCP URL.
                     </div>
                     
                     <!-- MCP Server URL -->
                     <div class="card-server-url">
-                        <div class="server-url-label">GitHub Repository</div>
-                        <a href="https://github.com/zcaceres/mcp-server-pdf-reader" target="_blank" rel="noopener noreferrer" class="server-url-link">
+                        <div class="server-url-label">MCP Server URL</div>
+                        <a href="https://pdf-reader-mcp-m8ky.onrender.com/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
                             <span class="server-url-icon">🔗</span>
-                            <span>github.com/zcaceres/mcp-server-pdf-reader</span>
+                            <span>pdf-reader-mcp-m8ky.onrender.com/mcp</span>
+                        </a>
+                    </div>
+
+                    <!-- GitHub Repository -->
+                    <div class="card-github-repo">
+                        <div class="github-repo-label">GitHub Repository</div>
+                        <a href="https://github.com/guirguispierre/pdf-reader-mcp" target="_blank" rel="noopener noreferrer" class="github-repo-link">
+                            <span class="github-repo-icon">🐙</span>
+                            <span>github.com/guirguispierre/pdf-reader-mcp</span>
                         </a>
                     </div>
                     
                     <div class="card-tags">
                         <span class="tag tag-category">Document</span>
-                        <span class="tag tag-custom">Custom MCP</span>
+                        <span class="tag tag-custom">Community</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     
@@ -1458,122 +1516,96 @@
         </section>
 
         <!-- Quick Start Guide -->
-        <section class="guide-section fade-in">
+        <section class="guide-section">
             <h2 class="section-title">🚀 Quick Start Guide</h2>
-            <p class="section-description">Get started with MCP integrations in minutes</p>
+            <p class="section-description">Get started with MCP integrations in three simple steps</p>
             
             <div class="guide-steps">
-                <div class="guide-step">
+                <div class="guide-step fade-in">
                     <div class="step-number">1</div>
-                    <h3 class="step-title">Choose Your Integration</h3>
-                    <p class="step-content">Browse the integrations above and select the one that fits your needs. Each card provides details about capabilities and requirements.</p>
+                    <h3 class="step-title">Choose Integration</h3>
+                    <p class="step-content">Browse the integration cards above and select the one that fits your needs. Click "View Guide" to see detailed setup instructions.</p>
                 </div>
                 
-                <div class="guide-step">
+                <div class="guide-step fade-in">
                     <div class="step-number">2</div>
-                    <h3 class="step-title">Get Credentials</h3>
-                    <p class="step-content">For most integrations, you'll need API keys or credentials. Each integration guide provides links to where you can obtain these.</p>
+                    <h3 class="step-title">Configure Server</h3>
+                    <p class="step-content">For built-in integrations, connect your account in Poke settings. For custom MCPs, add the server URL to your Poke configuration using <code>Add Custom MCP Server</code>.</p>
                 </div>
                 
-                <div class="guide-step">
+                <div class="guide-step fade-in">
                     <div class="step-number">3</div>
-                    <h3 class="step-title">Configure in Poke</h3>
-                    <p class="step-content">Add the MCP server URL to your Poke settings under <code>Integrations → MCP Servers</code> and provide the necessary credentials.</p>
-                </div>
-                
-                <div class="guide-step">
-                    <div class="step-number">4</div>
                     <h3 class="step-title">Start Using</h3>
-                    <p class="step-content">Once configured, you can immediately start using the integration through natural Poke conversations!</p>
+                    <p class="step-content">Once configured, start chatting with Poke! The MCP integration will automatically respond to relevant queries and commands.</p>
                 </div>
             </div>
         </section>
 
         <!-- Security Section -->
-        <section class="guide-section fade-in">
-            <h2 class="section-title">🔒 Security & Privacy</h2>
-            <p class="section-description">Your data security is our priority</p>
+        <section class="integrations-section">
+            <h2 class="section-title">🔐 Security & Privacy</h2>
+            <p class="section-description">Your data security is our top priority</p>
             
             <div class="security-grid">
-                <div class="security-card">
-                    <div class="security-icon">🔐</div>
-                    <h3 class="security-title">Encrypted Communication</h3>
-                    <p class="security-text">All MCP servers use secure HTTPS connections to protect your data in transit.</p>
+                <div class="security-card fade-in">
+                    <div class="security-icon">🔒</div>
+                    <h3 class="security-title">Encrypted Connections</h3>
+                    <p class="security-text">All MCP servers use HTTPS/TLS encryption for secure data transmission</p>
                 </div>
                 
-                <div class="security-card">
+                <div class="security-card fade-in">
                     <div class="security-icon">🔑</div>
-                    <h3 class="security-title">Your API Keys</h3>
-                    <p class="security-text">API credentials are stored securely in your Poke account and never shared.</p>
+                    <h3 class="security-title">API Key Protection</h3>
+                    <p class="security-text">Your API keys are stored securely and never shared with third parties</p>
                 </div>
                 
-                <div class="security-card">
-                    <div class="security-icon">👁️</div>
+                <div class="security-card fade-in">
+                    <div class="security-icon">🛡️</div>
                     <h3 class="security-title">Open Source</h3>
-                    <p class="security-text">Most integrations are open source, allowing you to review the code yourself.</p>
+                    <p class="security-text">All custom MCPs are open source - review the code on GitHub before using</p>
                 </div>
                 
-                <div class="security-card">
+                <div class="security-card fade-in">
                     <div class="security-icon">⚡</div>
-                    <h3 class="security-title">Direct Access</h3>
-                    <p class="security-text">MCP servers connect directly to services without intermediate data storage.</p>
+                    <h3 class="security-title">Direct Communication</h3>
+                    <p class="security-text">Poke communicates directly with MCP servers - no middleman</p>
                 </div>
             </div>
         </section>
 
         <!-- FAQ Section -->
-        <section class="faq-section fade-in">
+        <section class="faq-section">
             <h2 class="section-title">❓ Frequently Asked Questions</h2>
             <p class="section-description">Common questions about MCP integrations</p>
             
             <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>What is MCP?</span>
+                        <span>What is an MCP server?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Model Context Protocol (MCP) is a standard that allows AI assistants like Poke to connect to external services and tools. It provides a secure, structured way for AI to interact with your favorite apps and services.</p>
+                        <p>MCP (Model Context Protocol) is a standard protocol that allows AI assistants like Poke to connect to external services and tools. An MCP server provides specific functionality (like GitHub integration, transit data, etc.) that Poke can use to answer your questions and perform tasks.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Do I need to install anything?</span>
+                        <span>How do I add a custom MCP server?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>For built-in Poke integrations, no installation is required. For custom MCP servers, you may need to deploy them or use existing hosted versions. Each integration guide provides specific instructions.</p>
+                        <p>In Poke, go to Settings → Integrations → Add Custom MCP Server. Enter the MCP server URL from the integration card above, along with any required API keys or configuration. Click "View Guide" on any custom integration card for detailed setup instructions.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Are these integrations free?</span>
+                        <span>Are these integrations safe to use?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>The MCP integration layer is free, but some services may have their own pricing. For example, BART API is free, but services like Vercel or Netlify have their own pricing tiers.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How secure are these integrations?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>All integrations use secure HTTPS connections and OAuth where applicable. Your API keys are stored securely in Poke and are never exposed. Most community integrations are open source for transparency.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I create my own MCP integration?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes! The MCP protocol is open, and you can create custom servers for any service. Check out the <a href="https://github.com/guirguispierre" target="_blank">GitHub examples</a> to get started.</p>
+                        <p>Yes! All custom MCP servers listed here are open source and can be reviewed on GitHub. Built-in Poke integrations are officially supported. However, always review what permissions and data access each integration requires before connecting.</p>
                     </div>
                 </div>
                 
@@ -1583,7 +1615,27 @@
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Built-in integrations are already included in Poke and just need account connection. Custom MCP servers are community-built and require adding the server URL to Poke's MCP settings.</p>
+                        <p>Built-in integrations are officially supported by Poke.com and only require connecting your account. Custom MCP servers are community-created and require adding the server URL manually. Custom servers offer more flexibility and specialized functionality.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need coding knowledge to use these?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No! For most integrations, you just need to copy the MCP server URL and paste it into Poke settings. Some integrations require API keys from the service (like Last.fm or BART), but each integration guide provides clear, step-by-step instructions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I create my own MCP server?</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Check out the MCP specification and examples on GitHub. All the custom servers listed here are open source, so you can use them as templates. Once you've built your server, consider submitting it to this dashboard!</p>
                     </div>
                 </div>
             </div>
@@ -1593,112 +1645,17 @@
         <footer>
             <div class="footer-content">
                 <div class="footer-links">
-                    <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank">GitHub</a>
+                    <a href="https://github.com/guirguispierre" target="_blank">GitHub</a>
                     <a href="https://poke.com" target="_blank">Poke.com</a>
-                    <a href="https://modelcontextprotocol.io" target="_blank">MCP Documentation</a>
-                    <a href="mailto:pierre@example.com">Contact</a>
+                    <a href="https://modelcontextprotocol.io" target="_blank">MCP Specification</a>
                 </div>
                 <p class="footer-note">
-                    Created by <a href="https://github.com/guirguispierre" target="_blank">@guirguispierre</a> • 
-                    Not affiliated with Poke.com • 
-                    All trademarks belong to their respective owners
+                    Built with ❤️ by <a href="https://github.com/guirguispierre" target="_blank">@guirguispierre</a><br>
+                    This is an independent community project and is not affiliated with Poke.com<br>
+                    All integrations are provided as-is. Use at your own discretion.
                 </p>
             </div>
         </footer>
     </div>
-
-    <script>
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                faqItem.classList.toggle('active');
-            });
-        });
-
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const themeText = document.getElementById('themeText');
-        
-        // Check for saved theme preference or default to 'light'
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        updateThemeButton(currentTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const theme = document.documentElement.getAttribute('data-theme');
-            const newTheme = theme === 'light' ? 'dark' : 'light';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeButton(newTheme);
-        });
-
-        function updateThemeButton(theme) {
-            if (theme === 'dark') {
-                themeIcon.textContent = '☀️';
-                themeText.textContent = 'Light Mode';
-            } else {
-                themeIcon.textContent = '🌙';
-                themeText.textContent = 'Dark Mode';
-            }
-        }
-
-        // Search and Filter
-        const searchInput = document.getElementById('searchInput');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const integrationCards = document.querySelectorAll('.integration-card');
-
-        let currentFilter = 'all';
-
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            filterCards(searchTerm, currentFilter);
-        });
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                currentFilter = button.dataset.category;
-                const searchTerm = searchInput.value.toLowerCase();
-                filterCards(searchTerm, currentFilter);
-            });
-        });
-
-        function filterCards(searchTerm, category) {
-            integrationCards.forEach(card => {
-                const name = card.dataset.name.toLowerCase();
-                const cardCategory = card.dataset.category;
-                
-                const matchesSearch = name.includes(searchTerm);
-                const matchesCategory = category === 'all' || cardCategory === category;
-                
-                if (matchesSearch && matchesCategory) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        }
-
-        // Update stats dynamically
-        function updateStats() {
-            const visibleCards = document.querySelectorAll('.integration-card:not(.hidden)');
-            const categories = new Set();
-            
-            visibleCards.forEach(card => {
-                categories.add(card.dataset.category);
-            });
-            
-            document.getElementById('totalIntegrations').textContent = visibleCards.length;
-            document.getElementById('totalCategories').textContent = categories.size;
-        }
-
-        // Call on load and after filtering
-        updateStats();
-    </script>
 </body>
 </html>
