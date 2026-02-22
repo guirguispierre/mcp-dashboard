@@ -29,10 +29,16 @@
         </div>
 
         <div class="content-section">
-            <h2 class="section-title">🔗 Quick Connect to Poke</h2>
-            <div class="connection-placeholder">
-                <p class="placeholder-text">📍 MCP Connection Link Placeholder</p>
-                <p style="color: var(--text-secondary); font-size: 0.9rem;">Pierre will add the direct connection link here</p>
+            <h2 class="section-title">🔗 MCP Server Connection</h2>
+            <div style="background: var(--bg-primary); border: 1px solid var(--gray-border); border-radius: 8px; padding: 2rem; margin: 1.5rem 0; text-align: center;">
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">MCP Server URL:</p>
+                <p style="color: var(--text-primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 1.5rem; word-break: break-all;">https://ffmpeg-mcp.onrender.com/mcp</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Source Code Repository:</p>
+                <p style="color: var(--text-primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0;">
+                    <a href="https://github.com/guirguispierre/ffmepgPOKE" target="_blank" rel="noopener noreferrer" class="external-link">
+                        github.com/guirguispierre/ffmepgPOKE
+                    </a>
+                </p>
             </div>
         </div>
 
@@ -56,18 +62,12 @@
                     </p>
                 </li>
                 <li>
-                    <strong>Install FFmpeg MCP Server</strong>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        <code>npm install -g @modelcontextprotocol/server-ffmpeg</code>
-                    </p>
-                </li>
-                <li>
                     <strong>Add to Poke MCP Configuration</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">Add this configuration to your Poke MCP settings:</p>
                     <pre><code>{
   "mcpServers": {
     "ffmpeg": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-ffmpeg"]
+      "url": "https://ffmpeg-mcp.onrender.com/mcp"
     }
   }
 }</code></pre>
@@ -76,6 +76,12 @@
                     <strong>Restart Poke</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
                         Close and restart Poke to load the new MCP server.
+                    </p>
+                </li>
+                <li>
+                    <strong>Test the Connection</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Try asking Poke: <em>"Convert my video.mp4 to audio format"</em>
                     </p>
                 </li>
             </ol>
@@ -109,10 +115,16 @@
                 <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
                     <strong>MCP Server Source:</strong> ffmpegPOKE by Pierre Guirguis
                 </p>
-                <p style="color: var(--text-secondary); line-height: 1.8;">
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
                     <strong>Repository:</strong> 
                     <a href="https://github.com/guirguispierre/ffmepgPOKE" target="_blank" class="external-link">
                         github.com/guirguispierre/ffmepgPOKE
+                    </a>
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 0;">
+                    <strong>MCP Server URL:</strong> 
+                    <a href="https://ffmpeg-mcp.onrender.com/mcp" target="_blank" class="external-link">
+                        https://ffmpeg-mcp.onrender.com/mcp
                     </a>
                 </p>
             </div>
@@ -122,9 +134,10 @@
             <h2 class="section-title">💡 Pro Tips</h2>
             <ul style="color: var(--text-secondary); line-height: 1.8;">
                 <li>🎬 FFmpeg is completely free and open source</li>
-                <li>⚡ Processing happens locally for maximum speed</li>
-                <li>🔒 Your files never leave your computer</li>
+                <li>⚡ Processing happens remotely for convenience</li>
+                <li>🔒 Secure server processing with privacy protection</li>
                 <li>🎯 Be specific about quality preferences</li>
+                <li>📊 Server may need warmup time on first request</li>
             </ul>
         </div>
 
