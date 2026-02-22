@@ -395,6 +395,45 @@
             color: var(--success);
         }
 
+        /* Server URL Section */
+        .card-server-url {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: rgba(14, 165, 233, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 8px;
+        }
+
+        .server-url-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.375rem;
+        }
+
+        .server-url-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            word-break: break-all;
+        }
+
+        .server-url-link:hover {
+            color: #0284c7;
+            text-decoration: underline;
+        }
+
+        .server-url-icon {
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+
         .card-actions {
             display: flex;
             gap: 0.75rem;
@@ -973,6 +1012,16 @@
                         <span class="tag tag-category">Entertainment</span>
                         <span class="tag tag-status">Active</span>
                     </div>
+                    
+                    <!-- MCP Server URL -->
+                    <div class="card-server-url">
+                        <div class="server-url-label">MCP Server URL</div>
+                        <a href="https://lastfm-mcp.com/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
+                            <span class="server-url-icon">🔗</span>
+                            <span>lastfm-mcp.com/mcp</span>
+                        </a>
+                    </div>
+                    
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.location.href='last-fm.html'">
                             <span>📚</span>
@@ -1023,6 +1072,16 @@
                         <span class="tag tag-category">Financial</span>
                         <span class="tag tag-status">Active</span>
                     </div>
+                    
+                    <!-- MCP Server URL -->
+                    <div class="card-server-url">
+                        <div class="server-url-label">MCP Server URL</div>
+                        <a href="https://earningsfeed.com/api/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
+                            <span class="server-url-icon">🔗</span>
+                            <span>earningsfeed.com/api/mcp</span>
+                        </a>
+                    </div>
+                    
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.location.href='earnings-feed.html'">
                             <span>📚</span>
@@ -1048,6 +1107,16 @@
                         <span class="tag tag-category">Media</span>
                         <span class="tag tag-status">Active</span>
                     </div>
+                    
+                    <!-- MCP Server URL -->
+                    <div class="card-server-url">
+                        <div class="server-url-label">MCP Server URL</div>
+                        <a href="https://ffmpeg-mcp.onrender.com/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
+                            <span class="server-url-icon">🔗</span>
+                            <span>ffmpeg-mcp.onrender.com/mcp</span>
+                        </a>
+                    </div>
+                    
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.location.href='ffmpeg.html'">
                             <span>📚</span>
