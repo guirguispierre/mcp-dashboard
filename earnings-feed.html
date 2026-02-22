@@ -3,125 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Earnings Feed MCP Integration for Poke - Financial data and earnings reports">
+    <meta name="description" content="Earnings Feed MCP Integration for Poke - Financial data">
     <title>Earnings Feed MCP for Poke - MCP Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .back-nav {
-            margin-bottom: 2rem;
-        }
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        .back-btn:hover {
-            background: var(--success-color);
-            color: var(--background);
-            border-color: var(--success-color);
-            transform: translateX(-5px);
-        }
-        .hero-section {
-            text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 3rem;
-            background: var(--surface);
-            border-radius: 12px;
-            border: 2px solid var(--success-color);
-        }
-        .hero-icon {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-        }
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-        }
-        .content-section {
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        .section-title {
-            font-size: 1.75rem;
-            color: var(--success-color);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .connection-placeholder {
-            background: var(--background);
-            border: 2px dashed var(--warning-color);
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-        .placeholder-text {
-            color: var(--warning-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .conversation-example {
-            background: var(--background);
-            border-left: 4px solid var(--success-color);
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-        .user-message {
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-        .poke-response {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            padding-left: 1rem;
-        }
-        .step-list {
-            list-style: none;
-            counter-reset: step-counter;
-        }
-        .step-list li {
-            counter-increment: step-counter;
-            margin-bottom: 1.5rem;
-            padding-left: 3rem;
-            position: relative;
-        }
-        .step-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: var(--success-color);
-            color: var(--background);
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="integration-styles-minimal.css">
 </head>
 <body>
     <div class="container">
@@ -146,36 +33,27 @@
             <div class="connection-placeholder">
                 <p class="placeholder-text">📍 MCP Connection Link Placeholder</p>
                 <p style="color: var(--text-secondary); font-size: 0.9rem;">Pierre will add the direct connection link here</p>
-                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">Click the link above to automatically add Earnings Feed MCP to your Poke setup</p>
             </div>
         </div>
 
         <div class="content-section">
             <h2 class="section-title">⚙️ Setup Instructions</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Follow these steps to connect Earnings Feed MCP to your Poke assistant:</p>
-            
             <ol class="step-list">
                 <li>
-                    <strong style="color: var(--text-primary);">Get Your API Key</strong>
+                    <strong>Get Your API Key</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        Sign up for a financial data API provider:<br>
-                        • <a href="https://www.alphavantage.co/" target="_blank" class="external-link">Alpha Vantage</a> (Free tier available)<br>
-                        • <a href="https://financialmodelingprep.com/" target="_blank" class="external-link">Financial Modeling Prep</a><br>
-                        • <a href="https://polygon.io/" target="_blank" class="external-link">Polygon.io</a><br><br>
-                        Save your API key securely.
+                        Sign up for a financial data API provider (Alpha Vantage, FMP, or Polygon.io)
                     </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Install the Earnings MCP Server</strong>
+                    <strong>Install the Server</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        Open your terminal and run:<br>
-                        <code style="background: var(--background); padding: 0.5rem; display: inline-block; margin-top: 0.5rem; border-radius: 4px;">npm install -g @modelcontextprotocol/server-earnings</code>
+                        <code>npm install -g @modelcontextprotocol/server-earnings</code>
                     </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Add to Poke MCP Configuration</strong>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">Add this to your MCP configuration file:</p>
-                    <pre style="background: var(--background); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 0.5rem;"><code>{
+                    <strong>Configure Poke</strong>
+                    <pre><code>{
   "mcpServers": {
     "earnings": {
       "command": "npx",
@@ -186,133 +64,42 @@
     }
   }
 }</code></pre>
-                    <p style="color: var(--warning-color); margin-top: 0.5rem; font-size: 0.9rem;">
-                        ⚠️ Replace <code>your_api_key_here</code> with your actual API key
-                    </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Restart Poke</strong>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        Close and restart your Poke application to load the new MCP server.
-                    </p>
-                </li>
-                <li>
-                    <strong style="color: var(--text-primary);">Test the Connection</strong>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        Try asking Poke: <em>"What were Apple's latest earnings?"</em>
-                    </p>
+                    <strong>Restart Poke</strong>
                 </li>
             </ol>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">💬 Example Poke Conversations</h2>
-            
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "What were Apple's Q4 2023 earnings?"</div>
-                <div class="poke-response">
-                    🤖 Poke: "Here are Apple's Q4 2023 earnings results:<br><br>
-                    📊 Revenue: $89.5 billion<br>
-                    💰 Net Income: $23.0 billion<br>
-                    📈 EPS: $1.46 (vs $1.39 expected)<br>
-                    🎯 Beat expectations by 5%<br><br>
-                    Key highlights: Strong iPhone sales, Services revenue growth, and expansion in emerging markets."
-                </div>
-            </div>
-
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "When is Tesla's next earnings call?"</div>
-                <div class="poke-response">
-                    🤖 Poke: "Tesla's next earnings call is scheduled for:<br><br>
-                    📅 Date: January 24, 2024<br>
-                    ⏰ Time: 5:30 PM ET<br>
-                    📞 Dial-in available for investors<br><br>
-                    The earnings report will be released after market close on the same day. Would you like me to set a reminder?"
-                </div>
-            </div>
-
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "Compare Microsoft and Google's latest earnings"</div>
-                <div class="poke-response">
-                    🤖 Poke: "Here's a comparison of their most recent quarters:<br><br>
-                    <strong>Microsoft (Q3 FY2024):</strong><br>
-                    • Revenue: $61.9B (+17% YoY)<br>
-                    • Net Income: $21.9B<br>
-                    • Cloud revenue: $33.7B<br><br>
-                    <strong>Google (Q3 2023):</strong><br>
-                    • Revenue: $76.7B (+11% YoY)<br>
-                    • Net Income: $19.7B<br>
-                    • Ad revenue: $59.6B<br><br>
-                    Both companies exceeded analyst expectations with strong cloud/AI growth."
-                </div>
-            </div>
-
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "Show me the tech earnings calendar for next week"</div>
-                <div class="poke-response">
-                    🤖 Poke: "Here are the tech earnings scheduled for next week:<br><br>
-                    📅 Monday, Jan 29:<br>
-                    • ServiceNow (NOW) - After market close<br><br>
-                    📅 Tuesday, Jan 30:<br>
-                    • Microsoft (MSFT) - After market close<br>
-                    • AMD (AMD) - After market close<br><br>
-                    📅 Thursday, Feb 1:<br>
-                    • Amazon (AMZN) - After market close<br>
-                    • Meta (META) - After market close<br><br>
-                    Would you like alerts for any of these?"
-                </div>
-            </div>
         </div>
 
         <div class="content-section">
             <h2 class="section-title">📚 What You Can Do</h2>
             <div class="guide-grid">
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Earnings Reports</h3>
+                    <h3>Earnings Reports</h3>
                     <p>Get detailed quarterly and annual earnings reports for any public company.</p>
                 </div>
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Earnings Calendar</h3>
+                    <h3>Earnings Calendar</h3>
                     <p>View upcoming earnings calls and release dates for companies you follow.</p>
                 </div>
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Historical Data</h3>
-                    <p>Access historical earnings data to analyze trends and performance over time.</p>
+                    <h3>Historical Data</h3>
+                    <p>Access historical earnings data to analyze trends over time.</p>
                 </div>
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Comparisons</h3>
-                    <p>Compare earnings metrics across companies and industry sectors.</p>
+                    <h3>Comparisons</h3>
+                    <p>Compare earnings metrics across companies and sectors.</p>
                 </div>
             </div>
         </div>
 
         <div class="content-section">
-            <h2 class="section-title">🔗 Resources</h2>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 1rem;">
-                    <a href="https://www.alphavantage.co/" target="_blank" class="external-link">📊 Alpha Vantage API</a>
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <a href="https://financialmodelingprep.com/" target="_blank" class="external-link">💹 Financial Modeling Prep</a>
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <a href="https://polygon.io/" target="_blank" class="external-link">📈 Polygon.io</a>
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <a href="https://modelcontextprotocol.io" target="_blank" class="external-link">📚 Model Context Protocol Docs</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="content-section" style="background: var(--surface-light); border-color: var(--success-color);">
             <h2 class="section-title">💡 Pro Tips</h2>
             <ul style="color: var(--text-secondary); line-height: 1.8;">
-                <li>💰 Use free tier API keys to start - upgrade as needed</li>
-                <li>📊 Ask for comparisons to get better market insights</li>
-                <li>⏰ Set up earnings calendar alerts for stocks you track</li>
-                <li>📈 Request historical data to identify trends</li>
-                <li>🔔 Combine with calendar MCP for automatic earnings reminders</li>
-                <li>🔒 Keep your API key secure - never share it publicly</li>
+                <li>💰 Use free tier API keys to start</li>
+                <li>📊 Ask for comparisons to get better insights</li>
+                <li>⏰ Set up earnings calendar alerts</li>
+                <li>🔒 Keep your API key secure</li>
             </ul>
         </div>
 
@@ -320,9 +107,9 @@
             <a href="index.html" class="back-btn" style="font-size: 1.1rem; padding: 1rem 2rem;">← Back to All Integrations</a>
         </div>
 
-        <footer style="margin-top: 4rem;">
+        <footer>
             <div class="footer-disclaimer">
-                <p><strong>⚠️ Important Disclaimer:</strong> This page is independently created by Pierre Guirguis. Not affiliated with poke.com or any financial data providers. Financial data is for informational purposes only. Not investment advice.</p>
+                <p><strong>⚠️ Important Disclaimer:</strong> Not affiliated with poke.com. Financial data is for informational purposes only. Not investment advice.</p>
             </div>
             <p style="text-align: center; color: var(--text-secondary); margin-top: 2rem;">
                 Built with ❤️ for the Poke community by Pierre Guirguis
