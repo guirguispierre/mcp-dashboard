@@ -24,6 +24,7 @@ A modern, community-driven dashboard showcasing Model Context Protocol (MCP) int
 - [Documentation](#-documentation)
 - [Contributing](#-contributing)
 - [Design System](#-design-system)
+- [Third-Party Acknowledgments](#-third-party-mcp-server-acknowledgments)
 - [License](#-license)
 - [Support](#-support)
 
@@ -286,6 +287,65 @@ This project uses a consistent minimal design system across all integration page
 
 ---
 
+## 🙏 Third-Party MCP Server Acknowledgments
+
+This dashboard showcases MCP servers developed by various talented developers in the community. We gratefully acknowledge:
+
+### Community-Developed Servers
+
+- **Last.fm MCP** by [Rian van der Merwe](https://github.com/rianvdm)
+  - Repository: [rianvdm/lastfm-mcp](https://github.com/rianvdm/lastfm-mcp)
+  - License: MIT License
+  - Deployment: Cloudflare Workers with OAuth 2.0
+  - URL: https://lastfm-mcp.com/mcp
+
+- **EarningsFeed MCP** by [EarningsFeed Organization](https://github.com/earningsfeed)
+  - Official API: https://earningsfeed.com/api
+  - MCP Endpoint: https://earningsfeed.com/api/mcp
+  - Documentation: https://earningsfeed.com/api/docs
+  - SDKs: [Python](https://github.com/earningsfeed/earningsfeed-python), [Node.js](https://github.com/earningsfeed/earningsfeed-node), [Rust](https://github.com/earningsfeed/earningsfeed-rust), [CLI](https://github.com/earningsfeed/earningsfeed-cli)
+  - License: MIT License (SDKs)
+  - Data Source: SEC EDGAR Database
+
+- **FFmpeg MCP** (Original) by [yubraaj11](https://github.com/yubraaj11)
+  - Original Repository: [yubraaj11/ffmpeg-mcp](https://github.com/yubraaj11/ffmpeg-mcp)
+  - Fork/Deployment: [guirguispierre/ffmepgPOKE](https://github.com/guirguispierre/ffmepgPOKE)
+  - Deployment URL: https://ffmpeg-mcp.onrender.com/mcp
+  - Framework: FastMCP + FFmpeg Python bindings
+  - Core Technology: FFmpeg (LGPL/GPL licensed)
+
+### Pierre's Original Servers
+
+- **BART MCP** - Custom-built MCP server for Bay Area Rapid Transit
+  - Repository: [guirguispierre/bartMCP](https://github.com/guirguispierre/bartMCP)
+  - Framework: FastMCP + BART Legacy API
+  - Data Source: BART API (api.bart.gov)
+  - License: MIT License
+
+### Official MCP Servers
+
+The following integrations use official MCP servers from the Model Context Protocol organization:
+
+- **GitHub MCP** - [@modelcontextprotocol/server-github](https://github.com/modelcontextprotocol/servers/tree/main/src/github)
+- **Todoist MCP** - [@modelcontextprotocol/server-todoist](https://github.com/modelcontextprotocol/servers)
+- **Supabase MCP** - [@modelcontextprotocol/server-supabase](https://github.com/modelcontextprotocol/servers)
+- **Vercel MCP** - [@modelcontextprotocol/server-vercel](https://github.com/modelcontextprotocol/servers)
+- **Netlify MCP** - [@modelcontextprotocol/server-netlify](https://github.com/modelcontextprotocol/servers)
+- **DeepWiki MCP** - [@modelcontextprotocol/server-deepwiki](https://github.com/modelcontextprotocol/servers)
+
+All official servers maintained by [@modelcontextprotocol](https://github.com/modelcontextprotocol/servers)
+
+### Frameworks & Technologies
+
+- **FastMCP** by [jlowin](https://github.com/jlowin/fastmcp) - Framework for building MCP servers
+- **Model Context Protocol** - [Anthropic/ModelContextProtocol](https://github.com/modelcontextprotocol) - The MCP standard
+
+---
+
+**Note:** This dashboard aggregates and documents these integrations but does not claim ownership of the underlying MCP servers. Each server is the work of its respective developers and is used in accordance with its license. We deeply appreciate the contributions of all developers who make these tools available to the community.
+
+---
+
 ## 🔒 Security
 
 ### Best Practices
@@ -343,15 +403,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Independent community project
 - Not affiliated with poke.com
 - Open source contributor
-
----
-
-## 🙏 Acknowledgments
-
-- **MCP Community** - For the Model Context Protocol
-- **Poke Users** - For feedback and inspiration
-- **API Providers** - All the services that make these integrations possible
-- **Contributors** - Everyone who has contributed code, docs, or ideas
 
 ---
 
