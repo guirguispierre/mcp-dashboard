@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeFAQ();
     animateOnScroll();
     updateStats();
+    initializeSmoothScroll();
 });
 
 // Theme Management
@@ -228,18 +229,20 @@ function animateNumber(element, targetNumber) {
 }
 
 // Smooth Scroll for Anchor Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
-});
+}
 
 // Scroll to Integrations Helper Function
 function scrollToIntegrations() {
