@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BART MCP Integration for Poke - Bay Area Rapid Transit real-time data">
+    <title>BART MCP for Poke - MCP Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="integration-styles-minimal.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-nav">
+            <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        </div>
+
+        <div class="disclaimer-banner">
+            <span class="disclaimer-icon">⚠️</span>
+            <p><strong>Independent Project:</strong> This page is not affiliated with poke.com. Community resource by Pierre Guirguis.</p>
+        </div>
+
+        <div class="hero-section">
+            <div class="hero-icon">🚇</div>
+            <h1 class="hero-title">BART MCP for Poke</h1>
+            <p class="hero-subtitle">Bay Area Rapid Transit real-time data integration</p>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">Get live BART schedules, delays, and station info through Poke</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">🔗 Quick Connect to Poke</h2>
+            <div class="connection-placeholder">
+                <p class="placeholder-text">📍 MCP Connection Link Placeholder</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Pierre will add the direct connection link here</p>
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">Click the link above to automatically add BART MCP to your Poke setup</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">⚙️ Setup Instructions</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Follow these steps to connect BART MCP to your Poke assistant:</p>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>Install the BART MCP Server</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Open your terminal and run:<br>
+                        <code>npm install -g @modelcontextprotocol/server-bart</code>
+                    </p>
+                </li>
+                <li>
+                    <strong>Locate Your Poke MCP Configuration</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Find your Poke MCP configuration file. This is usually located at:<br>
+                        • macOS/Linux: <code>~/.poke/mcp.json</code><br>
+                        • Windows: <code>%USERPROFILE%\.poke\mcp.json</code><br>
+                        Or access it through Poke Settings → MCP Servers
+                    </p>
+                </li>
+                <li>
+                    <strong>Add BART Configuration</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">Add this to your MCP configuration file:</p>
+                    <pre><code>{
+  "mcpServers": {
+    "bart": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-bart"]
+    }
+  }
+}</code></pre>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem; font-size: 0.9rem;">
+                        ℹ️ <strong>No API key required!</strong> BART provides open public data.
+                    </p>
+                </li>
+                <li>
+                    <strong>Restart Poke</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Close and restart your Poke application to load the new MCP server.
+                    </p>
+                </li>
+                <li>
+                    <strong>Test the Connection</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Try asking Poke: <em>"Are there any BART delays right now?"</em>
+                    </p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">💬 Example Poke Conversations</h2>
+            
+            <div class="conversation-example">
+                <div class="user-message">👤 You: "What's the next train from Powell Street to Embarcadero?"</div>
+                <div class="poke-response">
+                    🤖 Poke: "Let me check the BART schedule for you. The next trains from Powell Street to Embarcadero are:<br><br>
+                    • 2:45 PM - 4 minutes<br>
+                    • 2:55 PM - 14 minutes<br>
+                    • 3:05 PM - 24 minutes<br><br>
+                    All trains are running on schedule with no delays reported."
+                </div>
+            </div>
+
+            <div class="conversation-example">
+                <div class="user-message">👤 You: "Are there any BART delays right now?"</div>
+                <div class="poke-response">
+                    🤖 Poke: "I'll check current BART service status for you. Currently:<br><br>
+                    ✅ All lines operating normally<br>
+                    ✅ No reported delays<br>
+                    ✅ All stations accessible<br><br>
+                    Service is running smoothly across all BART lines."
+                </div>
+            </div>
+
+            <div class="conversation-example">
+                <div class="user-message">👤 You: "Show me BART stations near downtown San Francisco"</div>
+                <div class="poke-response">
+                    🤖 Poke: "Here are the BART stations in downtown San Francisco:<br><br>
+                    🚇 Embarcadero Station - All lines<br>
+                    🚇 Montgomery Street - All lines<br>
+                    🚇 Powell Street - All lines<br>
+                    🚇 Civic Center - All lines<br><br>
+                    All stations provide connections to Muni and other transit systems."
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">🙏 Credits & Acknowledgments</h2>
+            <div style="background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--gray-border);">
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+                    <strong>MCP Server Source:</strong> 
+                    This integration uses the bartMCP server developed by Pierre Guirguis.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 0;">
+                    <strong>Repository:</strong> 
+                    <a href="https://github.com/guirguispierre/bartMCP" target="_blank" rel="noopener noreferrer" class="external-link">
+                        github.com/guirguispierre/bartMCP
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">📚 What You Can Do</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <h3>Real-Time Schedules</h3>
+                    <p>Get up-to-the-minute train arrival times for any BART station and direction.</p>
+                </div>
+                <div class="guide-card">
+                    <h3>Service Advisories</h3>
+                    <p>Check for delays, elevator outages, and other service disruptions.</p>
+                </div>
+                <div class="guide-card">
+                    <h3>Station Information</h3>
+                    <p>Find station locations, accessibility features, and parking availability.</p>
+                </div>
+                <div class="guide-card">
+                    <h3>Route Planning</h3>
+                    <p>Plan your trip with estimated travel times and transfer information.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">🔗 Resources</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;">
+                    <a href="https://github.com/guirguispierre/bartMCP" target="_blank" rel="noopener noreferrer" class="external-link">💻 bartMCP Source Code</a>
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <a href="https://www.bart.gov" target="_blank" rel="noopener noreferrer" class="external-link">🌐 Official BART Website</a>
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <a href="https://api.bart.gov/docs/overview/index.aspx" target="_blank" rel="noopener noreferrer" class="external-link">📖 BART API Documentation</a>
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener noreferrer" class="external-link">💻 MCP Servers Repository</a>
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" class="external-link">📚 Model Context Protocol Docs</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-section" style="background: var(--bg-card);">
+            <h2 class="section-title">💡 Pro Tips</h2>
+            <ul style="color: var(--text-secondary); line-height: 1.8;">
+                <li>✨ BART MCP works without any API keys - it's completely free!</li>
+                <li>⚡ Ask Poke for real-time updates during your commute</li>
+                <li>🎯 Be specific with station names for best results</li>
+                <li>🔔 Check for advisories before your trip to avoid surprises</li>
+                <li>📱 Combine with other MCPs like calendar integration for commute planning</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html" class="back-btn" style="font-size: 1.1rem; padding: 1rem 2rem;">← Back to All Integrations</a>
+        </div>
+
+        <footer>
+            <div class="footer-disclaimer">
+                <p><strong>⚠️ Important Disclaimer:</strong> This page is independently created by Pierre Guirguis. Not affiliated with, endorsed by, or connected to poke.com, BART, or any official entities. Community resource for educational purposes.</p>
+            </div>
+            <p style="text-align: center; color: var(--text-secondary); margin-top: 2rem;">
+                Built with ❤️ for the Poke community by Pierre Guirguis
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
