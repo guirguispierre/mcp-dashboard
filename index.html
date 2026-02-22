@@ -36,6 +36,9 @@
             
             /* Accent - Subtle Blue (used sparingly) */
             --accent-blue: #0ea5e9;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
             
             /* Semantic Colors */
             --success: #10b981;
@@ -395,6 +398,46 @@
             color: var(--success);
         }
 
+        /* Integration Type Tags */
+        .tag-builtin {
+            background: rgba(14, 165, 233, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .tag-custom {
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--accent-purple);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        /* Integration Type Notice */
+        .integration-notice {
+            background: rgba(14, 165, 233, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.8125rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .integration-notice.custom {
+            background: rgba(139, 92, 246, 0.05);
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .integration-notice.warning {
+            background: rgba(245, 158, 11, 0.05);
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        .integration-notice strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
         /* Server URL Section */
         .card-server-url {
             margin-bottom: 1rem;
@@ -494,7 +537,7 @@
             50% { opacity: 0.5; }
         }
 
-        /* Setup Guide */
+        /* Guide Section */
         .guide-section {
             padding: 3rem 0;
             border-top: 1px solid var(--gray-border);
@@ -778,6 +821,7 @@
             color: #0284c7;
         }
     </style>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -840,6 +884,7 @@
                 <button class="filter-btn" data-category="financial">Financial</button>
                 <button class="filter-btn" data-category="media">Media</button>
                 <button class="filter-btn" data-category="document">Document</button>
+                <button class="filter-btn" data-category="business">Business</button>
             </div>
         </section>
 
@@ -849,8 +894,8 @@
             <p class="section-description">Click any card for detailed setup instructions and examples</p>
 
             <div class="integrations-grid" id="integrationsGrid">
-                <!-- GitHub -->
-                <div class="integration-card fade-in" data-category="developer" data-name="GitHub">
+                <!-- GitHub (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="developer" data-name="GitHub" data-type="builtin">
                     <div class="card-icon">🐙</div>
                     <div class="card-header">
                         <div>
@@ -859,8 +904,14 @@
                         </div>
                     </div>
                     <p class="card-description">Manage repositories, issues, pull requests, and more directly through Poke conversations</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your GitHub account in Poke settings.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Developer</span>
+                        <span class="tag tag-builtin">Built-in</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
@@ -868,14 +919,11 @@
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('github')">
-                            <span>▶️</span>
-                        </button>
                     </div>
                 </div>
 
-                <!-- Todoist -->
-                <div class="integration-card fade-in" data-category="productivity" data-name="Todoist">
+                <!-- Todoist (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="productivity" data-name="Todoist" data-type="builtin">
                     <div class="card-icon">✅</div>
                     <div class="card-header">
                         <div>
@@ -884,8 +932,14 @@
                         </div>
                     </div>
                     <p class="card-description">Create, manage, and organize your tasks seamlessly through natural Poke conversations</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Todoist account in Poke settings.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Productivity</span>
+                        <span class="tag tag-builtin">Built-in</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
@@ -893,14 +947,95 @@
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('todoist')">
-                            <span>▶️</span>
+                    </div>
+                </div>
+
+                <!-- Asana (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="productivity" data-name="Asana" data-type="builtin">
+                    <div class="card-icon">📋</div>
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Asana</h3>
+                            <div class="status-indicator"></div>
+                        </div>
+                    </div>
+                    <p class="card-description">Manage projects and tasks with Asana directly from Poke</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Asana account in Poke settings.
+                    </div>
+                    
+                    <div class="card-tags">
+                        <span class="tag tag-category">Productivity</span>
+                        <span class="tag tag-builtin">Built-in</span>
+                        <span class="tag tag-status">Active</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='https://poke.com'">
+                            <span>📚</span>
+                            <span>Learn More</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Supabase -->
-                <div class="integration-card fade-in" data-category="developer" data-name="Supabase">
+                <!-- Linear (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="productivity" data-name="Linear" data-type="builtin">
+                    <div class="card-icon">📐</div>
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Linear</h3>
+                            <div class="status-indicator"></div>
+                        </div>
+                    </div>
+                    <p class="card-description">Track issues and sprints with Linear through Poke</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Linear account in Poke settings.
+                    </div>
+                    
+                    <div class="card-tags">
+                        <span class="tag tag-category">Productivity</span>
+                        <span class="tag tag-builtin">Built-in</span>
+                        <span class="tag tag-status">Active</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='https://poke.com'">
+                            <span>📚</span>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notion (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="productivity" data-name="Notion" data-type="builtin">
+                    <div class="card-icon">📝</div>
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Notion</h3>
+                            <div class="status-indicator"></div>
+                        </div>
+                    </div>
+                    <p class="card-description">Access and manage your Notion workspace through Poke</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Notion account in Poke settings.
+                    </div>
+                    
+                    <div class="card-tags">
+                        <span class="tag tag-category">Productivity</span>
+                        <span class="tag tag-builtin">Built-in</span>
+                        <span class="tag tag-status">Active</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='https://poke.com'">
+                            <span>📚</span>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Supabase (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="developer" data-name="Supabase" data-type="builtin">
                     <div class="card-icon">🗄️</div>
                     <div class="card-header">
                         <div>
@@ -909,8 +1044,14 @@
                         </div>
                     </div>
                     <p class="card-description">Query and manage your Supabase database with natural language through Poke</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Supabase project in Poke settings.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Developer</span>
+                        <span class="tag tag-builtin">Built-in</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
@@ -918,14 +1059,11 @@
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('supabase')">
-                            <span>▶️</span>
-                        </button>
                     </div>
                 </div>
 
-                <!-- Vercel -->
-                <div class="integration-card fade-in" data-category="deployment" data-name="Vercel">
+                <!-- Vercel (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="deployment" data-name="Vercel" data-type="builtin">
                     <div class="card-icon">▲</div>
                     <div class="card-header">
                         <div>
@@ -934,8 +1072,14 @@
                         </div>
                     </div>
                     <p class="card-description">Deploy, manage, and monitor your Vercel projects directly from Poke</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Vercel account in Poke settings.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Deployment</span>
+                        <span class="tag tag-builtin">Built-in</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
@@ -943,14 +1087,11 @@
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('vercel')">
-                            <span>▶️</span>
-                        </button>
                     </div>
                 </div>
 
-                <!-- Netlify -->
-                <div class="integration-card fade-in" data-category="deployment" data-name="Netlify">
+                <!-- Netlify (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="deployment" data-name="Netlify" data-type="builtin">
                     <div class="card-icon">🌐</div>
                     <div class="card-header">
                         <div>
@@ -959,8 +1100,14 @@
                         </div>
                     </div>
                     <p class="card-description">Deploy and manage your Netlify sites with simple Poke commands</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Netlify account in Poke settings.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Deployment</span>
+                        <span class="tag tag-builtin">Built-in</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     <div class="card-actions">
@@ -968,14 +1115,123 @@
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('netlify')">
-                            <span>▶️</span>
+                    </div>
+                </div>
+
+                <!-- Sentry (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="developer" data-name="Sentry" data-type="builtin">
+                    <div class="card-icon">🔍</div>
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Sentry</h3>
+                            <div class="status-indicator"></div>
+                        </div>
+                    </div>
+                    <p class="card-description">Monitor and track application errors with Sentry through Poke</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Sentry account in Poke settings.
+                    </div>
+                    
+                    <div class="card-tags">
+                        <span class="tag tag-category">Developer</span>
+                        <span class="tag tag-builtin">Built-in</span>
+                        <span class="tag tag-status">Active</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='https://poke.com'">
+                            <span>📚</span>
+                            <span>Learn More</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- BART -->
-                <div class="integration-card fade-in" data-category="transit" data-name="BART">
+                <!-- DeepWiki (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="developer" data-name="DeepWiki" data-type="builtin">
+                    <div class="card-icon">📚</div>
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">DeepWiki</h3>
+                            <div class="status-indicator"></div>
+                        </div>
+                    </div>
+                    <p class="card-description">Search documentation and knowledge bases instantly through Poke</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just enable in Poke settings.
+                    </div>
+                    
+                    <div class="card-tags">
+                        <span class="tag tag-category">Developer</span>
+                        <span class="tag tag-builtin">Built-in</span>
+                        <span class="tag tag-status">Active</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='deepwiki.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ramp (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="business" data-name="Ramp" data-type="builtin">
+                    <div class="card-icon">💳</div>
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Ramp</h3>
+                            <div class="status-indicator"></div>
+                        </div>
+                    </div>
+                    <p class="card-description">Manage corporate cards and expenses with Ramp through Poke</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Ramp account in Poke settings.
+                    </div>
+                    
+                    <div class="card-tags">
+                        <span class="tag tag-category">Business</span>
+                        <span class="tag tag-builtin">Built-in</span>
+                        <span class="tag tag-status">Active</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='https://poke.com'">
+                            <span>📚</span>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Webflow (Built-in Poke Integration) -->
+                <div class="integration-card fade-in" data-category="business" data-name="Webflow" data-type="builtin">
+                    <div class="card-icon">🎨</div>
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Webflow</h3>
+                            <div class="status-indicator"></div>
+                        </div>
+                    </div>
+                    <p class="card-description">Manage your Webflow sites and content through Poke</p>
+                    
+                    <div class="integration-notice">
+                        <strong>✨ Built into Poke.com</strong> — No server setup needed. Just connect your Webflow account in Poke settings.
+                    </div>
+                    
+                    <div class="card-tags">
+                        <span class="tag tag-category">Business</span>
+                        <span class="tag tag-builtin">Built-in</span>
+                        <span class="tag tag-status">Active</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='https://poke.com'">
+                            <span>📚</span>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- BART (Custom MCP on Render) -->
+                <div class="integration-card fade-in" data-category="transit" data-name="BART" data-type="custom">
                     <div class="card-icon">🚇</div>
                     <div class="card-header">
                         <div>
@@ -984,23 +1240,40 @@
                         </div>
                     </div>
                     <p class="card-description">Get real-time Bay Area transit information and schedules through Poke</p>
+                    
+                    <div class="integration-notice custom">
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render. Requires BART API key.
+                    </div>
+                    
+                    <div class="integration-notice warning">
+                        <strong>⚠️ API Key Required:</strong> You need your own BART API key from <a href="https://api.bart.gov/docs/key/" target="_blank">api.bart.gov</a> to use this integration.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Transit</span>
+                        <span class="tag tag-custom">Custom MCP</span>
                         <span class="tag tag-status">Active</span>
                     </div>
+                    
+                    <!-- MCP Server URL -->
+                    <div class="card-server-url">
+                        <div class="server-url-label">MCP Server URL (Render)</div>
+                        <a href="https://github.com/guirguispierre/bartMCP" target="_blank" rel="noopener noreferrer" class="server-url-link">
+                            <span class="server-url-icon">🔗</span>
+                            <span>github.com/guirguispierre/bartMCP</span>
+                        </a>
+                    </div>
+                    
                     <div class="card-actions">
                         <button class="btn btn-primary" onclick="window.location.href='bart.html'">
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('bart')">
-                            <span>▶️</span>
-                        </button>
                     </div>
                 </div>
 
-                <!-- Last.fm -->
-                <div class="integration-card fade-in" data-category="entertainment" data-name="Last.fm">
+                <!-- Last.fm (Custom MCP on Render) -->
+                <div class="integration-card fade-in" data-category="entertainment" data-name="Last.fm" data-type="custom">
                     <div class="card-icon">🎵</div>
                     <div class="card-header">
                         <div>
@@ -1009,8 +1282,14 @@
                         </div>
                     </div>
                     <p class="card-description">Track and analyze your music listening history with Poke insights</p>
+                    
+                    <div class="integration-notice custom">
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre. Uses Last.fm's public API.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Entertainment</span>
+                        <span class="tag tag-custom">Custom MCP</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     
@@ -1028,39 +1307,11 @@
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('lastfm')">
-                            <span>▶️</span>
-                        </button>
                     </div>
                 </div>
 
-                <!-- DeepWiki -->
-                <div class="integration-card fade-in" data-category="developer" data-name="DeepWiki">
-                    <div class="card-icon">📚</div>
-                    <div class="card-header">
-                        <div>
-                            <h3 class="card-title">DeepWiki</h3>
-                            <div class="status-indicator"></div>
-                        </div>
-                    </div>
-                    <p class="card-description">Search documentation and knowledge bases instantly through Poke</p>
-                    <div class="card-tags">
-                        <span class="tag tag-category">Developer</span>
-                        <span class="tag tag-status">Active</span>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn btn-primary" onclick="window.location.href='deepwiki.html'">
-                            <span>📚</span>
-                            <span>View Guide</span>
-                        </button>
-                        <button class="btn btn-secondary" onclick="showDemo('deepwiki')">
-                            <span>▶️</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- PDF Reader -->
-                <div class="integration-card fade-in" data-category="document" data-name="PDF Reader">
+                <!-- PDF Reader (Custom MCP on Render) -->
+                <div class="integration-card fade-in" data-category="document" data-name="PDF Reader" data-type="custom">
                     <div class="card-icon">📄</div>
                     <div class="card-header">
                         <div>
@@ -1069,14 +1320,20 @@
                         </div>
                     </div>
                     <p class="card-description">Extract text, metadata, and images from PDF files through Poke conversations</p>
+                    
+                    <div class="integration-notice custom">
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Document</span>
+                        <span class="tag tag-custom">Custom MCP</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     
                     <!-- MCP Server URL -->
                     <div class="card-server-url">
-                        <div class="server-url-label">MCP Server URL</div>
+                        <div class="server-url-label">MCP Server URL (Render)</div>
                         <a href="http://pdf-reader-mcp-m8ky.onrender.com/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
                             <span class="server-url-icon">🔗</span>
                             <span>pdf-reader-mcp-m8ky.onrender.com/mcp</span>
@@ -1088,14 +1345,11 @@
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('pdf-reader')">
-                            <span>▶️</span>
-                        </button>
                     </div>
                 </div>
 
-                <!-- Earnings Feed -->
-                <div class="integration-card fade-in" data-category="financial" data-name="Earnings Feed">
+                <!-- Earnings Feed (Custom MCP on Render) -->
+                <div class="integration-card fade-in" data-category="financial" data-name="Earnings Feed" data-type="custom">
                     <div class="card-icon">📊</div>
                     <div class="card-header">
                         <div>
@@ -1104,14 +1358,20 @@
                         </div>
                     </div>
                     <p class="card-description">Access real-time financial earnings data and market insights via Poke</p>
+                    
+                    <div class="integration-notice custom">
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Financial</span>
+                        <span class="tag tag-custom">Custom MCP</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     
                     <!-- MCP Server URL -->
                     <div class="card-server-url">
-                        <div class="server-url-label">MCP Server URL</div>
+                        <div class="server-url-label">MCP Server URL (Render)</div>
                         <a href="https://earningsfeed.com/api/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
                             <span class="server-url-icon">🔗</span>
                             <span>earningsfeed.com/api/mcp</span>
@@ -1123,14 +1383,11 @@
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('earnings')">
-                            <span>▶️</span>
-                        </button>
                     </div>
                 </div>
 
-                <!-- FFmpeg -->
-                <div class="integration-card fade-in" data-category="media" data-name="FFmpeg">
+                <!-- FFmpeg (Custom MCP on Render) -->
+                <div class="integration-card fade-in" data-category="media" data-name="FFmpeg" data-type="custom">
                     <div class="card-icon">🎬</div>
                     <div class="card-header">
                         <div>
@@ -1139,14 +1396,20 @@
                         </div>
                     </div>
                     <p class="card-description">Process video and audio files with comprehensive format conversion through Poke</p>
+                    
+                    <div class="integration-notice custom">
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render.
+                    </div>
+                    
                     <div class="card-tags">
                         <span class="tag tag-category">Media</span>
+                        <span class="tag tag-custom">Custom MCP</span>
                         <span class="tag tag-status">Active</span>
                     </div>
                     
                     <!-- MCP Server URL -->
                     <div class="card-server-url">
-                        <div class="server-url-label">MCP Server URL</div>
+                        <div class="server-url-label">MCP Server URL (Render)</div>
                         <a href="https://ffmpeg-mcp.onrender.com/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
                             <span class="server-url-icon">🔗</span>
                             <span>ffmpeg-mcp.onrender.com/mcp</span>
@@ -1158,9 +1421,6 @@
                             <span>📚</span>
                             <span>View Guide</span>
                         </button>
-                        <button class="btn btn-secondary" onclick="showDemo('ffmpeg')">
-                            <span>▶️</span>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -1168,31 +1428,31 @@
 
         <!-- Setup Guide Section -->
         <section class="guide-section fade-in" id="setup-guide">
-            <h2 class="section-title">📖 Quick Setup Guide</h2>
-            <p class="section-description">Get started with MCP integrations in just a few steps</p>
+            <h2 class="section-title">📖 Integration Types Explained</h2>
+            <p class="section-description">Understanding the different types of MCP integrations</p>
 
             <div class="guide-steps">
                 <div class="guide-step">
                     <div class="step-number">1</div>
-                    <h3 class="step-title">Install MCP Client</h3>
+                    <h3 class="step-title">Built-in Poke Integrations</h3>
                     <div class="step-content">
-                        <p>Ensure you have Poke installed with MCP support enabled. MCP (Model Context Protocol) allows Poke to connect to external data sources.</p>
+                        <p>These integrations are <strong>native to Poke.com</strong> and require zero server setup. Simply connect your account in Poke settings and start using them immediately. Examples: GitHub, Todoist, Asana, Linear, Notion, Supabase, Vercel, Netlify, DeepWiki, Sentry, Ramp, and Webflow.</p>
                     </div>
                 </div>
 
                 <div class="guide-step">
                     <div class="step-number">2</div>
-                    <h3 class="step-title">Get API Keys</h3>
+                    <h3 class="step-title">Custom MCP Servers</h3>
                     <div class="step-content">
-                        <p>Register for the services you want to integrate and obtain API keys. Visit each integration's guide page for specific instructions.</p>
+                        <p>These are <strong>community-created MCPs</strong> deployed on Render by @guirguispierre. They require adding the server URL to your Poke MCP configuration. Examples: BART, PDF Reader, Last.fm, FFmpeg, and Earnings Feed.</p>
                     </div>
                 </div>
 
                 <div class="guide-step">
                     <div class="step-number">3</div>
-                    <h3 class="step-title">Configure MCP</h3>
+                    <h3 class="step-title">Configure Custom MCPs</h3>
                     <div class="step-content">
-                        <p>Add the MCP server configuration to your Poke settings. Each integration has detailed setup instructions with code examples.</p>
+                        <p>For custom MCPs, you'll need to add the server URL to your Poke settings. Each integration card shows the specific server URL. Some may require additional API keys (like BART).</p>
                     </div>
                 </div>
 
@@ -1200,7 +1460,7 @@
                     <div class="step-number">4</div>
                     <h3 class="step-title">Start Using</h3>
                     <div class="step-content">
-                        <p>Simply ask Poke naturally! For example: "Show my GitHub repos" or "What's my next Todoist task?" The MCP servers handle the rest.</p>
+                        <p>Once configured, simply ask Poke naturally! For example: "Show my GitHub repos" or "What's the next BART train?" The integrations work seamlessly in your conversations.</p>
                     </div>
                 </div>
             </div>
@@ -1246,61 +1506,61 @@
             <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>What is Model Context Protocol (MCP)?</span>
+                        <span>What's the difference between built-in and custom MCPs?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Model Context Protocol (MCP) is an open standard that enables AI assistants like Poke to connect to external data sources and tools. It provides a universal way to integrate various services, databases, and APIs into your AI conversations, making them more powerful and context-aware.</p>
+                        <p>Built-in integrations are native to Poke.com and require no server setup—just connect your account. Custom MCPs are community-created servers that need to be configured in your Poke settings with a server URL. Built-in integrations are more convenient, while custom MCPs offer specialized functionality.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>How do I install an MCP integration?</span>
+                        <span>How do I add a custom MCP server to Poke?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Each integration has its own setup guide (click the "View Guide" button on any card). Generally, you'll need to: 1) Get API credentials from the service, 2) Add the MCP server configuration to your Poke settings, 3) Restart Poke to load the integration. Detailed instructions are provided for each service.</p>
+                        <p>Go to your Poke settings, find the MCP configuration section, and add the server URL provided on each custom integration card. Some integrations may require additional API keys. Click "View Guide" on any custom integration for detailed setup instructions.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>Are these integrations free to use?</span>
+                        <span>Do custom MCPs hosted on Render cost money?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>The MCP servers themselves are open source and free. However, some services (like GitHub, Todoist, etc.) may require paid subscriptions for full access to their APIs. Most services offer free tiers that work perfectly with these integrations. Check each service's pricing page for details.</p>
+                        <p>The custom MCP servers themselves are free to use. However, Render's free tier may have limitations. If you experience issues, you might need to deploy your own instance or wait for the server to wake up from sleep (common with free-tier hosting).</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>Is my data secure?</span>
+                        <span>Why does BART require an API key?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! MCP servers run locally on your machine and communicate directly with services using your API keys. Your credentials and data never pass through third-party servers. Always store API keys securely and never share them publicly. Follow our security best practices section for more information.</p>
+                        <p>BART's real-time transit data API requires authentication. You need to register for a free API key at api.bart.gov to access their data. This ensures fair usage and helps BART track API utilization.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>Can I contribute my own integration?</span>
+                        <span>Can I create my own custom MCP?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Absolutely! This is a community-driven project. You can contribute new integrations, improvements, or documentation by visiting the GitHub repository. Create an MCP server for your favorite service and submit a pull request. We welcome all contributions!</p>
+                        <p>Absolutely! Check out the Model Context Protocol documentation at modelcontextprotocol.io to learn how to build your own MCP server. You can deploy it on Render, Railway, or any hosting service and connect it to Poke.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>What if an integration stops working?</span>
+                        <span>Is my data secure with custom MCPs?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>First, check if your API keys are still valid and haven't expired. Then, verify that the service itself is operational. If the issue persists, check the integration's GitHub repository for known issues or updates. You can also report problems through GitHub issues, and the community will help troubleshoot.</p>
+                        <p>Custom MCPs act as intermediaries between Poke and external services. Always review the source code (all custom MCPs here are open source on GitHub) and use API keys with minimal required permissions. Built-in Poke integrations follow Poke's security standards.</p>
                     </div>
                 </div>
             </div>
@@ -1310,21 +1570,20 @@
         <footer>
             <div class="footer-content">
                 <div class="footer-links">
-                    <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank">GitHub Repository</a>
-                    <a href="https://modelcontextprotocol.io" target="_blank">MCP Documentation</a>
                     <a href="#setup-guide">Setup Guide</a>
                     <a href="#faq">FAQ</a>
+                    <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank">GitHub</a>
+                    <a href="https://poke.com" target="_blank">Poke.com</a>
+                    <a href="https://modelcontextprotocol.io" target="_blank">MCP Docs</a>
                 </div>
                 <p class="footer-note">
-                    Built with ❤️ for the Poke community by <a href="https://github.com/guirguispierre" target="_blank">@guirguispierre</a>
-                </p>
-                <p class="footer-note" style="margin-top: 1rem;">
-                    ⚠️ Independent project • Not affiliated with poke.com • Open source • MIT License • Contributions welcome
+                    Built with ❤️ by <a href="https://github.com/guirguispierre" target="_blank">@guirguispierre</a> • 
+                    Not affiliated with poke.com • 
+                    Open source community project • 
+                    <a href="https://github.com/guirguispierre/mcp-dashboard/blob/main/LICENSE" target="_blank">MIT License</a>
                 </p>
             </div>
         </footer>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
