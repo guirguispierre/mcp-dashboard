@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     animateOnScroll();
     updateStats();
     initializeSmoothScroll();
+    initializeFilters();       // FIX: Enable category filtering
+    initializeSearch();        // FIX: Enable search functionality
+    initializeThemeToggle();   // FIX: Enable theme toggle
+    initializeFAQ();          // Initialize FAQ toggles
 });
 
 // Card interactions (from main branch)
@@ -274,7 +278,124 @@ function scrollToIntegrations() {
     }
 }
 
-// Security Features
+// FIX: Initialize filter buttons with event listeners
+function initializeFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Get category and filter
+            const category = this.getAttribute('data-category');
+            filterByCategory(category);
+            
+            console.log(`Filtered by category: ${category}`);
+        });
+    });
+}
+
+// FIX: Initialize search input with event listener
+function initializeSearch() {
+    const searchInput = document.getElementById('searchInput');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.integration-card');
+            
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name')?.toLowerCase() || '';
+                const description = card.querySelector('.card-description')?.textContent.toLowerCase() || '';
+                
+                if (searchTerm === '' || name.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            console.log(`Search: "${searchTerm}"`);
+        });
+    }
+}
+
+// FIX: Initialize theme toggle functionality
+function initializeThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    const html = document.documentElement;
+    
+    if (!themeToggle) return;
+    
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', currentTheme);
+    updateThemeUI(currentTheme);
+    
+    themeToggle.addEventListener('click', () => {
+        const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateThemeUI(theme);
+        console.log(`Theme switched to: ${theme}`);
+    });
+    
+    function updateThemeUI(theme) {
+        if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        if (themeText) themeText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    }
+}
+
+// Initialize FAQ toggles
+function initializeFAQ() {
+    // This function is called by the inline onclick in the HTML
+    // No changes needed here - FAQ functionality works via the toggleFaq function below
+}
+
+// FAQ toggle function (called from HTML onclick)
+function toggleFaq(element) {
+    const faqItem = element.closest('.faq-item');
+    if (faqItem) {
+        faqItem.classList.toggle('active');
+    }
+}
+
+// Category filter function (now properly connected via initializeFilters)
+function filterByCategory(category) {
+    const cards = document.querySelectorAll('.integration-card');
+    
+    cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = 'block';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            }, 10);
+        } else {
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                card.style.display = 'none';
+            }, 300);
+        }
+    });
+}
+
+// Security Tips
 function showSecurityTips() {
     alert('🔒 Security Best Practices for Poke MCP:\n\n' +
         '1. Never commit your Poke MCP config file with API keys to GitHub\n' +
