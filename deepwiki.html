@@ -5,48 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="DeepWiki MCP Integration for Poke - Documentation search">
     <title>DeepWiki MCP for Poke - MCP Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .back-nav { margin-bottom: 2rem; }
-        .back-btn {
-            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem;
-            background: var(--surface); border: 1px solid var(--border-color); border-radius: 8px;
-            color: var(--text-primary); text-decoration: none; transition: all 0.3s ease; font-weight: 600;
-        }
-        .back-btn:hover { background: var(--success-color); color: var(--background); border-color: var(--success-color); transform: translateX(-5px); }
-        .hero-section { text-align: center; padding: 3rem 0; margin-bottom: 3rem; background: var(--surface); border-radius: 12px; border: 2px solid var(--success-color); }
-        .hero-icon { font-size: 5rem; margin-bottom: 1rem; }
-        .hero-title { font-size: 3rem; margin-bottom: 1rem; color: var(--text-primary); }
-        .hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); }
-        .content-section { background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; }
-        .section-title { font-size: 1.75rem; color: var(--success-color); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-        .connection-placeholder { background: var(--background); border: 2px dashed var(--warning-color); border-radius: 8px; padding: 2rem; margin: 1.5rem 0; text-align: center; }
-        .placeholder-text { color: var(--warning-color); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem; }
-        .conversation-example { background: var(--background); border-left: 4px solid var(--success-color); padding: 1.5rem; margin: 1rem 0; border-radius: 4px; }
-        .user-message { color: var(--text-primary); font-weight: 600; margin-bottom: 0.75rem; }
-        .poke-response { color: var(--text-secondary); line-height: 1.6; padding-left: 1rem; }
-        .step-list { list-style: none; counter-reset: step-counter; }
-        .step-list li { counter-increment: step-counter; margin-bottom: 1.5rem; padding-left: 3rem; position: relative; }
-        .step-list li::before { content: counter(step-counter); position: absolute; left: 0; top: 0; background: var(--success-color); color: var(--background); width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="integration-styles-minimal.css">
 </head>
 <body>
     <div class="container">
-        <div class="back-nav"><a href="index.html" class="back-btn">← Back to Dashboard</a></div>
-        <div class="disclaimer-banner"><span class="disclaimer-icon">⚠️</span><p><strong>Independent Project:</strong> This page is not affiliated with poke.com. Community resource by Pierre Guirguis.</p></div>
-        <div class="hero-section"><div class="hero-icon">📚</div><h1 class="hero-title">DeepWiki MCP for Poke</h1><p class="hero-subtitle">Documentation search and knowledge management</p><p style="color: var(--text-secondary); margin-top: 1rem;">Search documentation through Poke conversations</p></div>
-        <div class="content-section"><h2 class="section-title">🔗 Quick Connect to Poke</h2><div class="connection-placeholder"><p class="placeholder-text">📍 MCP Connection Link Placeholder</p><p style="color: var(--text-secondary); font-size: 0.9rem;">Pierre will add the direct connection link here</p></div></div>
-        <div class="content-section"><h2 class="section-title">⚙️ Setup Instructions</h2><ol class="step-list"><li><strong style="color: var(--text-primary);">Install DeepWiki MCP Server</strong><p style="color: var(--text-secondary); margin-top: 0.5rem;"><code style="background: var(--background); padding: 0.5rem; display: inline-block; margin-top: 0.5rem; border-radius: 4px;">npm install -g @modelcontextprotocol/server-deepwiki</code></p></li><li><strong style="color: var(--text-primary);">Configure Documentation Sources</strong><p style="color: var(--text-secondary); margin-top: 0.5rem;">Set up the documentation sources you want to search</p></li><li><strong style="color: var(--text-primary);">Add to Poke MCP Configuration</strong><pre style="background: var(--background); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 0.5rem;"><code>{
+        <div class="back-nav">
+            <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        </div>
+
+        <div class="disclaimer-banner">
+            <span class="disclaimer-icon">⚠️</span>
+            <p><strong>Independent Project:</strong> This page is not affiliated with poke.com. Community resource by Pierre Guirguis.</p>
+        </div>
+
+        <div class="hero-section">
+            <div class="hero-icon">📚</div>
+            <h1 class="hero-title">DeepWiki MCP for Poke</h1>
+            <p class="hero-subtitle">Documentation search and knowledge management</p>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">Search documentation through Poke conversations</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">🔗 Quick Connect to Poke</h2>
+            <div class="connection-placeholder">
+                <p class="placeholder-text">📍 MCP Connection Link Placeholder</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Pierre will add the direct connection link here</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">⚙️ Setup Instructions</h2>
+            <ol class="step-list">
+                <li>
+                    <strong>Install DeepWiki MCP Server</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        <code>npm install -g @modelcontextprotocol/server-deepwiki</code>
+                    </p>
+                </li>
+                <li>
+                    <strong>Configure Documentation Sources</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Set up the documentation sources you want to search
+                    </p>
+                </li>
+                <li>
+                    <strong>Add to Poke Configuration</strong>
+                    <pre><code>{
   "mcpServers": {
     "deepwiki": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-deepwiki"]
     }
   }
-}</code></pre></li><li><strong style="color: var(--text-primary);">Restart Poke</strong></li></ol></div>
-        <div class="content-section"><h2 class="section-title">💬 Example Poke Conversations</h2><div class="conversation-example"><div class="user-message">👤 You: "Search the docs for authentication methods"</div><div class="poke-response">🤖 Poke: "I found documentation on authentication:<br><br>📖 OAuth 2.0 Implementation<br>📖 API Key Authentication<br>📖 JWT Token Authentication<br><br>Which would you like to learn more about?"</div></div></div>
-        <div style="text-align: center; margin: 3rem 0;"><a href="index.html" class="back-btn" style="font-size: 1.1rem; padding: 1rem 2rem;">← Back to All Integrations</a></div>
-        <footer style="margin-top: 4rem;"><div class="footer-disclaimer"><p><strong>⚠️ Important Disclaimer:</strong> Not affiliated with poke.com. Created by Pierre Guirguis.</p></div></footer>
+}</code></pre>
+                </li>
+                <li>
+                    <strong>Restart Poke</strong>
+                </li>
+            </ol>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">📚 What You Can Do</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <h3>Documentation Search</h3>
+                    <p>Search across multiple documentation sources instantly.</p>
+                </div>
+                <div class="guide-card">
+                    <h3>Knowledge Base</h3>
+                    <p>Access internal documentation and wikis.</p>
+                </div>
+                <div class="guide-card">
+                    <h3>API References</h3>
+                    <p>Find API documentation quickly.</p>
+                </div>
+                <div class="guide-card">
+                    <h3>Code Examples</h3>
+                    <p>Discover code examples and tutorials.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">💡 Pro Tips</h2>
+            <ul style="color: var(--text-secondary); line-height: 1.8;">
+                <li>🔍 Use specific keywords for better results</li>
+                <li>📚 Configure multiple documentation sources</li>
+                <li>⚡ Search faster than manual browsing</li>
+                <li>🎯 Get relevant examples quickly</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html" class="back-btn" style="font-size: 1.1rem; padding: 1rem 2rem;">← Back to All Integrations</a>
+        </div>
+
+        <footer>
+            <div class="footer-disclaimer">
+                <p><strong>⚠️ Important Disclaimer:</strong> Not affiliated with poke.com. Created by Pierre Guirguis.</p>
+            </div>
+            <p style="text-align: center; color: var(--text-secondary); margin-top: 2rem;">
+                Built with ❤️ for the Poke community by Pierre Guirguis
+            </p>
+        </footer>
     </div>
 </body>
 </html>

@@ -3,125 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Last.fm MCP Integration for Poke - Music tracking and scrobbling">
+    <meta name="description" content="Last.fm MCP Integration for Poke - Music tracking">
     <title>Last.fm MCP for Poke - MCP Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .back-nav {
-            margin-bottom: 2rem;
-        }
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        .back-btn:hover {
-            background: var(--success-color);
-            color: var(--background);
-            border-color: var(--success-color);
-            transform: translateX(-5px);
-        }
-        .hero-section {
-            text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 3rem;
-            background: var(--surface);
-            border-radius: 12px;
-            border: 2px solid var(--success-color);
-        }
-        .hero-icon {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-        }
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-        }
-        .content-section {
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        .section-title {
-            font-size: 1.75rem;
-            color: var(--success-color);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .connection-placeholder {
-            background: var(--background);
-            border: 2px dashed var(--warning-color);
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-        .placeholder-text {
-            color: var(--warning-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .conversation-example {
-            background: var(--background);
-            border-left: 4px solid var(--success-color);
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-        .user-message {
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-        .poke-response {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            padding-left: 1rem;
-        }
-        .step-list {
-            list-style: none;
-            counter-reset: step-counter;
-        }
-        .step-list li {
-            counter-increment: step-counter;
-            margin-bottom: 1.5rem;
-            padding-left: 3rem;
-            position: relative;
-        }
-        .step-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: var(--success-color);
-            color: var(--background);
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="integration-styles-minimal.css">
 </head>
 <body>
     <div class="container">
@@ -146,214 +33,81 @@
             <div class="connection-placeholder">
                 <p class="placeholder-text">📍 MCP Connection Link Placeholder</p>
                 <p style="color: var(--text-secondary); font-size: 0.9rem;">Pierre will add the direct connection link here</p>
-                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">Click the link above to automatically add Last.fm MCP to your Poke setup</p>
             </div>
         </div>
 
         <div class="content-section">
             <h2 class="section-title">⚙️ Setup Instructions</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Follow these steps to connect Last.fm MCP to your Poke assistant:</p>
-            
             <ol class="step-list">
                 <li>
-                    <strong style="color: var(--text-primary);">Create Last.fm Account</strong>
+                    <strong>Create Last.fm Account</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        Sign up at <a href="https://www.last.fm" target="_blank" class="external-link">last.fm</a> if you don't have an account.<br>
-                        It's free and tracks your listening across all platforms!
+                        Sign up at last.fm if you don't have an account
                     </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Get API Credentials</strong>
+                    <strong>Get API Credentials</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        1. Go to <a href="https://www.last.fm/api/account/create" target="_blank" class="external-link">last.fm/api/account/create</a><br>
-                        2. Create a new API application<br>
-                        3. Copy your API Key and Shared Secret<br>
-                        4. Save these credentials securely
+                        Visit last.fm/api/account/create and create an API application
                     </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Install Last.fm MCP Server</strong>
+                    <strong>Install Last.fm MCP Server</strong>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        Open your terminal and run:<br>
-                        <code style="background: var(--background); padding: 0.5rem; display: inline-block; margin-top: 0.5rem; border-radius: 4px;">npm install -g @modelcontextprotocol/server-lastfm</code>
+                        <code>npm install -g @modelcontextprotocol/server-lastfm</code>
                     </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Add to Poke MCP Configuration</strong>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">Add this to your MCP configuration file:</p>
-                    <pre style="background: var(--background); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 0.5rem;"><code>{
+                    <strong>Configure Poke</strong>
+                    <pre><code>{
   "mcpServers": {
     "lastfm": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-lastfm"],
       "env": {
-        "LASTFM_API_KEY": "your_api_key_here",
-        "LASTFM_SECRET": "your_shared_secret_here",
+        "LASTFM_API_KEY": "your_api_key",
+        "LASTFM_SECRET": "your_secret",
         "LASTFM_USERNAME": "your_username"
       }
     }
   }
 }</code></pre>
-                    <p style="color: var(--warning-color); margin-top: 0.5rem; font-size: 0.9rem;">
-                        ⚠️ Replace the placeholder values with your actual credentials
-                    </p>
                 </li>
                 <li>
-                    <strong style="color: var(--text-primary);">Restart Poke</strong>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        Close and restart your Poke application to load the new MCP server.
-                    </p>
-                </li>
-                <li>
-                    <strong style="color: var(--text-primary);">Test the Connection</strong>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                        Try asking Poke: <em>"What have I been listening to this week?"</em>
-                    </p>
+                    <strong>Restart Poke</strong>
                 </li>
             </ol>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">💬 Example Poke Conversations</h2>
-            
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "What have I been listening to this week?"</div>
-                <div class="poke-response">
-                    🤖 Poke: "Here's your listening summary for this week:<br><br>
-                    🎵 Total scrobbles: 156<br>
-                    ⏱️ Listening time: ~8 hours<br><br>
-                    <strong>Top 5 tracks:</strong><br>
-                    1. 🎶 "Blinding Lights" - The Weeknd (12 plays)<br>
-                    2. 🎶 "Levitating" - Dua Lipa (10 plays)<br>
-                    3. 🎶 "Someone Like You" - Adele (9 plays)<br>
-                    4. 🎶 "Shape of You" - Ed Sheeran (8 plays)<br>
-                    5. 🎶 "Bohemian Rhapsody" - Queen (7 plays)<br><br>
-                    You've been enjoying pop and classic rock this week! 🎸"
-                </div>
-            </div>
-
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "Show me my top artists this month"</div>
-                <div class="poke-response">
-                    🤖 Poke: "Here are your most played artists this month:<br><br>
-                    🎤 <strong>Top 10 Artists:</strong><br>
-                    1. The Weeknd - 45 scrobbles<br>
-                    2. Dua Lipa - 38 scrobbles<br>
-                    3. Taylor Swift - 32 scrobbles<br>
-                    4. Adele - 28 scrobbles<br>
-                    5. Ed Sheeran - 26 scrobbles<br>
-                    6. Queen - 24 scrobbles<br>
-                    7. Arctic Monkeys - 22 scrobbles<br>
-                    8. Billie Eilish - 20 scrobbles<br>
-                    9. The Beatles - 18 scrobbles<br>
-                    10. Coldplay - 16 scrobbles<br><br>
-                    Your taste is diverse! Mix of contemporary and classic artists. 🎵"
-                </div>
-            </div>
-
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "What's my most played song of all time?"</div>
-                <div class="poke-response">
-                    🤖 Poke: "Your all-time most played song is:<br><br>
-                    🏆 "Bohemian Rhapsody" by Queen<br>
-                    📊 Total plays: 247<br>
-                    ⏱️ First scrobbled: March 15, 2019<br>
-                    📅 Last played: Yesterday<br><br>
-                    That's 15 hours and 6 minutes of listening to this masterpiece! 🎭<br><br>
-                    Fun fact: You've been a loyal fan for over 4 years!"
-                </div>
-            </div>
-
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "What was I listening to exactly one year ago today?"</div>
-                <div class="poke-response">
-                    🤖 Poke: "On February 21, 2025, you listened to:<br><br>
-                    🎵 <strong>Tracks from that day:</strong><br>
-                    • "Mr. Brightside" - The Killers (3x)<br>
-                    • "Take On Me" - a-ha (2x)<br>
-                    • "Don't Stop Believin'" - Journey (2x)<br>
-                    • "Africa" - Toto (1x)<br><br>
-                    Looks like you were in a nostalgic 80s mood! 📻<br><br>
-                    Total: 18 songs that day across various genres."
-                </div>
-            </div>
-
-            <div class="conversation-example">
-                <div class="user-message">👤 You: "Give me music recommendations based on my listening history"</div>
-                <div class="poke-response">
-                    🤖 Poke: "Based on your listening patterns, here are some recommendations:<br><br>
-                    🎵 <strong>Artists you might like:</strong><br>
-                    • Tame Impala (similar to Arctic Monkeys)<br>
-                    • Lorde (similar to Billie Eilish)<br>
-                    • Florence + The Machine (similar to Adele)<br>
-                    • Harry Styles (similar to Ed Sheeran)<br><br>
-                    🎸 <strong>Trending in your genres:</strong><br>
-                    • "Vampire" - Olivia Rodrigo<br>
-                    • "Flowers" - Miley Cyrus<br>
-                    • "Anti-Hero" - Taylor Swift<br><br>
-                    Want me to create a playlist with these recommendations?"
-                </div>
-            </div>
         </div>
 
         <div class="content-section">
             <h2 class="section-title">📚 What You Can Do</h2>
             <div class="guide-grid">
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Listening History</h3>
+                    <h3>Listening History</h3>
                     <p>View your scrobbles, recent tracks, and listening patterns over time.</p>
                 </div>
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Music Statistics</h3>
+                    <h3>Music Statistics</h3>
                     <p>Get insights on top artists, songs, albums by day, week, month, or all-time.</p>
                 </div>
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Recommendations</h3>
-                    <p>Discover new music based on your listening preferences and habits.</p>
+                    <h3>Recommendations</h3>
+                    <p>Discover new music based on your listening preferences.</p>
                 </div>
                 <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Artist Information</h3>
-                    <p>Learn about artists, their similar artists, and popular tracks.</p>
-                </div>
-                <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Scrobble Manual</h3>
-                    <p>Manually scrobble tracks you're listening to across any platform.</p>
-                </div>
-                <div class="guide-card">
-                    <h3 style="color: var(--success-color);">Music Trends</h3>
-                    <p>Track how your music taste evolves and discover listening patterns.</p>
+                    <h3>Artist Information</h3>
+                    <p>Learn about artists, similar artists, and popular tracks.</p>
                 </div>
             </div>
         </div>
 
         <div class="content-section">
-            <h2 class="section-title">🔗 Resources</h2>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 1rem;">
-                    <a href="https://www.last.fm" target="_blank" class="external-link">🌐 Last.fm Website</a>
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <a href="https://www.last.fm/api" target="_blank" class="external-link">📖 Last.fm API Documentation</a>
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <a href="https://www.last.fm/about/trackmymusic" target="_blank" class="external-link">🎵 Connect Streaming Services</a>
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <a href="https://modelcontextprotocol.io" target="_blank" class="external-link">📚 Model Context Protocol Docs</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="content-section" style="background: var(--surface-light); border-color: var(--success-color);">
             <h2 class="section-title">💡 Pro Tips</h2>
             <ul style="color: var(--text-secondary); line-height: 1.8;">
-                <li>🎵 Connect Spotify, Apple Music, or YouTube Music for automatic scrobbling</li>
-                <li>📊 Ask for comparative stats: "this month vs last month"</li>
+                <li>🎵 Connect Spotify, Apple Music for automatic scrobbling</li>
+                <li>📊 Ask for comparative stats</li>
                 <li>🔍 Discover new artists similar to your favorites</li>
-                <li>📅 Review your listening history for any date or time period</li>
-                <li>🎯 Use recommendations to find new music aligned with your taste</li>
-                <li>📈 Track your listening trends over months and years</li>
-                <li>🤝 Compare your music taste with friends who also use Last.fm</li>
+                <li>📅 Review listening history for any time period</li>
             </ul>
         </div>
 
@@ -361,9 +115,9 @@
             <a href="index.html" class="back-btn" style="font-size: 1.1rem; padding: 1rem 2rem;">← Back to All Integrations</a>
         </div>
 
-        <footer style="margin-top: 4rem;">
+        <footer>
             <div class="footer-disclaimer">
-                <p><strong>⚠️ Important Disclaimer:</strong> This page is independently created by Pierre Guirguis. Not affiliated with poke.com or Last.fm. Keep your API credentials secure.</p>
+                <p><strong>⚠️ Important Disclaimer:</strong> Not affiliated with poke.com or Last.fm. Keep your API credentials secure.</p>
             </div>
             <p style="text-align: center; color: var(--text-secondary); margin-top: 2rem;">
                 Built with ❤️ for the Poke community by Pierre Guirguis
