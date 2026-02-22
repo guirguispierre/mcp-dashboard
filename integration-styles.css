@@ -1,0 +1,385 @@
+/**
+ * Integration Pages Shared Styles
+ * 
+ * This stylesheet contains the common styling for all MCP integration detail pages.
+ * It ensures visual consistency across all integration pages while maintaining
+ * the dark theme aesthetic optimized for code-heavy documentation.
+ * 
+ * Design System:
+ * - Fixed dark theme (no toggle, unlike main page)
+ * - Neon green accents (#00ff00)
+ * - Black background (#000000)
+ * - Optimized for readability and code examples
+ * 
+ * Usage:
+ * Add this line to the <head> section of integration pages:
+ * <link rel="stylesheet" href="integration-styles.css">
+ * 
+ * Note: This file should be included AFTER style.css to properly
+ * override and extend the base styles with integration-specific styling.
+ */
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.back-nav {
+    margin-bottom: 2rem;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background: var(--success-color);
+    color: var(--background);
+    border-color: var(--success-color);
+    transform: translateX(-5px);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero-section {
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+    background: var(--surface);
+    border-radius: 12px;
+    border: 2px solid var(--success-color);
+}
+
+.hero-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* ============================================
+   CONTENT SECTIONS
+   ============================================ */
+
+.content-section {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.75rem;
+    color: var(--success-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    line-height: 1.3;
+}
+
+/* ============================================
+   CONNECTION PLACEHOLDER
+   ============================================ */
+
+.connection-placeholder {
+    background: var(--background);
+    border: 2px dashed var(--warning-color);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.placeholder-text {
+    color: var(--warning-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   CONVERSATION EXAMPLES
+   ============================================ */
+
+.conversation-example {
+    background: var(--background);
+    border-left: 4px solid var(--success-color);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+
+.conversation-example:hover {
+    transform: translateX(5px);
+}
+
+.user-message {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.poke-response {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-left: 1rem;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   STEP LIST (NUMBERED INSTRUCTIONS)
+   ============================================ */
+
+.step-list {
+    list-style: none;
+    counter-reset: step-counter;
+    padding: 0;
+}
+
+.step-list li {
+    counter-increment: step-counter;
+    margin-bottom: 1.5rem;
+    padding-left: 3rem;
+    position: relative;
+}
+
+.step-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--success-color);
+    color: var(--background);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.step-list li strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+
+code {
+    background: var(--background);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    color: var(--success-color);
+    font-family: 'Courier New', 'Monaco', monospace;
+    font-size: 0.9em;
+}
+
+pre {
+    background: var(--background);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.5rem 0;
+    border: 1px solid var(--border-color);
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+.external-link {
+    color: var(--success-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.external-link:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hero-icon {
+        font-size: 4rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .content-section {
+        padding: 1.5rem;
+    }
+    
+    .step-list li {
+        padding-left: 2.5rem;
+    }
+    
+    .step-list li::before {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .conversation-example {
+        padding: 1rem;
+    }
+    
+    .poke-response {
+        padding-left: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 2rem 1rem;
+    }
+    
+    .hero-icon {
+        font-size: 3rem;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .content-section {
+        padding: 1.25rem;
+    }
+    
+    .back-btn {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    pre {
+        padding: 0.75rem;
+    }
+    
+    pre code {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .back-nav,
+    .connection-placeholder,
+    .footer-disclaimer {
+        display: none;
+    }
+    
+    .hero-section,
+    .content-section {
+        border: 1px solid #000;
+        page-break-inside: avoid;
+    }
+    
+    .conversation-example {
+        border-left-color: #000;
+        page-break-inside: avoid;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================ */
+
+/* Ensure focus indicators are visible */
+.back-btn:focus,
+.external-link:focus {
+    outline: 2px solid var(--success-color);
+    outline-offset: 2px;
+}
+
+/* Improve readability for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .back-btn,
+    .conversation-example {
+        transition: none;
+    }
+    
+    .back-btn:hover {
+        transform: none;
+    }
+    
+    .conversation-example:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero-section,
+    .content-section {
+        border-width: 3px;
+    }
+    
+    .conversation-example {
+        border-left-width: 6px;
+    }
+    
+    code {
+        border: 1px solid currentColor;
+    }
+}
