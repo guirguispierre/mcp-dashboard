@@ -136,35 +136,55 @@ git push origin main
 
 ```
 mcp-dashboard/
-├── index.html              # Main dashboard page (modern theme with toggle)
-├── style.css               # Shared CSS variables and components
-├── script.js               # Interactive JavaScript functionality
+├── index.html                   # Main dashboard (modern light/dark theme)
+├── style.css                    # Shared CSS variables and components
+├── script.js                    # Interactive JavaScript functionality
+├── integration-styles.css       # Shared styles for integration pages (optional)
+├── integration-template.html    # Template for new integrations
 │
 ├── Integration Pages (consistent dark theme):
-│   ├── bart.html           # BART transit integration
-│   ├── earnings-feed.html  # Financial data integration
-│   ├── ffmpeg.html         # Media processing integration
-│   ├── todoist.html        # Task management integration
-│   ├── last-fm.html        # Music tracking integration
-│   ├── netlify.html        # Netlify deployment integration
-│   ├── vercel.html         # Vercel deployment integration
-│   ├── deepwiki.html       # Documentation search integration
-│   ├── supabase.html       # Database integration
-│   └── github.html         # GitHub integration
+│   ├── bart.html                # BART transit integration
+│   ├── earnings-feed.html       # Financial data integration
+│   ├── ffmpeg.html              # Media processing integration
+│   ├── todoist.html             # Task management integration
+│   ├── last-fm.html             # Music tracking integration
+│   ├── netlify.html             # Netlify deployment integration
+│   ├── vercel.html              # Vercel deployment integration
+│   ├── deepwiki.html            # Documentation search integration
+│   ├── supabase.html            # Database integration
+│   └── github.html              # GitHub integration
 │
-├── Configuration Files:
-│   ├── package.json        # Project metadata and scripts
-│   ├── vercel.json         # Vercel deployment configuration
-│   ├── netlify.toml        # Netlify deployment configuration
-│   └── README.md           # Project documentation
+├── Documentation:
+│   ├── README.md                # Project overview and user guide
+│   ├── CONTRIBUTING.md          # This file - contribution guidelines
+│   ├── INTEGRATION_TEMPLATE_GUIDE.md  # Template usage guide
+│   └── CSS_ANALYSIS.md          # CSS architecture documentation
+│
+└── Configuration Files:
+    ├── package.json             # Project metadata and scripts
+    ├── vercel.json              # Vercel deployment configuration
+    └── netlify.toml             # Netlify deployment configuration
 ```
 
-### File Purposes
+### Design System Architecture
 
-- **index.html**: Main landing page with all integration cards, search, and filtering
-- **Integration pages**: Detailed setup guides with configuration examples and Poke conversation examples
-- **style.css**: CSS variables, shared components, responsive design
-- **script.js**: Modal functionality, filtering, animations, rate limiting
+The project uses **two intentionally different design systems**:
+
+1. **Main Dashboard (index.html)**
+   - Modern light/dark theme with toggle
+   - Subtle blue accents (#0ea5e9)
+   - Inter font from Google Fonts
+   - Clean, professional aesthetic for browsing
+
+2. **Integration Pages (all 10 detail pages)**
+   - Fixed dark theme (no toggle)
+   - Neon green accents (#00ff00)
+   - System fonts
+   - Developer-focused aesthetic for documentation
+
+**This is intentional** - the main page serves as a showcase while integration pages are optimized for code-heavy technical documentation. When contributing, match the design of the page type you're working on.
+
+📖 **See [CSS_ANALYSIS.md](CSS_ANALYSIS.md) for detailed architecture documentation.**
 
 ---
 
@@ -176,273 +196,119 @@ mcp-dashboard/
 - Use 4 spaces for indentation (not tabs)
 - Use lowercase for element names and attributes
 - Use double quotes for attribute values
-- Close all tags properly (even self-closing tags)
-
-**Structure**
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clear, concise description">
-    <title>Page Title - MCP Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <!-- Content here -->
-    </div>
-</body>
-</html>
-```
+- Close all tags properly
 
 **Semantic HTML**
-- Use semantic tags: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`
+- Use semantic tags: `<header>`, `<nav>`, `<section>`, `<article>`, `<footer>`
 - Use appropriate heading hierarchy (h1 → h2 → h3)
 - Include proper ARIA labels for accessibility
 - Use `<code>` for inline code and `<pre><code>` for code blocks
 
 ### CSS Guidelines
 
-**CSS Variables**
+**Use CSS Variables**
 
-Use CSS variables from `:root` for consistency:
+Integration pages use these variables from `style.css`:
 
 ```css
 :root {
-    --primary-color: #000000;
-    --success-color: #00ff00;
-    --warning-color: #ffcc00;
-    --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --background: #000000;
-    --surface: #0a0a0a;
-    --border-color: #333333;
-}
-```
-
-**Naming Conventions**
-- Use kebab-case for class names: `.integration-card`, `.hero-section`
-- Use descriptive names: `.section-title` not `.st`
-- Use BEM naming for complex components when appropriate
-
-**Organization**
-1. Layout properties (display, position, float)
-2. Box model (width, height, padding, margin, border)
-3. Typography (font, line-height, color)
-4. Visual (background, box-shadow, transform)
-5. Misc (cursor, overflow, z-index)
-
-**Example**
-```css
-.integration-card {
-    /* Layout */
-    display: flex;
-    flex-direction: column;
-    
-    /* Box Model */
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    
-    /* Visual */
-    background: var(--surface);
-    transition: all 0.3s ease;
-}
-
-.integration-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.2);
+    --background: #000000;       /* Pure black */
+    --surface: #0a0a0a;         /* Card backgrounds */
+    --success-color: #00ff00;   /* Neon green accents */
+    --warning-color: #ffcc00;   /* Yellow warnings */
+    --text-primary: #ffffff;    /* White text */
+    --text-secondary: #b0b0b0;  /* Gray text */
+    --border-color: #333333;    /* Borders */
 }
 ```
 
 **Responsive Design**
 ```css
 /* Mobile-first approach */
-.container {
-    padding: 1rem;
-}
+.container { padding: 1rem; }
 
 @media (min-width: 768px) {
-    .container {
-        padding: 2rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .container {
-        max-width: 1400px;
-    }
+    .container { padding: 2rem; }
 }
 ```
 
 ### JavaScript Guidelines
 
-**Style**
 - Use 4 spaces for indentation
 - Use single quotes for strings
-- Use semicolons at the end of statements
-- Use camelCase for variable and function names
-- Use UPPERCASE for constants
-
-**Functions**
-```javascript
-// Good: Clear, descriptive function name
-function showIntegrationModal(integrationName) {
-    const modal = document.getElementById('helpModal');
-    const content = getIntegrationContent(integrationName);
-    
-    if (!content) {
-        console.error(`Integration not found: ${integrationName}`);
-        return;
-    }
-    
-    modal.style.display = 'block';
-    renderModalContent(content);
-}
-
-// Good: Use const/let, not var
-const API_RATE_LIMIT = 10;
-let requestCount = 0;
-
-// Good: Add comments for complex logic
-// Rate limiter prevents API abuse by tracking requests
-class RateLimiter {
-    constructor(maxRequests, timeWindow) {
-        this.maxRequests = maxRequests;
-        this.timeWindow = timeWindow;
-        this.requests = [];
-    }
-}
-```
-
-**DOM Manipulation**
-```javascript
-// Good: Cache DOM queries
-const cards = document.querySelectorAll('.integration-card');
-cards.forEach(card => {
-    card.addEventListener('click', handleCardClick);
-});
-
-// Bad: Repeated DOM queries in loop
-document.querySelectorAll('.integration-card').forEach(card => {
-    document.getElementById('container').appendChild(card); // Don't do this
-});
-```
-
-**Event Handling**
-```javascript
-// Good: Use event delegation
-document.addEventListener('DOMContentLoaded', () => {
-    initializeInteractions();
-    animateOnScroll();
-    updateStats();
-});
-
-// Good: Clean event listeners
-function closeModal() {
-    modal.style.display = 'none';
-    // Clean up event listeners if needed
-}
-```
+- Use `const`/`let`, never `var`
+- Use camelCase for variables and functions
+- Add JSDoc comments for complex functions
+- Handle errors gracefully
 
 ---
 
 ## ➕ Adding New Integrations
 
+### 🎯 Quick Start: Use the Template!
+
+We've created a complete template to make adding integrations easy:
+
+**1. Copy the template:**
+```bash
+cp integration-template.html your-integration.html
+```
+
+**2. Read the guide:**
+📖 **[INTEGRATION_TEMPLATE_GUIDE.md](INTEGRATION_TEMPLATE_GUIDE.md)** - Complete step-by-step instructions
+
+**3. Follow the TODO comments in the template**
+
+The template includes:
+- ✅ All required sections pre-structured
+- ✅ Consistent styling matching existing pages
+- ✅ TODO comments marking what to customize
+- ✅ Example structure for all components
+- ✅ Built-in responsive design
+- ✅ Accessibility features included
+
+### Template Files
+
+| File | Purpose |
+|------|---------|
+| **[integration-template.html](integration-template.html)** | Complete HTML template with TODO comments |
+| **[INTEGRATION_TEMPLATE_GUIDE.md](INTEGRATION_TEMPLATE_GUIDE.md)** | Comprehensive usage guide |
+| **[integration-styles.css](integration-styles.css)** | Shared CSS (optional alternative to inline styles) |
+
 ### Step-by-Step Process
 
-#### 1. **Create the Integration Page**
-
-Copy an existing integration page as a template:
+#### 1. **Create Your Integration Page**
 
 ```bash
-cp bart.html new-integration.html
+# Copy the template
+cp integration-template.html slack.html
+
+# Or copy from existing integration
+cp bart.html slack.html
 ```
 
-#### 2. **Update Page Content**
+#### 2. **Customize the Content**
 
-Modify the following sections in your new integration page:
+Update these sections (see template for details):
 
-**Meta Tags and Title**
-```html
-<meta name="description" content="Your Integration MCP for Poke - Brief description">
-<title>Your Integration MCP for Poke - MCP Dashboard</title>
-```
+- [ ] Meta tags (description, title)
+- [ ] Hero section (icon, title, subtitle)
+- [ ] Setup instructions (4-6 steps)
+- [ ] MCP configuration (valid JSON)
+- [ ] Conversation examples (3-5 realistic examples)
+- [ ] Capabilities grid (4-6 features)
+- [ ] Resources (3-6 links)
+- [ ] Pro tips (5-8 tips)
+- [ ] Footer disclaimer
 
-**Hero Section**
-```html
-<div class="hero-section">
-    <div class="hero-icon">🔧</div> <!-- Choose appropriate emoji -->
-    <h1 class="hero-title">Your Integration MCP for Poke</h1>
-    <p class="hero-subtitle">Brief one-line description</p>
-    <p style="color: var(--text-secondary); margin-top: 1rem;">
-        Extended description of what users can do
-    </p>
-</div>
-```
+#### 3. **Add to Main Dashboard**
 
-**Setup Instructions**
-```html
-<ol class="step-list">
-    <li>
-        <strong style="color: var(--text-primary);">Step Title</strong>
-        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-            Detailed instructions with code examples
-        </p>
-        <code style="background: var(--background); ...">
-            command or code here
-        </code>
-    </li>
-    <!-- Add 4-6 setup steps -->
-</ol>
-```
-
-**MCP Configuration**
-```html
-<pre style="background: var(--background); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 0.5rem;"><code>{
-  "mcpServers": {
-    "your-integration": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-your-integration"],
-      "env": {
-        "API_KEY": "your_api_key_here"
-      }
-    }
-  }
-}</code></pre>
-```
-
-**Poke Conversation Examples** (minimum 3-5 examples)
-```html
-<div class="conversation-example">
-    <div class="user-message">👤 You: "Example question to Poke"</div>
-    <div class="poke-response">
-        🤖 Poke: "Realistic response from Poke...<br><br>
-        With specific details and formatting"
-    </div>
-</div>
-```
-
-**Capabilities Grid**
-```html
-<div class="guide-grid">
-    <div class="guide-card">
-        <h3 style="color: var(--success-color);">Feature Name</h3>
-        <p>What users can do with this feature</p>
-    </div>
-    <!-- Add 4-6 capability cards -->
-</div>
-```
-
-#### 3. **Add to Main Dashboard (index.html)**
-
-Add your integration card to the integrations grid:
+Add your integration card to `index.html`:
 
 ```html
-<div class="integration-card fade-in" data-category="your-category" data-name="Your Integration">
+<div class="integration-card fade-in" 
+     data-category="your-category" 
+     data-name="Your Integration">
     <div class="card-icon">🔧</div>
     <div class="card-header">
         <div>
@@ -450,90 +316,109 @@ Add your integration card to the integrations grid:
             <div class="status-indicator"></div>
         </div>
     </div>
-    <p class="card-description">Brief description for the main page</p>
+    <p class="card-description">Brief description</p>
     <div class="card-tags">
         <span class="tag tag-category">Category</span>
         <span class="tag tag-status">Active</span>
     </div>
     <div class="card-actions">
-        <button class="btn btn-primary" onclick="window.location.href='new-integration.html'">
+        <button class="btn btn-primary" 
+                onclick="window.location.href='your-integration.html'">
             <span>📚</span>
             <span>View Guide</span>
         </button>
-        <button class="btn btn-secondary" onclick="showDemo('new-integration')">
+        <button class="btn btn-secondary" 
+                onclick="showDemo('your-integration')">
             <span>▶️</span>
         </button>
     </div>
 </div>
 ```
 
-#### 4. **Update script.js**
+**Available Categories:**
+- `developer` - Developer tools and APIs
+- `productivity` - Task and project management
+- `deployment` - Hosting and deployment platforms
+- `transit` - Transportation and location services
+- `entertainment` - Music, media, games
+- `financial` - Financial data and analytics
+- `media` - Video/audio processing
 
-Add help modal data and demo function:
+#### 4. **Update JavaScript (script.js)**
+
+Add modal data and demo function:
 
 ```javascript
-// In the helpData object
-'new-integration': {
+// In the helpData object (around line 30)
+'your-integration': {
     title: '🔧 Your Integration for Poke',
-    description: 'Brief description',
+    description: 'What this integration does',
     setup: [
-        'Step 1 instructions',
-        'Step 2 instructions',
+        'Step 1 brief instruction',
+        'Step 2 brief instruction',
         // ...
     ],
     pokeConfig: `{
   "mcpServers": {
-    "your-integration": { ... }
+    "your-integration": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-your-integration"],
+      "env": {
+        "API_KEY": "your_key_here"
+      }
+    }
   }
 }`,
     examples: [
         '"Example Poke prompt 1"',
-        '"Example Poke prompt 2"',
+        '"Example Poke prompt 2"'
     ],
     links: [
         { text: 'Official Docs', url: 'https://...' }
     ]
 }
 
-// In the demoData object
-'new-integration': 'Try asking Poke:\n\n"Example prompt"\n\nPoke will...'
+// In the demoData object (around line 200)
+'your-integration': 'Try asking Poke:\n\n"Example prompt"\n\nPoke will...'
 ```
 
-#### 5. **Update Documentation**
+#### 5. **Update README.md**
 
-Add your integration to README.md:
+Add to the appropriate category section:
 
 ```markdown
 ### 🆕 Your Category
-- **[Your Integration](new-integration.html)** - Brief description
+- **[Your Integration](your-integration.html)** - Brief description
   - Feature 1
   - Feature 2
   - Feature 3
 ```
 
-#### 6. **Integration Checklist**
+#### 6. **Complete the Checklist**
 
-Before submitting, verify:
+Before submitting your PR:
 
-- [ ] Page follows the consistent dark theme styling
-- [ ] All inline styles use CSS variables from style.css
-- [ ] Meta tags are complete and accurate
-- [ ] Setup instructions are clear and tested
+- [ ] Used integration-template.html as starting point
+- [ ] Followed INTEGRATION_TEMPLATE_GUIDE.md instructions
+- [ ] All TODO comments removed
+- [ ] All placeholders replaced with actual content
+- [ ] Page follows dark theme styling
+- [ ] Meta tags complete and accurate
+- [ ] Setup instructions tested and working
 - [ ] MCP configuration is valid JSON
-- [ ] 3-5 realistic Poke conversation examples included
+- [ ] 3-5 realistic Poke conversation examples
 - [ ] 4-6 capability cards describing features
-- [ ] Resources section with relevant links
+- [ ] Resources section with working links
 - [ ] Pro Tips section with helpful advice
-- [ ] Disclaimer banner present
-- [ ] Back navigation works correctly
-- [ ] Footer disclaimer updated
-- [ ] Card added to main index.html
+- [ ] Card added to index.html
 - [ ] Modal data added to script.js
 - [ ] README.md updated
-- [ ] Mobile responsive on all screen sizes
+- [ ] Tested on desktop and mobile
 - [ ] All links tested and working
-- [ ] No API keys or secrets in code
-- [ ] Tested locally with `npm run dev`
+- [ ] No API keys in code examples
+- [ ] Footer disclaimer updated
+
+📖 **For detailed guidance, see [INTEGRATION_TEMPLATE_GUIDE.md](INTEGRATION_TEMPLATE_GUIDE.md)**
 
 ---
 
@@ -577,7 +462,7 @@ Before submitting, verify:
 3. **Commit your changes**
    ```bash
    git add .
-   git commit -m "Add Slack MCP integration page with setup guide"
+   git commit -m "feat: add Slack MCP integration page with setup guide"
    ```
 
    **Commit Message Format:**
@@ -602,7 +487,7 @@ Before submitting, verify:
    ```
    feat: add Slack MCP integration page
 
-   - Create slack.html with setup instructions
+   - Create slack.html using integration template
    - Add Slack card to main dashboard
    - Include 5 Poke conversation examples
    - Add modal data to script.js
@@ -635,16 +520,29 @@ Brief description of what this PR does.
 - [ ] Documentation update
 - [ ] Code refactoring
 
+## Integration Details (if applicable)
+- **Integration Name:** [e.g., Slack]
+- **Category:** [e.g., Productivity]
+- **MCP Server:** [npm package or GitHub link]
+- **Requires API Key:** [Yes/No]
+
+## Changes Made
+- Created [integration].html using template
+- Added integration card to index.html
+- Added modal data to script.js
+- Updated README.md
+
 ## Testing Checklist
-- [ ] Tested locally
-- [ ] Tested on multiple browsers
-- [ ] Tested mobile responsiveness
+- [ ] Tested locally with npm run dev
+- [ ] Tested on Chrome, Firefox, Safari
+- [ ] Tested mobile responsiveness (375px, 768px, 1024px)
 - [ ] All links work correctly
 - [ ] No console errors
-- [ ] Integration checklist completed (if applicable)
+- [ ] Integration checklist completed
+- [ ] Followed INTEGRATION_TEMPLATE_GUIDE.md
 
 ## Screenshots (if applicable)
-Add screenshots of visual changes
+[Add screenshots of new features or UI changes]
 
 ## Related Issues
 Closes #XX
@@ -712,6 +610,35 @@ Any other context or screenshots.
 
 **Would you like to implement this feature?**
 Yes/No. If yes, we can guide you!
+```
+
+### New Integration Request
+
+```markdown
+**Integration Name**
+[e.g., Slack, Notion, Linear]
+
+**Description**
+Brief description of what this integration does.
+
+**Category**
+[e.g., Productivity, Developer Tools, Entertainment]
+
+**MCP Server Availability**
+- [ ] Official MCP server exists
+- [ ] Community MCP server exists
+- [ ] No MCP server yet (would need to be created)
+
+**Links**
+- Service website: [URL]
+- API documentation: [URL]
+- MCP server (if exists): [URL]
+
+**Why add this integration?**
+Explain the value for Poke users.
+
+**Would you like to create this integration page?**
+Yes/No. If yes, we'll help you get started!
 ```
 
 ### Issue Labels
@@ -786,7 +713,6 @@ element.innerHTML = userInput;
 
 // Good: Use textContent or sanitize
 element.textContent = userInput;
-// Or use a sanitization library
 ```
 
 ### External Links
@@ -799,49 +725,25 @@ Always use `rel="noopener noreferrer"` for external links:
 </a>
 ```
 
-### Security Headers
-
-Maintain security headers in `vercel.json` and `netlify.toml`:
-
-- Content-Security-Policy
-- X-Frame-Options
-- X-Content-Type-Options
-- Referrer-Policy
-- Permissions-Policy
-
 ---
 
 ## ♿ Accessibility Guidelines
 
 ### Keyboard Navigation
 
-Ensure all interactive elements are keyboard accessible:
-
 ```html
-<!-- Good: Proper button -->
+<!-- Good: Proper semantic button -->
 <button onclick="handleClick()">Click Me</button>
 
-<!-- Bad: Div as button -->
+<!-- Bad: Div pretending to be button -->
 <div onclick="handleClick()">Click Me</div>
-
-<!-- If you must use div, add proper ARIA -->
-<div role="button" tabindex="0" onclick="handleClick()" onkeypress="handleKeyPress(event)">
-    Click Me
-</div>
 ```
 
 ### ARIA Labels
 
 ```html
-<!-- Navigation -->
-<nav aria-label="Main navigation">
-    <a href="#integrations" aria-label="Jump to integrations section">Integrations</a>
-</nav>
-
-<!-- Buttons with icons only -->
-<button aria-label="Close modal" onclick="closeModal()">
-    ✕
-</button>
+<!-- Icon-only buttons need labels -->
+<button aria-label="Close modal" onclick="closeModal()">✕</button>
 
 <!-- Status indicators -->
 <div class="status-indicator" role="status" aria-label="Integration active"></div>
@@ -849,54 +751,25 @@ Ensure all interactive elements are keyboard accessible:
 
 ### Color Contrast
 
-Maintain WCAG AA compliance:
-
-- Normal text: 4.5:1 contrast ratio
-- Large text: 3:1 contrast ratio
-- Test with tools like [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
-
-### Alt Text
-
-```html
-<!-- Decorative images -->
-<img src="icon.png" alt="" role="presentation">
-
-<!-- Informative images -->
-<img src="diagram.png" alt="MCP architecture showing client-server connection">
-```
+- Normal text: 4.5:1 minimum (WCAG AA)
+- Large text: 3:1 minimum
+- Test with [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
 
 ### Focus Indicators
 
 ```css
-/* Always maintain visible focus indicators */
 button:focus,
 a:focus {
     outline: 2px solid var(--success-color);
     outline-offset: 2px;
 }
-
-/* Don't remove focus outlines without providing alternative */
-:focus-visible {
-    outline: 2px solid var(--success-color);
-}
 ```
-
-### Screen Reader Testing
-
-Test with:
-- **macOS**: VoiceOver (Cmd + F5)
-- **Windows**: NVDA (free) or JAWS
-- **Chrome**: ChromeVox extension
 
 ---
 
 ## ✅ Testing Checklist
 
-Since this is a static site without automated tests, use this manual testing checklist:
-
 ### Browser Testing
-
-Test on:
 - [ ] Chrome (latest)
 - [ ] Firefox (latest)
 - [ ] Safari (latest)
@@ -904,157 +777,50 @@ Test on:
 - [ ] Mobile Safari (iOS)
 - [ ] Mobile Chrome (Android)
 
-### Functionality Testing
-
-- [ ] All links work correctly
-- [ ] Navigation between pages works
-- [ ] Back buttons return to correct pages
-- [ ] Search functionality works
-- [ ] Filter buttons work correctly
-- [ ] Modals open and close properly
-- [ ] Code snippets copy correctly
-- [ ] External links open in new tabs
-
 ### Responsive Design
-
-Test at breakpoints:
 - [ ] Mobile (320px - 480px)
 - [ ] Tablet (481px - 768px)
 - [ ] Desktop (769px - 1024px)
 - [ ] Large desktop (1025px+)
 
-Check:
-- [ ] Text is readable at all sizes
-- [ ] Images scale appropriately
-- [ ] No horizontal scrolling
-- [ ] Touch targets are at least 44x44px
-- [ ] Cards reflow correctly
-
-### Performance
-
-- [ ] Page load time < 3 seconds
+### Functionality
+- [ ] All links work
+- [ ] Navigation works
+- [ ] Back buttons work
 - [ ] No console errors
-- [ ] No console warnings
-- [ ] Images optimized
-- [ ] CSS/JS not blocking render
+- [ ] Code blocks display correctly
 
-### Accessibility
-
-- [ ] Keyboard navigation works
-- [ ] Focus indicators visible
-- [ ] ARIA labels present
-- [ ] Color contrast meets WCAG AA
-- [ ] Screen reader compatible
-- [ ] No flashing content
-
-### Content
-
-- [ ] No typos or grammatical errors
-- [ ] Code examples are valid
-- [ ] Links go to correct destinations
-- [ ] Poke examples are realistic
-- [ ] Instructions are clear and complete
-
-### Security
-
-- [ ] No API keys in code
-- [ ] External links use rel="noopener"
-- [ ] No inline JavaScript in HTML
-- [ ] Input is validated
-- [ ] No XSS vulnerabilities
+### Content Quality
+- [ ] No typos
+- [ ] Valid JSON in configs
+- [ ] Realistic Poke examples
+- [ ] Clear instructions
 
 ---
 
 ## 🌿 Git Workflow
 
-### Branch Naming Conventions
-
-Use descriptive branch names:
-
-```
-feature/integration-name    # New integration
-fix/bug-description         # Bug fix
-docs/what-changed          # Documentation
-refactor/component-name    # Code refactoring
-style/design-update        # Visual changes
-chore/maintenance-task     # Maintenance
-```
-
-**Examples:**
-```bash
-git checkout -b feature/add-notion-integration
-git checkout -b fix/mobile-menu-overflow
-git checkout -b docs/improve-contributing-guide
-git checkout -b style/update-color-scheme
-```
-
-### Commit Guidelines
-
-**Atomic Commits**
-
-Make small, focused commits:
+### Branch Naming
 
 ```bash
-# Good: Separate commits for different changes
-git add bart.html
-git commit -m "feat: add BART integration page"
-
-git add index.html
-git commit -m "feat: add BART card to main dashboard"
-
-git add script.js
-git commit -m "feat: add BART modal data"
-
-# Bad: One large commit
-git add .
-git commit -m "Added BART integration"
+feature/add-notion-integration   # New features
+fix/mobile-menu-overflow         # Bug fixes
+docs/improve-setup-guide         # Documentation
+style/update-colors              # Visual changes
 ```
 
-**Commit Message Best Practices**
-
-- Use present tense: "Add feature" not "Added feature"
-- Be specific: "Fix mobile menu overflow on iOS" not "Fix bug"
-- Reference issues: "Closes #42" or "Fixes #15"
-- Keep first line under 50 characters
-- Add detailed body if needed (wrap at 72 characters)
-
-### Syncing with Upstream
-
-Keep your fork updated:
+### Commit Messages
 
 ```bash
-# Fetch upstream changes
-git fetch upstream
+# Good
+feat: add Notion MCP integration page
+fix: resolve mobile layout overflow on iOS
+docs: improve BART setup instructions
 
-# Merge into your local main
-git checkout main
-git merge upstream/main
-
-# Push to your fork
-git push origin main
-
-# Rebase your feature branch
-git checkout feature/your-branch
-git rebase main
-```
-
-### Handling Merge Conflicts
-
-```bash
-# Start rebase
-git rebase main
-
-# If conflicts occur:
-# 1. Open conflicted files
-# 2. Resolve conflicts
-# 3. Stage resolved files
-git add resolved-file.html
-
-# Continue rebase
-git rebase --continue
-
-# Or abort if needed
-git rebase --abort
+# Bad
+Updated stuff
+Fix bug
+changes
 ```
 
 ---
@@ -1063,87 +829,20 @@ git rebase --abort
 
 ### For Contributors
 
-**After submitting a PR:**
-
-1. **Wait for initial review** (3-5 days)
-2. **Respond to feedback** promptly
-3. **Make requested changes** in new commits
-4. **Request re-review** after changes
-5. **Be patient and respectful**
-
-**Responding to feedback:**
-
-```markdown
-> Can you add more examples?
-
-Good point! I've added 3 more Poke conversation examples. 
-See commits abc123 and def456.
-
-> The mobile layout breaks at 480px
-
-Fixed in commit ghi789. Tested on iPhone SE, iPhone 14, and Android devices.
-```
+1. Wait for initial review (3-5 days)
+2. Respond to feedback promptly
+3. Make requested changes
+4. Request re-review
+5. Be patient and respectful
 
 ### For Reviewers
 
-**Review Criteria:**
-
-1. **Functionality**
-   - Does it work as intended?
-   - Are there any bugs?
-   - Does it follow the existing patterns?
-
-2. **Code Quality**
-   - Follows style guidelines?
-   - Clean and readable?
-   - Properly commented?
-   - No security issues?
-
-3. **Documentation**
-   - Clear setup instructions?
-   - Good Poke examples?
-   - Links work correctly?
-   - README updated?
-
-4. **Design**
-   - Consistent with existing pages?
-   - Responsive on all devices?
-   - Accessible?
-
-5. **Testing**
-   - Testing checklist completed?
-   - Works on multiple browsers?
-   - No console errors?
-
-**Providing Feedback:**
-
-Be constructive and specific:
-
-❌ **Bad:**
-```
-This doesn't work. Fix it.
-```
-
-✅ **Good:**
-```
-The mobile layout breaks at 480px width. The cards overflow the container.
-Can you add a media query to stack them vertically?
-
-Something like:
-@media (max-width: 480px) {
-    .integrations-grid {
-        grid-template-columns: 1fr;
-    }
-}
-```
-
-**Approval Process:**
-
-1. Review code and test locally
-2. Leave inline comments on specific lines
-3. Approve or request changes
-4. Follow up on changes
-5. Merge when approved
+Check:
+1. Functionality - Does it work?
+2. Code quality - Clean and readable?
+3. Documentation - Clear instructions?
+4. Design - Consistent styling?
+5. Testing - Checklist completed?
 
 ---
 
@@ -1151,62 +850,43 @@ Something like:
 
 ### Getting Help
 
-- **GitHub Issues**: Ask questions via issues
-- **Discussions**: Use GitHub Discussions for general topics
-- **Email**: Contact [@guirguispierre](https://github.com/guirguispierre)
-
-### Recognition
-
-Contributors will be:
-- Listed in README.md
-- Thanked in release notes
-- Credited in commit messages
-- Invited to join the contributor team
+- **GitHub Issues**: Technical questions
+- **Discussions**: General questions and ideas
+- **Pull Requests**: Mention @guirguispierre for urgent reviews
 
 ### Code of Conduct
 
-**Our Pledge:**
+We are committed to providing a welcoming and inclusive environment. Please:
+- Be respectful and considerate
+- Accept constructive criticism gracefully
+- Focus on what's best for the community
+- Show empathy and kindness
 
-We pledge to make participation in our project a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity, experience level, nationality, personal appearance, race, religion, or sexual identity and orientation.
+### Recognition
 
-**Our Standards:**
-
-**Positive behavior:**
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints
-- Gracefully accepting constructive criticism
-- Focusing on what's best for the community
-- Showing empathy towards others
-
-**Unacceptable behavior:**
-- Harassment or discriminatory language
-- Trolling or insulting comments
-- Public or private harassment
-- Publishing others' private information
-- Other unprofessional conduct
-
-**Enforcement:**
-
-Violations can be reported to [@guirguispierre](https://github.com/guirguispierre). All complaints will be reviewed and investigated promptly and fairly.
+Contributors are:
+- Listed in README.md
+- Thanked in release notes
+- Credited in commits
+- Invited to the contributor community
 
 ---
 
 ## 📚 Additional Resources
 
+### Template & Guides
+
+- 📝 **[integration-template.html](integration-template.html)** - Integration page template
+- 📖 **[INTEGRATION_TEMPLATE_GUIDE.md](INTEGRATION_TEMPLATE_GUIDE.md)** - Complete template guide
+- 🎨 **[CSS_ANALYSIS.md](CSS_ANALYSIS.md)** - CSS architecture analysis
+- 📘 **[README.md](README.md)** - Project overview
+
 ### Learning Resources
 
-**HTML/CSS:**
+**HTML/CSS/JavaScript:**
 - [MDN Web Docs](https://developer.mozilla.org/)
 - [CSS-Tricks](https://css-tricks.com/)
-- [Web.dev](https://web.dev/)
-
-**JavaScript:**
 - [JavaScript.info](https://javascript.info/)
-- [Eloquent JavaScript](https://eloquentjavascript.net/)
-
-**Git:**
-- [Pro Git Book](https://git-scm.com/book/en/v2)
-- [GitHub Guides](https://guides.github.com/)
 
 **MCP:**
 - [Model Context Protocol Docs](https://modelcontextprotocol.io)
@@ -1217,17 +897,11 @@ Violations can be reported to [@guirguispierre](https://github.com/guirguispierr
 **Development:**
 - [VS Code](https://code.visualstudio.com/)
 - [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
-- [Firefox Developer Tools](https://firefox-source-docs.mozilla.org/devtools-user/)
 
 **Testing:**
-- [BrowserStack](https://www.browserstack.com/) (cross-browser testing)
-- [Lighthouse](https://developers.google.com/web/tools/lighthouse) (performance)
-- [WAVE](https://wave.webaim.org/) (accessibility)
-
-**Design:**
-- [Figma](https://www.figma.com/)
-- [ColorZilla](https://www.colorzilla.com/)
-- [Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+- [WAVE Accessibility](https://wave.webaim.org/)
+- [JSONLint](https://jsonlint.com/) - Validate JSON configs
 
 ---
 
@@ -1239,7 +913,7 @@ By contributing to MCP Dashboard, you agree that your contributions will be lice
 
 ## 🙏 Thank You!
 
-Thank you for contributing to the MCP Dashboard! Your efforts help make it easier for Poke users to discover and integrate powerful MCP servers. Every contribution, no matter how small, makes a difference.
+Thank you for contributing to the MCP Dashboard! Your efforts help make MCP integrations accessible to all Poke users.
 
 **Questions?** Don't hesitate to ask! We're here to help.
 
