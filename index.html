@@ -411,6 +411,12 @@
             border: 1px solid rgba(139, 92, 246, 0.3);
         }
 
+        .tag-company {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-orange);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
         /* Integration Type Notice */
         .integration-notice {
             background: rgba(14, 165, 233, 0.05);
@@ -426,6 +432,11 @@
         .integration-notice.custom {
             background: rgba(139, 92, 246, 0.05);
             border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .integration-notice.company {
+            background: rgba(245, 158, 11, 0.05);
+            border-color: rgba(245, 158, 11, 0.2);
         }
 
         .integration-notice.warning {
@@ -851,11 +862,11 @@
         <!-- Statistics Section -->
         <section class="stats fade-in">
             <div class="stat-card">
-                <div class="stat-number" id="totalIntegrations">11</div>
+                <div class="stat-number" id="totalIntegrations">16</div>
                 <div class="stat-label">Integrations</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="totalCategories">6</div>
+                <div class="stat-number" id="totalCategories">7</div>
                 <div class="stat-label">Categories</div>
             </div>
             <div class="stat-card">
@@ -890,8 +901,8 @@
 
         <!-- Integrations Grid -->
         <section class="integrations-section">
-            <h2 class="section-title">🔌 Available Integrations</h2>
-            <p class="section-description">Click any card for detailed setup instructions and examples</p>
+            <h2 class="section-title">🔌 Built-in Poke Integrations</h2>
+            <p class="section-description">These integrations are built directly into Poke.com - just connect your accounts</p>
 
             <div class="integrations-grid" id="integrationsGrid">
                 <!-- GitHub (Built-in Poke Integration) -->
@@ -1229,7 +1240,52 @@
                         </button>
                     </div>
                 </div>
+            </div>
+        </section>
 
+        <!-- Company/Official MCP Integrations Section -->
+        <section class="integrations-section">
+            <h2 class="section-title">🏢 Company/Official MCP Integrations</h2>
+            <p class="section-description">Official MCP servers created by Poke and partner companies</p>
+
+            <div class="integrations-grid">
+                <!-- Earnings Feed (Official Company MCP) -->
+                <div class="integration-card fade-in" data-category="financial" data-name="Earnings Feed" data-type="company">
+                    <div class="card-icon">📊</div>
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Earnings Feed</h3>
+                            <div class="status-indicator"></div>
+                        </div>
+                    </div>
+                    <p class="card-description">Access real-time financial earnings data and market insights through Poke</p>
+                    
+                    <div class="integration-notice company">
+                        <strong>🏢 Official MCP Server</strong> — Created by Poke/company team. Not a community integration.
+                    </div>
+                    
+                    <div class="card-tags">
+                        <span class="tag tag-category">Financial</span>
+                        <span class="tag tag-company">Official</span>
+                        <span class="tag tag-status">Active</span>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='earnings-feed.html'">
+                            <span>📚</span>
+                            <span>View Guide</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom MCP Integrations Section -->
+        <section class="integrations-section">
+            <h2 class="section-title">🛠️ Community Custom MCP Servers</h2>
+            <p class="section-description">Community-built MCP servers (some created by Pierre, others by the community)</p>
+
+            <div class="integrations-grid">
                 <!-- BART (Custom MCP on Render) -->
                 <div class="integration-card fade-in" data-category="transit" data-name="BART" data-type="custom">
                     <div class="card-icon">🚇</div>
@@ -1319,25 +1375,16 @@
                             <div class="status-indicator"></div>
                         </div>
                     </div>
-                    <p class="card-description">Extract text, metadata, and images from PDF files through Poke conversations</p>
+                    <p class="card-description">Read and analyze PDF documents directly through Poke conversations</p>
                     
                     <div class="integration-notice custom">
-                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render.
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre. Deployed on Render.
                     </div>
                     
                     <div class="card-tags">
                         <span class="tag tag-category">Document</span>
                         <span class="tag tag-custom">Custom MCP</span>
                         <span class="tag tag-status">Active</span>
-                    </div>
-                    
-                    <!-- MCP Server URL -->
-                    <div class="card-server-url">
-                        <div class="server-url-label">MCP Server URL (Render)</div>
-                        <a href="http://pdf-reader-mcp-m8ky.onrender.com/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
-                            <span class="server-url-icon">🔗</span>
-                            <span>pdf-reader-mcp-m8ky.onrender.com/mcp</span>
-                        </a>
                     </div>
                     
                     <div class="card-actions">
@@ -1348,45 +1395,7 @@
                     </div>
                 </div>
 
-                <!-- Earnings Feed (Custom MCP on Render) -->
-                <div class="integration-card fade-in" data-category="financial" data-name="Earnings Feed" data-type="custom">
-                    <div class="card-icon">📊</div>
-                    <div class="card-header">
-                        <div>
-                            <h3 class="card-title">Earnings Feed</h3>
-                            <div class="status-indicator"></div>
-                        </div>
-                    </div>
-                    <p class="card-description">Access real-time financial earnings data and market insights via Poke</p>
-                    
-                    <div class="integration-notice custom">
-                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render.
-                    </div>
-                    
-                    <div class="card-tags">
-                        <span class="tag tag-category">Financial</span>
-                        <span class="tag tag-custom">Custom MCP</span>
-                        <span class="tag tag-status">Active</span>
-                    </div>
-                    
-                    <!-- MCP Server URL -->
-                    <div class="card-server-url">
-                        <div class="server-url-label">MCP Server URL (Render)</div>
-                        <a href="https://earningsfeed.com/api/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
-                            <span class="server-url-icon">🔗</span>
-                            <span>earningsfeed.com/api/mcp</span>
-                        </a>
-                    </div>
-                    
-                    <div class="card-actions">
-                        <button class="btn btn-primary" onclick="window.location.href='earnings-feed.html'">
-                            <span>📚</span>
-                            <span>View Guide</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- FFmpeg (Custom MCP on Render) -->
+                <!-- FFmpeg (Custom MCP) -->
                 <div class="integration-card fade-in" data-category="media" data-name="FFmpeg" data-type="custom">
                     <div class="card-icon">🎬</div>
                     <div class="card-header">
@@ -1395,25 +1404,16 @@
                             <div class="status-indicator"></div>
                         </div>
                     </div>
-                    <p class="card-description">Process video and audio files with comprehensive format conversion through Poke</p>
+                    <p class="card-description">Process and convert media files using FFmpeg through Poke</p>
                     
                     <div class="integration-notice custom">
-                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre and deployed on Render.
+                        <strong>🔧 Custom MCP Server</strong> — Created by @guirguispierre. Requires FFmpeg installed locally.
                     </div>
                     
                     <div class="card-tags">
                         <span class="tag tag-category">Media</span>
                         <span class="tag tag-custom">Custom MCP</span>
                         <span class="tag tag-status">Active</span>
-                    </div>
-                    
-                    <!-- MCP Server URL -->
-                    <div class="card-server-url">
-                        <div class="server-url-label">MCP Server URL (Render)</div>
-                        <a href="https://ffmpeg-mcp.onrender.com/mcp" target="_blank" rel="noopener noreferrer" class="server-url-link">
-                            <span class="server-url-icon">🔗</span>
-                            <span>ffmpeg-mcp.onrender.com/mcp</span>
-                        </a>
                     </div>
                     
                     <div class="card-actions">
@@ -1426,141 +1426,130 @@
             </div>
         </section>
 
-        <!-- Setup Guide Section -->
-        <section class="guide-section fade-in" id="setup-guide">
-            <h2 class="section-title">📖 Integration Types Explained</h2>
-            <p class="section-description">Understanding the different types of MCP integrations</p>
-
+        <!-- How to Use Section -->
+        <section class="guide-section">
+            <h2 class="section-title">🚀 Getting Started</h2>
+            <p class="section-description">Follow these simple steps to add MCP integrations to your Poke workflow</p>
+            
             <div class="guide-steps">
-                <div class="guide-step">
+                <div class="guide-step fade-in">
                     <div class="step-number">1</div>
-                    <h3 class="step-title">Built-in Poke Integrations</h3>
-                    <div class="step-content">
-                        <p>These integrations are <strong>native to Poke.com</strong> and require zero server setup. Simply connect your account in Poke settings and start using them immediately. Examples: GitHub, Todoist, Asana, Linear, Notion, Supabase, Vercel, Netlify, DeepWiki, Sentry, Ramp, and Webflow.</p>
-                    </div>
+                    <h3 class="step-title">Choose Your Integration</h3>
+                    <p class="step-content">
+                        Browse the available integrations above and click on any card to see detailed setup instructions. Built-in integrations are the easiest to get started with.
+                    </p>
                 </div>
-
-                <div class="guide-step">
+                
+                <div class="guide-step fade-in">
                     <div class="step-number">2</div>
-                    <h3 class="step-title">Custom MCP Servers</h3>
-                    <div class="step-content">
-                        <p>These are <strong>community-created MCPs</strong> deployed on Render by @guirguispierre. They require adding the server URL to your Poke MCP configuration. Examples: BART, PDF Reader, Last.fm, FFmpeg, and Earnings Feed.</p>
-                    </div>
+                    <h3 class="step-title">Configure in Poke</h3>
+                    <p class="step-content">
+                        For built-in integrations, just connect your account in Poke settings. For custom MCPs, follow the specific setup guide for each integration.
+                    </p>
                 </div>
-
-                <div class="guide-step">
+                
+                <div class="guide-step fade-in">
                     <div class="step-number">3</div>
-                    <h3 class="step-title">Configure Custom MCPs</h3>
-                    <div class="step-content">
-                        <p>For custom MCPs, you'll need to add the server URL to your Poke settings. Each integration card shows the specific server URL. Some may require additional API keys (like BART).</p>
-                    </div>
-                </div>
-
-                <div class="guide-step">
-                    <div class="step-number">4</div>
                     <h3 class="step-title">Start Using</h3>
-                    <div class="step-content">
-                        <p>Once configured, simply ask Poke naturally! For example: "Show my GitHub repos" or "What's the next BART train?" The integrations work seamlessly in your conversations.</p>
-                    </div>
+                    <p class="step-content">
+                        Once configured, start using the integration directly in your Poke conversations. Check each integration's guide for example prompts and usage tips.
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- Security Section -->
-        <section class="guide-section fade-in">
-            <h2 class="section-title">🔒 Security Best Practices</h2>
-            <p class="section-description">Keep your integrations secure and your data protected</p>
-
+        <section class="guide-section">
+            <h2 class="section-title">🔒 Security & Privacy</h2>
+            <p class="section-description">Your data security and privacy are important</p>
+            
             <div class="security-grid">
-                <div class="security-card">
+                <div class="security-card fade-in">
                     <div class="security-icon">🔐</div>
-                    <h3 class="security-title">Secure Storage</h3>
-                    <p class="security-text">Store API keys in environment variables or secure configuration files, never in code</p>
+                    <h3 class="security-title">API Keys</h3>
+                    <p class="security-text">
+                        All API keys are stored securely and never shared. Keep your credentials private and rotate them regularly.
+                    </p>
                 </div>
-
-                <div class="security-card">
+                
+                <div class="security-card fade-in">
                     <div class="security-icon">🛡️</div>
-                    <h3 class="security-title">Minimal Permissions</h3>
-                    <p class="security-text">Grant only the necessary permissions required for each integration to function</p>
+                    <h3 class="security-title">Local Processing</h3>
+                    <p class="security-text">
+                        MCP servers run locally or on your infrastructure. Your sensitive data never leaves your control.
+                    </p>
                 </div>
-
-                <div class="security-card">
+                
+                <div class="security-card fade-in">
+                    <div class="security-icon">✅</div>
+                    <h3 class="security-title">Open Source</h3>
+                    <p class="security-text">
+                        All custom integrations are open source. Review the code yourself before deployment.
+                    </p>
+                </div>
+                
+                <div class="security-card fade-in">
                     <div class="security-icon">⚡</div>
-                    <h3 class="security-title">Rate Limiting</h3>
-                    <p class="security-text">Respect API rate limits to prevent service disruption and maintain good standing</p>
-                </div>
-
-                <div class="security-card">
-                    <div class="security-icon">🔄</div>
-                    <h3 class="security-title">Regular Updates</h3>
-                    <p class="security-text">Keep your MCP servers and dependencies updated for latest security patches</p>
+                    <h3 class="security-title">Direct Connections</h3>
+                    <p class="security-text">
+                        Built-in integrations connect directly to services. No third-party intermediaries.
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- FAQ Section -->
-        <section class="faq-section fade-in" id="faq">
+        <section class="faq-section">
             <h2 class="section-title">❓ Frequently Asked Questions</h2>
-            <p class="section-description">Everything you need to know about MCP integrations</p>
-
+            
             <div class="faq-list">
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>What's the difference between built-in and custom MCPs?</span>
+                    <div class="faq-question">
+                        <span>What is MCP (Model Context Protocol)?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Built-in integrations are native to Poke.com and require no server setup—just connect your account. Custom MCPs are community-created servers that need to be configured in your Poke settings with a server URL. Built-in integrations are more convenient, while custom MCPs offer specialized functionality.</p>
+                        MCP is an open protocol that enables AI assistants like Poke to connect with external tools and data sources. It allows your AI to interact with services like GitHub, databases, and custom APIs in a standardized way.
                     </div>
                 </div>
-
+                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>How do I add a custom MCP server to Poke?</span>
+                    <div class="faq-question">
+                        <span>Are these integrations official?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Go to your Poke settings, find the MCP configuration section, and add the server URL provided on each custom integration card. Some integrations may require additional API keys. Click "View Guide" on any custom integration for detailed setup instructions.</p>
+                        Built-in integrations are officially supported by Poke.com. Official/Company integrations are created by Poke or partner companies. Custom MCPs are community-built by Pierre and others, and are not officially affiliated with Poke.com.
                     </div>
                 </div>
-
+                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>Do custom MCPs hosted on Render cost money?</span>
+                    <div class="faq-question">
+                        <span>How do I add a custom MCP server?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>The custom MCP servers themselves are free to use. However, Render's free tier may have limitations. If you experience issues, you might need to deploy your own instance or wait for the server to wake up from sleep (common with free-tier hosting).</p>
+                        Each custom MCP has detailed setup instructions on its individual page. Generally, you'll need to deploy the server (or use a hosted version) and add the server URL to your Poke configuration file.
                     </div>
                 </div>
-
+                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>Why does BART require an API key?</span>
+                    <div class="faq-question">
+                        <span>Are these integrations free to use?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>BART's real-time transit data API requires authentication. You need to register for a free API key at api.bart.gov to access their data. This ensures fair usage and helps BART track API utilization.</p>
+                        The MCP servers themselves are free and open source. However, the services they connect to (like GitHub, Todoist, APIs) may have their own pricing. Check each service's pricing page for details.
                     </div>
                 </div>
-
+                
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>Can I create my own custom MCP?</span>
+                    <div class="faq-question">
+                        <span>Can I contribute my own integration?</span>
                         <span class="faq-icon">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Absolutely! Check out the Model Context Protocol documentation at modelcontextprotocol.io to learn how to build your own MCP server. You can deploy it on Render, Railway, or any hosting service and connect it to Poke.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>Is my data secure with custom MCPs?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Custom MCPs act as intermediaries between Poke and external services. Always review the source code (all custom MCPs here are open source on GitHub) and use API keys with minimal required permissions. Built-in Poke integrations follow Poke's security standards.</p>
+                        Yes! This is a community project. If you've built an MCP server you'd like to share, please reach out on GitHub or submit a pull request to add your integration to this dashboard.
                     </div>
                 </div>
             </div>
@@ -1570,17 +1559,17 @@
         <footer>
             <div class="footer-content">
                 <div class="footer-links">
-                    <a href="#setup-guide">Setup Guide</a>
-                    <a href="#faq">FAQ</a>
                     <a href="https://github.com/guirguispierre/mcp-dashboard" target="_blank">GitHub</a>
                     <a href="https://poke.com" target="_blank">Poke.com</a>
                     <a href="https://modelcontextprotocol.io" target="_blank">MCP Docs</a>
                 </div>
+                
                 <p class="footer-note">
-                    Built with ❤️ by <a href="https://github.com/guirguispierre" target="_blank">@guirguispierre</a> • 
-                    Not affiliated with poke.com • 
-                    Open source community project • 
-                    <a href="https://github.com/guirguispierre/mcp-dashboard/blob/main/LICENSE" target="_blank">MIT License</a>
+                    <strong>Disclaimer:</strong> This dashboard is an independent community project created by <a href="https://github.com/guirguispierre" target="_blank">@guirguispierre</a> and is not affiliated with, endorsed by, or connected to poke.com. All product names, logos, and brands are property of their respective owners.
+                </p>
+                
+                <p class="footer-note" style="margin-top: 1rem;">
+                    Built with ❤️ for the Poke and MCP community
                 </p>
             </div>
         </footer>
