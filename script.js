@@ -197,7 +197,9 @@ function openHelp(integration) {
                 '\"Compress this video to under 50MB\"'
             ],
             links: [
-                { text: 'FFmpeg Documentation', url: 'https://ffmpeg.org/documentation.html' }
+                { text: 'ffmpegPOKE Source Code', url: 'https://github.com/guirguispierre/ffmepgPOKE' },
+                { text: 'FFmpeg Documentation', url: 'https://ffmpeg.org/documentation.html' },
+                { text: 'FFmpeg Wiki', url: 'https://trac.ffmpeg.org/wiki' }
             ]
         },
         todoist: {
