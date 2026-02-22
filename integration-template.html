@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO: Update meta description with your integration name and brief description -->
+    <meta name="description" content="[Integration Name] MCP Integration for Poke - [Brief description]">
+    
+    <!-- TODO: Update title with your integration name -->
+    <title>[Integration Name] MCP for Poke - MCP Dashboard</title>
+    
+    <!-- Shared CSS variables and components -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- 
+        Integration Page Styling
+        These styles are consistent across all integration pages.
+        DO NOT modify these unless coordinating with all other integration pages.
+    -->
+    <style>
+        .back-nav {
+            margin-bottom: 2rem;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .back-btn:hover {
+            background: var(--success-color);
+            color: var(--background);
+            border-color: var(--success-color);
+            transform: translateX(-5px);
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 2px solid var(--success-color);
+        }
+        
+        .hero-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+        
+        .content-section {
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.75rem;
+            color: var(--success-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .connection-placeholder {
+            background: var(--background);
+            border: 2px dashed var(--warning-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .placeholder-text {
+            color: var(--warning-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .conversation-example {
+            background: var(--background);
+            border-left: 4px solid var(--success-color);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .user-message {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .poke-response {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-left: 1rem;
+        }
+        
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 1.5rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+        
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--success-color);
+            color: var(--background);
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Navigation -->
+        <div class="back-nav">
+            <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        </div>
+
+        <!-- Disclaimer Banner -->
+        <div class="disclaimer-banner">
+            <span class="disclaimer-icon">⚠️</span>
+            <p><strong>Independent Project:</strong> This page is not affiliated with poke.com. Community resource by Pierre Guirguis.</p>
+        </div>
+
+        <!-- Hero Section -->
+        <!-- TODO: Update the emoji icon, title, subtitle, and description -->
+        <div class="hero-section">
+            <div class="hero-icon">🔧</div> <!-- Choose an appropriate emoji -->
+            <h1 class="hero-title">[Integration Name] MCP for Poke</h1>
+            <p class="hero-subtitle">[One-line description of what this integration does]</p>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                [Extended description of features and benefits for Poke users]
+            </p>
+        </div>
+
+        <!-- Quick Connect Section (Placeholder) -->
+        <div class="content-section">
+            <h2 class="section-title">🔗 Quick Connect to Poke</h2>
+            <div class="connection-placeholder">
+                <p class="placeholder-text">📍 MCP Connection Link Placeholder</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Pierre will add the direct connection link here</p>
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">
+                    Click the link above to automatically add [Integration Name] MCP to your Poke setup
+                </p>
+            </div>
+        </div>
+
+        <!-- Setup Instructions -->
+        <!-- TODO: Add 4-6 setup steps with clear instructions -->
+        <div class="content-section">
+            <h2 class="section-title">⚙️ Setup Instructions</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Follow these steps to connect [Integration Name] MCP to your Poke assistant:
+            </p>
+            
+            <ol class="step-list">
+                <!-- Step 1: Account Setup (if needed) -->
+                <li>
+                    <strong style="color: var(--text-primary);">Create Account (if needed)</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Sign up at <a href="[SERVICE_URL]" target="_blank" rel="noopener noreferrer" class="external-link">[service-name.com]</a><br>
+                        [Additional details about account setup, free tier info, etc.]
+                    </p>
+                </li>
+
+                <!-- Step 2: Get API Credentials -->
+                <li>
+                    <strong style="color: var(--text-primary);">Get Your API Key/Token</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        1. Go to [Service] Settings → [Section]<br>
+                        2. [Navigate to API section]<br>
+                        3. Create a new API key/token<br>
+                        4. Copy and save it securely
+                    </p>
+                </li>
+
+                <!-- Step 3: Install MCP Server -->
+                <li>
+                    <strong style="color: var(--text-primary);">Install [Integration Name] MCP Server</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Open your terminal and run:<br>
+                        <code style="background: var(--background); padding: 0.5rem; display: inline-block; margin-top: 0.5rem; border-radius: 4px;">
+                            npm install -g @modelcontextprotocol/server-[integration-name]
+                        </code>
+                    </p>
+                </li>
+
+                <!-- Step 4: Add to Poke Configuration -->
+                <li>
+                    <strong style="color: var(--text-primary);">Add to Poke MCP Configuration</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Add this to your MCP configuration file:
+                    </p>
+                    <!-- TODO: Update with actual MCP configuration -->
+                    <pre style="background: var(--background); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 0.5rem;"><code>{
+  "mcpServers": {
+    "[integration-key]": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-[integration-name]"],
+      "env": {
+        "API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}</code></pre>
+                    <p style="color: var(--warning-color); margin-top: 0.5rem; font-size: 0.9rem;">
+                        ⚠️ Replace <code>your_api_key_here</code> with your actual API key
+                    </p>
+                </li>
+
+                <!-- Step 5: Restart Poke -->
+                <li>
+                    <strong style="color: var(--text-primary);">Restart Poke</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Close and restart your Poke application to load the new MCP server.
+                    </p>
+                </li>
+
+                <!-- Step 6: Test Connection -->
+                <li>
+                    <strong style="color: var(--text-primary);">Test the Connection</strong>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Try asking Poke: <em>"[Example test question]"</em>
+                    </p>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Poke Conversation Examples -->
+        <!-- TODO: Add 3-5 realistic conversation examples -->
+        <div class="content-section">
+            <h2 class="section-title">💬 Example Poke Conversations</h2>
+            
+            <!-- Example 1 -->
+            <div class="conversation-example">
+                <div class="user-message">👤 You: "[Example question/command to Poke]"</div>
+                <div class="poke-response">
+                    🤖 Poke: "[Realistic response from Poke with specific details]<br><br>
+                    [Additional information or data]<br>
+                    [Status or confirmation message]"
+                </div>
+            </div>
+
+            <!-- Example 2 -->
+            <div class="conversation-example">
+                <div class="user-message">👤 You: "[Second example question]"</div>
+                <div class="poke-response">
+                    🤖 Poke: "[Response showing different functionality]<br><br>
+                    [Formatted data or information]<br>
+                    [Follow-up question or suggestion]"
+                </div>
+            </div>
+
+            <!-- Example 3 -->
+            <div class="conversation-example">
+                <div class="user-message">👤 You: "[Third example with different use case]"</div>
+                <div class="poke-response">
+                    🤖 Poke: "[Response demonstrating another feature]<br><br>
+                    [Specific details relevant to the query]<br>
+                    [Helpful context or next steps]"
+                </div>
+            </div>
+
+            <!-- Add 2-3 more examples as needed -->
+        </div>
+
+        <!-- Capabilities Grid (Optional but Recommended) -->
+        <!-- TODO: Add 4-6 capability cards describing key features -->
+        <div class="content-section">
+            <h2 class="section-title">📚 What You Can Do</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <h3 style="color: var(--success-color);">Feature 1 Name</h3>
+                    <p>Description of what users can do with this feature.</p>
+                </div>
+                
+                <div class="guide-card">
+                    <h3 style="color: var(--success-color);">Feature 2 Name</h3>
+                    <p>Description of another key capability or feature.</p>
+                </div>
+                
+                <div class="guide-card">
+                    <h3 style="color: var(--success-color);">Feature 3 Name</h3>
+                    <p>Description of a third important feature.</p>
+                </div>
+                
+                <div class="guide-card">
+                    <h3 style="color: var(--success-color);">Feature 4 Name</h3>
+                    <p>Description of additional functionality.</p>
+                </div>
+
+                <!-- Add more capability cards as needed (4-6 total recommended) -->
+            </div>
+        </div>
+
+        <!-- Resources Section (Optional but Recommended) -->
+        <!-- TODO: Add relevant links to documentation and resources -->
+        <div class="content-section">
+            <h2 class="section-title">🔗 Resources</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;">
+                    <a href="[SERVICE_WEBSITE]" target="_blank" rel="noopener noreferrer" class="external-link">
+                        🌐 Official [Service] Website
+                    </a>
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <a href="[API_DOCS_URL]" target="_blank" rel="noopener noreferrer" class="external-link">
+                        📖 [Service] API Documentation
+                    </a>
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <a href="[MCP_SERVER_REPO]" target="_blank" rel="noopener noreferrer" class="external-link">
+                        💻 MCP Server Repository
+                    </a>
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" class="external-link">
+                        📚 Model Context Protocol Docs
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Pro Tips Section (Optional but Recommended) -->
+        <!-- TODO: Add 5-8 helpful tips for using this integration -->
+        <div class="content-section" style="background: var(--surface-light); border-color: var(--success-color);">
+            <h2 class="section-title">💡 Pro Tips</h2>
+            <ul style="color: var(--text-secondary); line-height: 1.8;">
+                <li>✨ [Tip about getting started or basic usage]</li>
+                <li>⚡ [Tip about efficiency or best practices]</li>
+                <li>🎯 [Tip about specific features or functionality]</li>
+                <li>🔒 [Security or privacy tip]</li>
+                <li>📊 [Tip about data or analytics]</li>
+                <li>🔄 [Tip about integration with other tools]</li>
+                <li>💰 [Tip about free tier or cost optimization]</li>
+            </ul>
+        </div>
+
+        <!-- Back to Dashboard Link -->
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html" class="back-btn" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                ← Back to All Integrations
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer style="margin-top: 4rem;">
+            <div class="footer-disclaimer">
+                <!-- TODO: Update with specific service name if needed -->
+                <p>
+                    <strong>⚠️ Important Disclaimer:</strong> 
+                    This page is independently created by Pierre Guirguis. 
+                    Not affiliated with poke.com or [Service Name]. 
+                    Keep your API credentials secure.
+                </p>
+            </div>
+            <p style="text-align: center; color: var(--text-secondary); margin-top: 2rem;">
+                Built with ❤️ for the Poke community by Pierre Guirguis
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
