@@ -17,6 +17,58 @@ The integration template provides a complete, ready-to-use structure for creatin
 
 ---
 
+## 🔌 Understanding MCP Integration in Poke
+
+### How to Integrate an MCP into Poke
+
+There are **two ways** to integrate an MCP server with Poke:
+
+#### Option 1: Use a Deployed MCP URL (Recommended)
+
+If the MCP server is already deployed and accessible via a URL, simply use that URL in your Poke configuration:
+
+```json
+{
+  "mcpServers": {
+    "example": {
+      "url": "https://mcp-server.example.com"
+    }
+  }
+}
+```
+
+**Pros:**
+- ✅ No local installation needed
+- ✅ Always up-to-date
+- ✅ Works across all devices
+- ✅ Lower maintenance
+
+#### Option 2: Run MCP Locally
+
+Alternatively, you can run the MCP server locally on your machine and use the local URL:
+
+1. Install and run the MCP server locally
+2. Note the local server URL (typically `http://localhost:PORT`)
+3. Use this local URL in your Poke configuration:
+
+```json
+{
+  "mcpServers": {
+    "example": {
+      "url": "http://localhost:3000"
+    }
+  }
+}
+```
+
+**When to use local:**
+- 🔒 For sensitive/private data
+- 🛠️ For development and testing
+- ⚙️ When you need custom configurations
+- 📦 When no hosted version is available
+
+---
+
 ## 🚀 Quick Start
 
 ### Step 1: Copy the Template
@@ -31,30 +83,19 @@ cp integration-template.html your-integration-name.html
 - Match the integration name
 - Examples: `slack.html`, `notion.html`, `linear.html`, `google-calendar.html`
 
-### Step 2: Search and Replace
+### Step 2: Customize Content
 
-Open your new file and replace these placeholders:
-
-| Placeholder | Replace With | Example |
-|-------------|--------------|---------|
-| `[Integration Name]` | Full integration name | Slack, Notion, Linear |
-| `[integration-name]` | Lowercase with hyphens | slack, notion, linear |
-| `[integration-key]` | Configuration key | slack, notion, linear |
-| `[Brief description]` | Short description | Team communication platform |
-| `[One-line description]` | Concise feature summary | Real-time team messaging and collaboration |
-| `[Extended description]` | Detailed benefits | Send messages, manage channels, and collaborate with your team directly through Poke |
-| `[SERVICE_URL]` | Official website URL | https://slack.com |
-| `[Service Name]` | Service/company name | Slack |
+Open your new file and replace the example content with details specific to your integration. The template includes examples to guide you - simply replace them with your actual integration details.
 
 **Quick Find & Replace (VS Code):**
 1. Press `Cmd/Ctrl + H`
-2. Find: `[Integration Name]`
-3. Replace: `Your Integration Name`
+2. Find example text
+3. Replace with your integration details
 4. Click "Replace All"
 
 ### Step 3: Customize Each Section
 
-Follow the TODO comments in the template:
+Follow the TODO comments in the template - they mark every place where customization is needed.
 
 ---
 
@@ -62,12 +103,9 @@ Follow the TODO comments in the template:
 
 ### 1. **Meta Tags** (Lines 5-8)
 
-```html
-<!-- BEFORE -->
-<meta name="description" content="[Integration Name] MCP Integration for Poke - [Brief description]">
-<title>[Integration Name] MCP for Poke - MCP Dashboard</title>
+Update meta tags with your integration details:
 
-<!-- AFTER -->
+```html
 <meta name="description" content="Slack MCP Integration for Poke - Team communication and collaboration">
 <title>Slack MCP for Poke - MCP Dashboard</title>
 ```
@@ -119,10 +157,10 @@ This is the most important section. Follow this structure:
 
 ```html
 <li>
-    <strong style="color: var(--text-primary);">Create [Service] Account</strong>
+    <strong style="color: var(--text-primary);">Create Slack Account</strong>
     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-        Sign up at <a href="https://service.com" target="_blank" rel="noopener noreferrer" class="external-link">service.com</a><br>
-        Free tier includes [features available in free tier]
+        Sign up at <a href="https://slack.com" target="_blank" rel="noopener noreferrer" class="external-link">slack.com</a><br>
+        Free tier includes unlimited messages and 10 integrations
     </p>
 </li>
 ```
@@ -132,17 +170,17 @@ This is the most important section. Follow this structure:
 - Note any limitations
 - Include direct signup link
 
-#### **Step 2: API Credentials**
+#### **Step 2: API Credentials (if required)**
 
 ```html
 <li>
     <strong style="color: var(--text-primary);">Get Your API Key</strong>
     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-        1. Log into [Service]<br>
-        2. Navigate to Settings → [Section] → API<br>
+        1. Log into Slack<br>
+        2. Navigate to Settings → API → Create Token<br>
         3. Click "Create New Token" or "Generate API Key"<br>
         4. Copy the token and save it securely<br>
-        5. (Optional) Set appropriate scopes: [required scopes]
+        5. (Optional) Set appropriate scopes: channels:read, chat:write
     </p>
 </li>
 ```
@@ -152,59 +190,56 @@ This is the most important section. Follow this structure:
 - List required scopes/permissions
 - Mention security best practices
 
-#### **Step 3: Install MCP Server**
+#### **Step 3: Configure Poke with MCP URL**
 
-```html
-<li>
-    <strong style="color: var(--text-primary);">Install [Integration] MCP Server</strong>
-    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-        Open your terminal and run:<br>
-        <code style="background: var(--background); padding: 0.5rem; display: inline-block; margin-top: 0.5rem; border-radius: 4px;">
-            npm install -g @modelcontextprotocol/server-[integration]
-        </code>
-    </p>
-</li>
-```
-
-**Tips:**
-- Use actual npm package name
-- Mention if package is unofficial/community
-- Note any system requirements
-
-#### **Step 4: Poke Configuration**
+The key section that explains both integration methods:
 
 ```html
 <li>
     <strong style="color: var(--text-primary);">Add to Poke MCP Configuration</strong>
     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-        Add this to your MCP configuration file:
+        <strong>Option 1: Use Hosted MCP URL (Recommended)</strong><br>
+        If the MCP is hosted, simply use the URL:
     </p>
     <pre style="background: var(--background); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 0.5rem;"><code>{
   "mcpServers": {
     "slack": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-slack"],
-      "env": {
-        "SLACK_TOKEN": "your_slack_token_here",
-        "SLACK_WORKSPACE": "your_workspace_id"
-      }
+      "url": "https://mcp.example.com/slack"
+    }
+  }
+}</code></pre>
+    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+        <strong>Option 2: Run Locally</strong><br>
+        Install and run the MCP server locally, then use the local URL:
+    </p>
+    <pre style="background: var(--background); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 0.5rem;"><code># Install the MCP server
+npm install -g @modelcontextprotocol/server-slack
+
+# Start the server (it will run on a local port)
+mcp-server-slack --port 3000
+
+# Then configure Poke:
+{
+  "mcpServers": {
+    "slack": {
+      "url": "http://localhost:3000"
     }
   }
 }</code></pre>
     <p style="color: var(--warning-color); margin-top: 0.5rem; font-size: 0.9rem;">
-        ⚠️ Replace placeholder values with your actual credentials
+        ⚠️ Replace URLs and credentials with your actual values
     </p>
 </li>
 ```
 
 **Configuration Guidelines:**
 - Use valid JSON syntax
-- Include all required environment variables
-- Use clear placeholder names
-- Add warning about replacing placeholders
+- Show both URL-based and local installation options
+- Include clear examples for each method
+- Add warning about replacing actual values
 - Test the configuration yourself before submitting
 
-#### **Step 5 & 6: Restart and Test**
+#### **Step 4 & 5: Restart and Test**
 
 ```html
 <li>
@@ -217,7 +252,7 @@ This is the most important section. Follow this structure:
 <li>
     <strong style="color: var(--text-primary);">Test the Connection</strong>
     <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-        Try asking Poke: <em>"[Simple test command]"</em>
+        Try asking Poke: <em>"Send a message to the team channel"</em>
     </p>
 </li>
 ```
@@ -232,11 +267,12 @@ Create 3-5 realistic examples showing different capabilities:
 
 ```html
 <div class="conversation-example">
-    <div class="user-message">👤 You: "[Natural language request to Poke]"</div>
+    <div class="user-message">👤 You: "Send a message to the engineering channel saying 'Deploy complete!'"</div>
     <div class="poke-response">
-        🤖 Poke: "[Detailed response with formatting]<br><br>
-        [Data or information]<br>
-        [Status or follow-up]"
+        🤖 Poke: "Message sent to #engineering channel!<br><br>
+        ✅ Sent at 2:45 PM<br>
+        👥 Channel has 24 members<br>
+        📱 Mobile notifications enabled"
     </div>
 </div>
 ```
@@ -246,7 +282,7 @@ Create 3-5 realistic examples showing different capabilities:
 **1. Make it realistic**
 ```html
 <!-- Good: Specific and realistic -->
-<div class="user-message">👤 You: "Send a message to the #engineering channel saying 'Deploy complete!'"</div>
+<div class="user-message">👤 You: "Send a message to the engineering channel saying 'Deploy complete!'"</div>
 <div class="poke-response">
     🤖 Poke: "Message sent to #engineering channel!<br><br>
     ✅ Sent at 2:45 PM<br>
@@ -294,11 +330,16 @@ Showcase 4-6 key features:
 ```html
 <div class="guide-grid">
     <div class="guide-card">
-        <h3 style="color: var(--success-color);">Feature Name</h3>
-        <p>Clear description of what users can accomplish with this feature.</p>
+        <h3 style="color: var(--success-color);">Send Messages</h3>
+        <p>Post messages to channels, direct messages, or threads with mentions and formatting.</p>
     </div>
     
-    <!-- Add 3-5 more cards -->
+    <div class="guide-card">
+        <h3 style="color: var(--success-color);">Manage Channels</h3>
+        <p>Create, archive, and configure channels. Invite members and set channel topics.</p>
+    </div>
+    
+    <!-- Add 2-4 more cards -->
 </div>
 ```
 
@@ -310,19 +351,6 @@ Showcase 4-6 key features:
 - Integration features
 - Advanced features
 
-**Example (Slack):**
-```html
-<div class="guide-card">
-    <h3 style="color: var(--success-color);">Send Messages</h3>
-    <p>Post messages to channels, direct messages, or threads with mentions and formatting.</p>
-</div>
-
-<div class="guide-card">
-    <h3 style="color: var(--success-color);">Manage Channels</h3>
-    <p>Create, archive, and configure channels. Invite members and set channel topics.</p>
-</div>
-```
-
 ---
 
 ### 6. **Resources Section** (Lines 318-337)
@@ -331,8 +359,13 @@ Add 3-6 relevant links:
 
 ```html
 <li style="margin-bottom: 1rem;">
-    <a href="https://service.com" target="_blank" rel="noopener noreferrer" class="external-link">
-        🌐 Official [Service] Website
+    <a href="https://slack.com" target="_blank" rel="noopener noreferrer" class="external-link">
+        🌐 Official Slack Website
+    </a>
+</li>
+<li style="margin-bottom: 1rem;">
+    <a href="https://api.slack.com/docs" target="_blank" rel="noopener noreferrer" class="external-link">
+        📚 Slack API Documentation
     </a>
 </li>
 ```
@@ -363,12 +396,12 @@ Add 5-8 helpful tips:
 
 ```html
 <ul style="color: var(--text-secondary); line-height: 1.8;">
-    <li>✨ [Tip about getting started]</li>
-    <li>⚡ [Tip about efficiency]</li>
-    <li>🎯 [Tip about best practices]</li>
-    <li>🔒 [Security tip]</li>
-    <li>💰 [Cost optimization tip]</li>
-    <li>🔄 [Integration tip]</li>
+    <li>✨ Use the hosted MCP URL for easiest setup - no installation needed!</li>
+    <li>⚡ For development, run MCP locally to test configurations quickly</li>
+    <li>🎯 Combine with calendar MCP for automated scheduling</li>
+    <li>🔒 Use environment variables, never hardcode API keys</li>
+    <li>💰 Free tier includes 10,000 requests/month</li>
+    <li>🔄 Switch between hosted and local MCPs by updating the URL</li>
 </ul>
 ```
 
@@ -381,15 +414,7 @@ Add 5-8 helpful tips:
 - Combining with other MCPs
 - Advanced features
 - Common pitfalls to avoid
-
-**Example Tips:**
-```html
-<li>✨ No API key required - [Service] provides open data!</li>
-<li>⚡ Use specific identifiers for faster responses</li>
-<li>🎯 Combine with calendar MCP for automated scheduling</li>
-<li>🔒 Use environment variables, never hardcode API keys</li>
-<li>💰 Free tier includes 10,000 requests/month</li>
-```
+- MCP deployment options
 
 ---
 
@@ -464,14 +489,14 @@ Before submitting your new integration page, verify:
 - [ ] **Meta tags** updated with integration name and description
 - [ ] **Hero section** has appropriate emoji, title, and description
 - [ ] **Setup instructions** are clear and tested (4-6 steps)
-- [ ] **MCP configuration** is valid JSON with correct syntax
+- [ ] **MCP configuration** includes both URL and local installation options
 - [ ] **Conversation examples** include 3-5 realistic scenarios
 - [ ] **Capabilities grid** showcases 4-6 key features
 - [ ] **Resources section** has relevant links (all working)
 - [ ] **Pro tips** provide 5-8 helpful suggestions
 - [ ] **Footer disclaimer** updated with service name
 - [ ] All TODO comments removed
-- [ ] All placeholders replaced
+- [ ] All example content replaced with actual integration details
 
 ### Functionality Testing
 
@@ -601,7 +626,7 @@ Circle: 50% (step numbers, status indicators)
 - [ ] **Working Commands** - Terminal commands are accurate
 - [ ] **Proper Links** - URLs are correct and not broken
 - [ ] **Clean HTML** - Properly formatted and indented
-- [ ] **No Hardcoded Values** - Uses placeholders for secrets
+- [ ] **No Hardcoded Values** - Uses appropriate placeholders for secrets
 
 ### User Experience
 
@@ -610,51 +635,6 @@ Circle: 50% (step numbers, status indicators)
 - [ ] **Visual Hierarchy** - Important information stands out
 - [ ] **Easy Navigation** - Back buttons work correctly
 - [ ] **Mobile Friendly** - Works on small screens
-
----
-
-## 📝 Example: Complete Integration Page
-
-Here's a minimal but complete example for a fictional "Slack" integration:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Slack MCP Integration for Poke - Team communication platform">
-    <title>Slack MCP for Poke - MCP Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Include all styles from integration-template.html */
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="back-nav">
-            <a href="index.html" class="back-btn">← Back to Dashboard</a>
-        </div>
-
-        <div class="disclaimer-banner">
-            <span class="disclaimer-icon">⚠️</span>
-            <p><strong>Independent Project:</strong> This page is not affiliated with poke.com. Community resource by Pierre Guirguis.</p>
-        </div>
-
-        <div class="hero-section">
-            <div class="hero-icon">💬</div>
-            <h1 class="hero-title">Slack MCP for Poke</h1>
-            <p class="hero-subtitle">Team communication and collaboration platform</p>
-            <p style="color: var(--text-secondary); margin-top: 1rem;">
-                Send messages, manage channels, and collaborate with your team through Poke
-            </p>
-        </div>
-
-        <!-- ... rest of the content ... -->
-    </div>
-</body>
-</html>
-```
 
 ---
 
@@ -697,6 +677,11 @@ Here's a minimal but complete example for a fictional "Slack" integration:
 }
 ```
 
+**6. Not explaining both MCP integration options**
+```html
+<!-- Only showing local installation without mentioning URL option -->
+```
+
 ### ✅ Do This Instead
 
 **1. Proper external links**
@@ -724,11 +709,17 @@ Here's a minimal but complete example for a fictional "Slack" integration:
 {
   "mcpServers": {
     "slack": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-slack"]
+      "url": "https://mcp.example.com/slack"
     }
   }
 }
+```
+
+**6. Show both integration options**
+```html
+<!-- Explain both URL-based and local installation methods -->
+<strong>Option 1: Use Hosted MCP URL (Recommended)</strong><br>
+<strong>Option 2: Run Locally</strong>
 ```
 
 ---
@@ -739,10 +730,10 @@ Here's a minimal but complete example for a fictional "Slack" integration:
 
 Study these well-implemented pages for examples:
 
-- **[bart.html](bart.html)** - Good example with detailed setup and multiple examples
-- **[todoist.html](todoist.html)** - Excellent conversation examples
-- **[last-fm.html](last-fm.html)** - Great capabilities grid and pro tips
-- **[github.html](github.html)** - Clear API credential instructions
+- **bart.html** - Good example with detailed setup and multiple examples
+- **todoist.html** - Excellent conversation examples
+- **last-fm.html** - Great capabilities grid and pro tips
+- **github.html** - Clear API credential instructions
 
 ### Testing Tools
 
@@ -791,6 +782,6 @@ Follow this guide, use the template, complete the checklist, and you'll have a p
 
 **Questions or feedback about this template guide?** Open an issue or PR!
 
-**Template Version:** 1.0.0  
+**Template Version:** 1.1.0  
 **Last Updated:** February 2026  
 **Maintained by:** [@guirguispierre](https://github.com/guirguispierre)
