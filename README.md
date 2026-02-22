@@ -18,7 +18,6 @@ A modern, community-driven dashboard showcasing Model Context Protocol (MCP) int
 ## 📚 Table of Contents
 
 - [Overview](#-overview)
-- [Available Integrations](#-available-integrations)
 - [Quick Start](#-quick-start)
 - [Installation](#-installation)
 - [Project Structure](#-project-structure)
@@ -32,7 +31,7 @@ A modern, community-driven dashboard showcasing Model Context Protocol (MCP) int
 
 ## 🎯 Overview
 
-This dashboard provides a comprehensive guide to 10 MCP (Model Context Protocol) integrations that enhance your Poke AI assistant with powerful external capabilities. Each integration includes detailed setup instructions, configuration examples, and real Poke conversation examples.
+This dashboard provides a comprehensive guide to MCP (Model Context Protocol) integrations that enhance your Poke AI assistant with powerful external capabilities. Each integration includes detailed setup instructions, configuration examples, and real Poke conversation examples.
 
 ### What is MCP in Poke?
 
@@ -40,7 +39,7 @@ Model Context Protocol allows Poke to securely connect to external data sources 
 
 ### Key Features
 
-- ✨ **10 Production-Ready Integrations** - All tested with Poke
+- ✨ **Production-Ready Integrations** - All tested with Poke
 - 📖 **Comprehensive Documentation** - Step-by-step guides for each integration
 - 🎨 **Modern Design** - Beautiful, responsive UI with dark/light modes
 - 🔒 **Security First** - Best practices for API key management
@@ -48,34 +47,6 @@ Model Context Protocol allows Poke to securely connect to external data sources 
 - 📱 **Responsive** - Works on all devices
 - 🔍 **Searchable** - Find integrations quickly
 - 🎯 **Categorized** - Organized by use case
-
----
-
-## 🔌 Available Integrations
-
-### 🛠️ Developer Tools (3)
-- **[GitHub](github.html)** - Repository management, issues, PRs
-- **[Supabase](supabase.html)** - PostgreSQL database operations
-- **[DeepWiki](deepwiki.html)** - Documentation search
-
-### 🌐 Deployment (2)
-- **[Vercel](vercel.html)** - Frontend deployment with serverless
-- **[Netlify](netlify.html)** - Continuous deployment with edge network
-
-### ✅ Productivity (1)
-- **[Todoist](todoist.html)** - Task management
-
-### 🚇 Transit (1)
-- **[BART](bart.html)** - Bay Area transit real-time data
-
-### 🎵 Entertainment (1)
-- **[Last.fm](last-fm.html)** - Music tracking and statistics
-
-### 📊 Financial (1)
-- **[Earnings Feed](earnings-feed.html)** - Financial data and earnings
-
-### 🎬 Media (1)
-- **[FFmpeg](ffmpeg.html)** - Video/audio processing
 
 ---
 
